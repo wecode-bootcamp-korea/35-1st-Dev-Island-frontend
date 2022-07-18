@@ -6,44 +6,42 @@ const Footer = () => {
   return (
     <footer className="footer-container">
       <div className="footer-inner">
-        <div>
-          <div className="footer-inner__logo">BANG & OLUFSEN</div>
-          <div className="footer-inner__row">
-            <div className="footer-inner__row-left">
-              {ROW_CATAGORY.map((x, i) => (
-                <div className="footer-inner__row-title" key={i}>
-                  {x.title}
-                  <ul>
-                    {x.content.map((x, i) => (
-                      <li className="footer-inner__row-content" key={i}>
-                        {x}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-            <div className="footer-inner__row-right">
-              <div className="footer-inner__icon">
-                <span>
-                  <img alt="icon" src="./images/sns/fb.svg" />
-                </span>
-                <span>
-                  <img alt="icon" src="./images/sns/insta.svg" />
-                </span>
-                <span>
-                  <img alt="icon" src="./images/sns/twitter.svg" />
-                </span>
-                <span>
-                  <img alt="icon" src="./images/sns/youtube.svg" />
-                </span>
-                <span>
-                  <img alt="icon" src="./images/sns/pinter.svg" />
-                </span>
-                <div className="footer-inner__text">
-                  <p>앱 살펴보기 </p>
-                  <p>The House of Bang & Olufsen</p>
-                </div>
+        <div className="footer-inner__logo">BANG & OLUFSEN</div>
+        <div className="footer-inner__row">
+          <div className="footer-inner__row-left">
+            {ROW_CATAGORY.map((x, i) => (
+              <div className="footer-inner__row-title" key={i}>
+                {x.title}
+                <ul>
+                  {x.content.map((x, i) => (
+                    <li className="footer-inner__row-content" key={i}>
+                      {x}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          <div className="footer-inner__row-right">
+            <div className="footer-inner__icon">
+              <span>
+                <img alt="icon" src="./images/sns/fb.svg" />
+              </span>
+              <span>
+                <img alt="icon" src="./images/sns/insta.svg" />
+              </span>
+              <span>
+                <img alt="icon" src="./images/sns/twitter.svg" />
+              </span>
+              <span>
+                <img alt="icon" src="./images/sns/youtube.svg" />
+              </span>
+              <span>
+                <img alt="icon" src="./images/sns/pinter.svg" />
+              </span>
+              <div className="footer-inner__text">
+                <p>앱 살펴보기 </p>
+                <p>The House of Bang & Olufsen</p>
               </div>
             </div>
           </div>
