@@ -8,9 +8,12 @@ import Cart from './pages/Cart/Cart';
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
 
+import Nav from './components/Nav/Nav';
+
 function Router() {
   return (
     <BrowserRouter>
+      <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/productlist" element={<ProductList />} />

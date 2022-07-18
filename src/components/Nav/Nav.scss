@@ -1,0 +1,44 @@
+@import '../../styles/variables.scss';
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+
+  padding: 0px 36px;
+  font-size: 13px;
+
+  background-color: $white;
+
+  .nav-container__left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 80px;
+
+    img {
+      width: 45px;
+      margin-right: 20px;
+      cursor: pointer;
+    }
+
+    span {
+      padding: 0px 25px;
+      cursor: pointer;
+    }
+  }
+
+  .nav-container__right {
+    img {
+      width: 25px;
+      cursor: pointer;
+    }
+
+    span {
+      padding: 0px 10px;
+    }
+  }
+}
