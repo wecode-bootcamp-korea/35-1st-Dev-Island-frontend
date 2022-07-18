@@ -7,12 +7,13 @@
   position: sticky;
   top: 0;
 
-  padding: 0px 36px;
+  padding: 0px 62px;
   font-size: 13px;
 
   background-color: $white;
+  border-bottom: solid $lightGray;
 
-  .nav-container__left {
+  &__left {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,7 +32,7 @@
     }
   }
 
-  .nav-container__right {
+  &__right {
     img {
       width: 25px;
       cursor: pointer;
