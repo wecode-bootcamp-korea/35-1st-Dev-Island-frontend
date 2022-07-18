@@ -1,5 +1,5 @@
 {
-  "extends": ["react-app"],
+  "extends": ["react-app", "plugin:prettier/recommended"],
   "rules": {
     "no-var": "warn",
     "eqeqeq": "warn",
@@ -12,6 +12,12 @@
     "react/no-unused-state": "warn",
     "react/jsx-key": "warn",
     "react/self-closing-comp": "warn",
-    "react/jsx-curly-brace-presence": "warn"
+    "react/jsx-curly-brace-presence": "warn",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
   }
 }
