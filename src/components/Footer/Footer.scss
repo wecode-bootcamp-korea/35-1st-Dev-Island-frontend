@@ -1,1 +1,63 @@
 @import '../../styles/variables.scss';
+
+.footer-container {
+  color: $baige;
+  background-color: $darkGray;
+
+  .footer-inner {
+    padding: 0px 36px;
+    letter-spacing: 2px;
+
+    &__logo {
+      padding-top: 30px;
+      font-size: 24px;
+      font-weight: 400;
+    }
+
+    &__row {
+      display: flex;
+      margin-top: 60px;
+
+      &-left {
+        display: flex;
+        flex-basis: 66%;
+
+        div {
+          width: 25%;
+        }
+      }
+
+      &-title {
+        font-size: 12px;
+
+        ul {
+          margin-top: 38px;
+
+          li {
+            margin-bottom: 8px;
+          }
+        }
+      }
+
+      &-right {
+        display: flex;
+        justify-content: center;
+        flex-basis: 33%;
+
+        img {
+          width: 35px;
+          margin: 0px 10px;
+        }
+
+        .footer-inner__text {
+          margin-top: 10px;
+
+          p {
+            padding: 7px 10px;
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+}
