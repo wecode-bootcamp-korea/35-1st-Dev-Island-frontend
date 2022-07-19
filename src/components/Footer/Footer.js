@@ -25,19 +25,19 @@ const Footer = () => {
           <div className="footer-inner__row-right">
             <div className="footer-inner__icon">
               <span>
-                <img alt="icon" src="./images/sns/fb.svg" />
+                <img alt="icon" src="/images/Footer/fb.svg" />
               </span>
               <span>
-                <img alt="icon" src="./images/sns/insta.svg" />
+                <img alt="icon" src="/images/Footer/insta.svg" />
               </span>
               <span>
-                <img alt="icon" src="./images/sns/twitter.svg" />
+                <img alt="icon" src="/images/Footer/twitter.svg" />
               </span>
               <span>
-                <img alt="icon" src="./images/sns/youtube.svg" />
+                <img alt="icon" src="/images/Footer/youtube.svg" />
               </span>
               <span>
-                <img alt="icon" src="./images/sns/pinter.svg" />
+                <img alt="icon" src="/images/Footer/pinter.svg" />
               </span>
               <div className="footer-inner__text">
                 <p>앱 살펴보기 </p>
