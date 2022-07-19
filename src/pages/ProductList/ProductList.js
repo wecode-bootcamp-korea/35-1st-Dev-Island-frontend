@@ -1,5 +1,5 @@
-import React from "react";
-import "./ProductList.scss";
+import React from 'react';
+import './ProductList.scss';
 
 function ProductList() {
   return <div>ProductList</div>;
