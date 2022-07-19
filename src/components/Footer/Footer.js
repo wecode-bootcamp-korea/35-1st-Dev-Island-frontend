@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className="footer-container">
       <div className="footer-inner">
-        <div className="footer-inner__logo">BANG & OLUFSEN</div>
+        <div className="footer-inner__logo">WE & OLUFSEN</div>
         <div className="footer-inner__row">
           <div className="footer-inner__row-left">
             {ROW_CATAGORY.map((x, i) => (
@@ -41,7 +41,7 @@ const Footer = () => {
               </span>
               <div className="footer-inner__text">
                 <p>앱 살펴보기 </p>
-                <p>The House of Bang & Olufsen</p>
+                <p>The House of WE & Olufsen</p>
               </div>
             </div>
           </div>
@@ -83,7 +83,7 @@ const ROW_CATAGORY = [
       '산업 전문가용',
       'Partners & B2B',
       '구인 정보',
-      'Bang & Olufsen Collective',
+      'WE & Olufsen Collective',
       'CEO에게 피드백 제출',
     ],
   },
