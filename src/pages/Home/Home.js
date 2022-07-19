@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React from 'react';
+import Slider from '../../component/Slider/Slider';
 import './Home.scss';
 
 function Home() {
@@ -28,43 +29,7 @@ function Home() {
         <div className="container-beige-title">
           <h2>사운드. 영상. 당신의 선택입니다.</h2>
         </div>
-        <div className="container-beige-title__nav">
-          <div className="container-beige-title__nav-imgbox">
-            <img
-              alt="home video"
-              src="images/main/pexels-tima-miroshnichenko-6827396.jpeg"
-            />
-            <p>홈 비디오</p>
-          </div>
-          <div className="container-beige-title__nav-imgbox">
-            <img
-              alt="home video"
-              src="images/main/pexels-tima-miroshnichenko-6827396.jpeg"
-            />
-            <p>휴대용 스피커</p>
-          </div>
-          <div className="container-beige-title__nav-imgbox">
-            <img
-              alt="home video"
-              src="images/main/pexels-tima-miroshnichenko-6827396.jpeg"
-            />
-            <p>TV</p>
-          </div>
-          <div className="container-beige-title__nav-imgbox">
-            <img
-              alt="home video"
-              src="images/main/pexels-tima-miroshnichenko-6827396.jpeg"
-            />
-            <p>이어폰</p>
-          </div>
-          <div className="container-beige-title__nav-imgbox">
-            <img
-              alt="home video"
-              src="images/main/pexels-tima-miroshnichenko-6827396.jpeg"
-            />
-            <p>스마트 홈</p>
-          </div>
-        </div>
+        <Slider />
         <div className="container-beige-mv">
           <div className="container-beige-mv__title">
             <p>1925년 부터.</p>
