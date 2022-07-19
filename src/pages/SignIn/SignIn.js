@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import './SignIn.scss';
 
 function SignIn() {
@@ -24,6 +26,9 @@ function SignIn() {
               <img alt="logo" src="images/sns_black/pinter.svg" />
               <img alt="logo" src="images/sns_black/twitter.svg" />
             </div>
+            <Link to="/signup">
+              <p>계정이 없으신가요? 가입하기</p>
+            </Link>
           </div>
         </div>
         <div className="inner-right" />
