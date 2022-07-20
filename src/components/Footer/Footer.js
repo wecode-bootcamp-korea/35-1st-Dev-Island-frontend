@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="footer-inner__logo">WE & OLUFSEN</div>
         <div className="footer-inner__row">
           <div className="footer-inner__row-left">
-            {ROW_CATAGORY.map((x, i) => (
+            {ROW_CATEGORY.map((x, i) => (
               <div className="footer-inner__row-title" key={i}>
                 {x.title}
                 <ul>
@@ -53,7 +53,7 @@ const Footer = () => {
 
 export default Footer;
 
-const ROW_CATAGORY = [
+const ROW_CATEGORY = [
   {
     title: '국가 선택',
     content: ['South Korea'],
