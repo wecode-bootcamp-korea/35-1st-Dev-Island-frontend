@@ -31,37 +31,36 @@ function SignUp() {
     /^[0-9a-zA-Z]([-_\\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
   const passwordRegExp =
     /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
-
   const cofirmEmail = values.email && !emailRegExp.test(values.email);
-
   const cofirmPassword =
     values.cofirm_password && values.password !== values.cofirm_password;
-
   const cofirmRegPassword =
     values.password && !passwordRegExp.test(values.password);
 
   const onSubmit = async e => {
     e.preventDefault();
-    setHasEmail(true);
 
-    const url = 'http://10.58.6.177:8000/users/signup';
-    try {
-      const response = await fetch(url, {
-        method: 'POST',
-        body: JSON.stringify({
-          first_name,
-          last_name,
-          email,
-          password,
-        }),
-      });
-      const result = await response.json();
-      if (result.message === 'THIS_EMAIL_ALREADY_EXISTS') {
-        setHasEmail(true);
+    if (cofirmEmail && cofirmPassword && cofirmRegPassword) {
+      const url = 'http://10.58.6.177:8000/users/signup';
+      try {
+        const response = await fetch(url, {
+          method: 'POST',
+          body: JSON.stringify({
+            first_name,
+            last_name,
+            email,
+            password,
+          }),
+        });
+        const result = await response.json();
+        if (result.message === 'THIS_EMAIL_ALREADY_EXISTS') {
+          setHasEmail(true);
+        }
+        // navigate('/signin');
+        navigate('/welcome');
+      } catch (err) {
+        alert(err);
       }
-      navigate('/signin');
-    } catch (err) {
-      alert(err);
     }
   };
 
