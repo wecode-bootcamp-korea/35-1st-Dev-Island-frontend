@@ -6,6 +6,8 @@ import './SignUp.scss';
 
 function SignUp() {
   const navigate = useNavigate();
+
+  const [hasEmail, setHasEmail] = useState(false);
   const [values, setValues] = useState({
     first_name: '',
     last_name: '',
@@ -17,51 +19,59 @@ function SignUp() {
   const handleInput = e => {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
+
+    if (values.email.length) {
+      setHasEmail(false);
+    }
   };
+
+  const { first_name, last_name, email, password } = handleInput;
 
   const emailRegExp =
     /^[0-9a-zA-Z]([-_\\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
   const passwordRegExp =
     /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
 
-  const cofirmEmail =
-    values.email.length > 0 && !emailRegExp.test(values.email);
+  const cofirmEmail = values.email && !emailRegExp.test(values.email);
 
   const cofirmPassword =
-    values.cofirm_password.length > 0 &&
-    values.password !== values.cofirm_password;
+    values.cofirm_password && values.password !== values.cofirm_password;
 
   const cofirmRegPassword =
     values.password && !passwordRegExp.test(values.password);
 
-  const goToSignIn = () => {
-    navigate('/signin');
-  };
-
   const onSubmit = async e => {
     e.preventDefault();
+    setHasEmail(true);
+
+    const url = 'http://10.58.6.177:8000/users/signup';
     try {
-      const response = await fetch('http://10.58.6.177:8000/users/signup', {
+      const response = await fetch(url, {
         method: 'POST',
         body: JSON.stringify({
-          first_name: values.first_name,
-          last_name: values.last_name,
-          email: values.email,
-          password: values.password,
+          first_name,
+          last_name,
+          email,
+          password,
         }),
       });
-      const json = await response.json();
-      console.log(json);
+      const result = await response.json();
+      if (result.message === 'THIS_EMAIL_ALREADY_EXISTS') {
+        setHasEmail(true);
+      }
+      navigate('/signin');
     } catch (err) {
       alert(err);
     }
-    goToSignIn();
   };
 
   return (
     <main className="sign-in-container">
       <div className="sign-in-inner">
         <div className="inner-left">
+          {hasEmail ? (
+            <label className="input-label">이미 사용중인 이메일 입니다.</label>
+          ) : null}
           <h1>내 계정</h1>
           <form onSubmit={onSubmit}>
             <input
@@ -69,6 +79,7 @@ function SignUp() {
               name="first_name"
               type="text"
               placeholder="Frist Name *"
+              value={values.first_name}
             />
             <input
               onChange={handleInput}
