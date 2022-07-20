@@ -5,7 +5,7 @@ import './SignUp.scss';
 
 function SignUp() {
   const [values, setValues] = useState({
-    frist_name: '',
+    first_name: '',
     last_name: '',
     email: '',
     password: '',
@@ -32,9 +32,23 @@ function SignUp() {
   const cofirmRegPassword =
     values.password && !passwordRegExp.test(values.password);
 
-  const onSubmit = e => {
+  const onSubmit = async e => {
     e.preventDefault();
-    // console.log(cofirmRegPassword);
+    try {
+      const response = await fetch('http://10.58.6.177:8000/users/signup', {
+        method: 'POST',
+        body: JSON.stringify({
+          first_name: values.first_name,
+          last_name: values.last_name,
+          email: values.email,
+          password: values.password,
+        }),
+      });
+      const json = await response.json();
+      console.log(json);
+    } catch (err) {
+      alert(err);
+    }
   };
 
   return (
@@ -45,7 +59,7 @@ function SignUp() {
           <form onSubmit={onSubmit}>
             <input
               onChange={handleInput}
-              name="frist_name"
+              name="first_name"
               type="text"
               placeholder="Frist Name *"
             />
