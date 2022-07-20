@@ -1,10 +1,10 @@
-import React from "react";
-import "./SearchBox.scss";
+import React from 'react';
+import '../../ProductList/ProductList.scss';
 
 function SearchBox(props) {
   return (
     <input
-      className="search"
+      className="searchbox"
       type="search"
       placeholder="Search..."
       onChange={props.handleChange}

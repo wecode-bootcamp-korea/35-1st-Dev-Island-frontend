@@ -1,9 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './ProductList.scss';
-// import SearchBox from './SearchBox.js';
+import SearchBox from '../components/SearchBox/SearchBox';
+import CardList from '../components/Card/CardList';
+import CompareCard from '../components/Card/CompareCard';
 
 function ProductList() {
+  const [productlist, setProductlist] = useState([]);
+  const [userInput, setUserInput] = useState('');
+
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(res => res.json())
+      .then(result => setProductlist(result));
+  }, []);
+  const updateUserInput = e => {
+    setUserInput(e.target.value);
+  };
+
+  const sortedProductlist = productlist.filter(product => {
+    return product.name.toLowerCase().includes(userInput.toLowerCase());
+  });
+
   return (
     <div className="prductlist">
       <div className="productlist-layout">
@@ -55,10 +73,8 @@ function ProductList() {
         </div>
       </div>
       <div className="productlist-description-layout">
+        <SearchBox handleChange={updateUserInput} />
         <div className="productlist-description-title">
-          <div className="productlist-search-box">
-            <input className="search-bar" type="text" placeholder="검색" />
-          </div>
           <p>모든 스피커</p>
           <div className="productlist-description-ex">
             <p>
@@ -72,64 +88,11 @@ function ProductList() {
         </div>
       </div>
       <div className="productlist-card-layout">
-        <div className="productlist-card-list">
-          <div className="productlist-card-container">
-            <div className="productlist-card-img">
-              <img src="https://images.ctfassets.net/8cd2csgvqd3m/IfG0QW5D4ndMEVUrCXIrI/1d030333fc36b06f44bbe7aa5196242a/Beolab_28__Beoplay_A9_4th_Gen.__Beolit_20__Beosound_Level__Beosound_2_0002.png?q=65&w=640&fit=fill" />
-              <li>쓰리룸 스피커 세트</li>
-              <li>간단한 커넥티드 스피커 세트</li>
-              <li>1,999,000</li>
-            </div>
-          </div>
-          <div className="productlist-card-container">
-            <div className="productlist-card-img">
-              <img src="https://images.ctfassets.net/8cd2csgvqd3m/IfG0QW5D4ndMEVUrCXIrI/1d030333fc36b06f44bbe7aa5196242a/Beolab_28__Beoplay_A9_4th_Gen.__Beolit_20__Beosound_Level__Beosound_2_0002.png?q=65&w=640&fit=fill" />
-              <li>쓰리룸 스피커 세트</li>
-              <li>간단한 커넥티드 스피커 세트</li>
-              <li>1,999,000</li>
-            </div>
-          </div>
-          <div className="productlist-card-container2">
-            <div className="productlist-card-img">
-              <img src="https://cdn-icons-png.flaticon.com/512/2038/2038806.png" />
-            </div>
-            <div className="productlist-card-text">
-              <p>고객님께 어떤 스피커가 적합할까요?</p>
-              <p>
-                스피커를 비교하고 완벽하게 어울리는 제품을 찾을 수 있게
-                도와드립니다.
-              </p>
-              <button className="button">비교</button>
-            </div>
-          </div>
-          <div className="productlist-card-container">
-            <div className="productlist-card-img">
-              <img src="https://images.ctfassets.net/8cd2csgvqd3m/IfG0QW5D4ndMEVUrCXIrI/1d030333fc36b06f44bbe7aa5196242a/Beolab_28__Beoplay_A9_4th_Gen.__Beolit_20__Beosound_Level__Beosound_2_0002.png?q=65&w=640&fit=fill" />
-              <li>쓰리룸 스피커 세트</li>
-              <li>간단한 커넥티드 스피커 세트</li>
-              <li>1,999,000</li>
-            </div>
-          </div>
-          <div className="productlist-card-container">
-            <div className="productlist-card-img">
-              <img src="https://images.ctfassets.net/8cd2csgvqd3m/IfG0QW5D4ndMEVUrCXIrI/1d030333fc36b06f44bbe7aa5196242a/Beolab_28__Beoplay_A9_4th_Gen.__Beolit_20__Beosound_Level__Beosound_2_0002.png?q=65&w=640&fit=fill" />
-              <li>쓰리룸 스피커 세트</li>
-              <li>간단한 커넥티드 스피커 세트</li>
-              <li>1,999,000</li>
-            </div>
-          </div>
-          <div className="productlist-card-container">
-            <div className="productlist-card-img">
-              <img src="https://images.ctfassets.net/8cd2csgvqd3m/IfG0QW5D4ndMEVUrCXIrI/1d030333fc36b06f44bbe7aa5196242a/Beolab_28__Beoplay_A9_4th_Gen.__Beolit_20__Beosound_Level__Beosound_2_0002.png?q=65&w=640&fit=fill" />
-              <li>쓰리룸 스피커 세트</li>
-              <li>간단한 커넥티드 스피커 세트</li>
-              <li>1,999,000</li>
-            </div>
-          </div>
-        </div>
+        <CompareCard />
+
+        <CardList productlist={sortedProductlist} />
       </div>
     </div>
   );
 }
-
 export default ProductList;

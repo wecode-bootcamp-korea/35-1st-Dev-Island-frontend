@@ -37,14 +37,14 @@
 .productlist-description-layout {
   background-color: #ffffff;
   display: flex;
-  padding: 20px 20px 20px 220px;
+  padding: 0px 220px 0px 220px;
+  flex-direction: column;
 }
-.search-bar {
-  margin-bottom: 50px;
-
+.searchbox {
+  margin: 10px 20px;
   width: 260px;
   height: 37px;
-  padding: 0px 16px;
+  padding: 0px 10px;
   border: none;
   border-radius: 10px;
   background-color: #efefef;
@@ -59,7 +59,6 @@
 .productlist-description-title {
   font-size: 40px;
   padding: 0px 0px 0px 20px;
-  margin-top: 60px;
   .productlist-description-ex {
     p {
       font-size: 20px;
@@ -70,70 +69,71 @@
   .productlist-card-list {
     display: flex;
     flex-wrap: wrap;
-    width: 2000px;
+    width: 1950px;
     padding: 0px 220px 0px 220px;
-    .productlist-card-container {
-      background-color: $lightGray;
-      width: 450px;
-      height: 450px;
-      background-color: #222;
-      margin: 40px 20px;
+  }
+}
+.productlist-comparecard-container {
+  background-color: $lightGray;
+  width: 450px;
+  height: 450px;
+  margin: 40px 20px;
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 
-      .productlist-card-img {
-        width: 450px;
-        height: 450px;
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-      }
-    }
-    .productlist-card-container2 {
-      background-color: $lightGray;
-      width: 450px;
-      height: 450px;
-      margin: 40px 20px;
-      padding: 80px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-
-      .productlist-card-img {
-        width: 90px;
-        height: 90px;
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-      }
-      .productlist-card-text {
-        margin-top: 20px;
-      }
-    }
-    .button {
-      padding: 8px 32px;
-      overflow: hidden;
-      text-align: center;
-      border-radius: 24px;
-      // min-width: 140px;
-      width: 45px;
-      margin-top: 20px;
-      cursor: pointer;
-
-      border: 2px solid rgb(0, 0, 0);
-      background-color: transparent;
-      &:hover {
-        background-color: $pointColor;
-        border: none;
-      }
+  .productlist-comparecard-img {
+    width: 90px;
+    height: 90px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
   }
-  .product-serch-bar {
-    flex: 3;
-    position: relative;
+  .productlist-comparecard-text {
+    margin-top: 20px;
+  }
+  .button {
+    padding: 8px 32px;
+    overflow: hidden;
+    text-align: center;
+    border-radius: 24px;
+    // min-width: 140px;
+    width: 45px;
+    margin-top: 20px;
+    cursor: pointer;
+
+    border: 2px solid rgb(0, 0, 0);
+    background-color: transparent;
+    &:hover {
+      background-color: $pointColor;
+      border: none;
+    }
+  }
+}
+.productlist-card-container {
+  background-color: $lightGray;
+  width: 450px;
+  height: 450px;
+  background-color: #222;
+  margin: 40px 20px;
+
+  .productlist-card-img {
+    width: 450px;
+    height: 450px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .card-info {
+    width: 450px;
+    height: 100px;
+    margin: 10px 0px;
   }
 }
