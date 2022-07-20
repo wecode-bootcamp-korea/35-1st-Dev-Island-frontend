@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import './SignUp.scss';
 
 function SignUp() {
+  const navigate = useNavigate();
   const [values, setValues] = useState({
     first_name: '',
     last_name: '',
@@ -32,6 +34,10 @@ function SignUp() {
   const cofirmRegPassword =
     values.password && !passwordRegExp.test(values.password);
 
+  const goToSignIn = () => {
+    navigate('/signin');
+  };
+
   const onSubmit = async e => {
     e.preventDefault();
     try {
@@ -49,6 +55,7 @@ function SignUp() {
     } catch (err) {
       alert(err);
     }
+    goToSignIn();
   };
 
   return (
