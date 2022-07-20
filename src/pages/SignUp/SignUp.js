@@ -26,13 +26,15 @@ function SignUp() {
     values.email.length > 0 && !emailRegExp.test(values.email);
 
   const cofirmPassword =
-    values.cofirm_password && values.password !== values.cofirm_password;
+    values.cofirm_password.length > 0 &&
+    values.password !== values.cofirm_password;
 
-  const test = passwordRegExp.test(values.password);
+  const cofirmRegPassword =
+    values.password && !passwordRegExp.test(values.password);
 
   const onSubmit = e => {
     e.preventDefault();
-    console.log(test);
+    // console.log(cofirmRegPassword);
   };
 
   return (
@@ -62,8 +64,10 @@ function SignUp() {
               type="email"
               placeholder="Email *"
             />
-            {cofirmPassword ? (
-              <label className="input-label">비밀번호를 확인하세요.</label>
+            {cofirmRegPassword ? (
+              <label className="input-label">
+                대 ・ 소문자 특수문자 숫자를 포함 해주세요.
+              </label>
             ) : null}
             <input
               onChange={handleInput}
@@ -71,6 +75,9 @@ function SignUp() {
               type="password"
               placeholder="Password *"
             />
+            {cofirmPassword ? (
+              <label className="input-label">비밀번호를 확인하세요.</label>
+            ) : null}
             <input
               onChange={handleInput}
               name="cofirm_password"
