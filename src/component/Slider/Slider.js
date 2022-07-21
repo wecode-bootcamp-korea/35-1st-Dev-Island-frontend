@@ -1,18 +1,46 @@
+import React, { useState, useRef, useEffect } from 'react';
 import './Slider.scss';
 
 function Slider() {
+  //container-beige-title__slide가 (340px)만큼 왼쪽으로 이동
+  // container-beige-title__slide의 끝 지점에 도달하면 오른쪽 화살표버튼 비활성화
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const slideRef = useRef(null);
+  const slides = SLIDER_NAV_DATA.length / 3; // 데이터 갯수/3으로 제한
+
+  const NextSlide = () => {
+    if (currentSlide < slides) {
+      setCurrentSlide(currentSlide + 1);
+    } else {
+      setCurrentSlide(0);
+    }
+  };
+
+  useEffect(() => {
+    slideRef.current.style.transform = `translateX(-${currentSlide * 340}px)`;
+    slideRef.current.style.transition = 'all 0.5s ease-out';
+  }, [currentSlide]);
+
   return (
-    <div className="container-beige-title__navbox">
-      <div className="container-beige-title__nav">
+    <div className="container-beige-title__slidebox">
+      <div ref={slideRef} className="container-beige-title__slide">
         {SLIDER_NAV_DATA.map(navdata => {
           return (
-            <div key={navdata.id} className="container-beige-title__nav-imgbox">
+            <div
+              key={navdata.id}
+              className="container-beige-title__slide-imgbox"
+            >
               <img alt={navdata.alt} src={navdata.src} />
               <label>{navdata.name}</label>
             </div>
           );
         })}
       </div>
+      <button className="slideButton" onClick={NextSlide}>
+        <img alt="arrow" src="images/main/arrow.svg" />
+      </button>
     </div>
   );
 }
@@ -50,6 +78,12 @@ const SLIDER_NAV_DATA = [
   },
   {
     id: 6,
+    src: 'images/main/pexels-cottonbro-6322724.jpeg',
+    name: '스피커 액세서리',
+    alt: '스피커 액세서리 제품 보러가기',
+  },
+  {
+    id: 7,
     src: 'images/main/pexels-cottonbro-6322724.jpeg',
     name: '스피커 액세서리',
     alt: '스피커 액세서리 제품 보러가기',
