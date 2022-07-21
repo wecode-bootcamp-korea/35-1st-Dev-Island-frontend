@@ -5,7 +5,6 @@ import './SignUp.scss';
 
 function SignUp() {
   const navigate = useNavigate();
-
   const [hasEmail, setHasEmail] = useState(false);
   const [values, setValues] = useState({
     first_name: '',
@@ -14,28 +13,15 @@ function SignUp() {
     password: '',
     confirm_password: '',
   });
-
   const { first_name, last_name, email, password, confirm_password } = values;
+  const isEmailValid = email && !emailRegExp.test(email);
+  const isPasswordValid = password && !passwordRegExp.test(password);
+  const isRePasswordValid = confirm_password && password !== confirm_password;
 
   const handleInput = e => {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
   };
-
-  useEffect(() => {
-    if (email) {
-      setHasEmail(false);
-    }
-  }, [email]);
-
-  const emailRegExp =
-    /^[0-9a-zA-Z]([-_\\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
-  const passwordRegExp =
-    /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
-
-  const isEmailValid = email && !emailRegExp.test(email);
-  const isPasswordValid = password && !passwordRegExp.test(password);
-  const isRePasswordValid = confirm_password && password !== confirm_password;
 
   const onSubmit = async e => {
     e.preventDefault();
@@ -66,6 +52,12 @@ function SignUp() {
       }
     }
   };
+
+  useEffect(() => {
+    if (email) {
+      setHasEmail(false);
+    }
+  }, [email]);
 
   return (
     <main className="sign-in-container">
@@ -136,3 +128,8 @@ function SignUp() {
 }
 
 export default SignUp;
+
+const emailRegExp =
+  /^[0-9a-zA-Z]([-_\\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+const passwordRegExp =
+  /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
