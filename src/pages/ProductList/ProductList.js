@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './ProductList.scss';
-import SearchBox from '../components/SearchBox/SearchBox';
-import CardList from '../components/Card/CardList';
-import CompareCard from '../components/Card/CompareCard';
+import SearchBox from './components/SearchBox/SearchBox';
+import CardList from './components/Card/CardList';
+import CompareCard from './components/Card/CompareCard';
 
 function ProductList() {
   const [productlist, setProductlist] = useState([]);
