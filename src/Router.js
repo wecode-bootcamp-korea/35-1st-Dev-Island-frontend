@@ -11,9 +11,12 @@ import NotFound from './pages/NotFound/NotFound';
 
 import Footer from './components/Footer/Footer';
 
+import Nav from './components/Nav/Nav';
+
 function Router() {
   return (
     <BrowserRouter>
+      <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/productlist" element={<ProductList />} />
