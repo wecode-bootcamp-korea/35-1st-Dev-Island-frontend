@@ -8,6 +8,8 @@ import Cart from './pages/Cart/Cart';
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
 
+import Footer from './components/Footer/Footer';
+
 function Router() {
   return (
     <BrowserRouter>
@@ -19,6 +21,7 @@ function Router() {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
