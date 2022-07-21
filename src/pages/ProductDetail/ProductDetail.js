@@ -1,7 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import Modal from './component/modal.js';
 import './ProductDetail.scss';
 
 function ProductDetail() {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+  let { id } = useParams();
+
+  const [product, setProduct] = useState({});
+
+  useEffect(() => {
+    fetch('/data/ProductDetail/productDetailData.json')
+      .then(res => res.json())
+      .then(data => setProduct(data));
+  }, []);
+  console.log(product.name);
   return (
     <div className="product-detail">
       <div className="product-detail-wrap">
@@ -13,15 +33,29 @@ function ProductDetail() {
             />
           </div>
         </div>
+        <Modal
+          open={modalOpen}
+          close={closeModal}
+          header="상품이 장바구니에 추가됨"
+        >
+          <div className="modal-box">
+            <img src="" alt="productimage" />
+            <div className="modal-box-name">
+              <p>{product.name}</p>
+              <p>Gold Tone</p>
+            </div>
+            <div className="modal-box-price">{product.price}</div>
+          </div>
+        </Modal>
         <div className="product-detail-wrap-right">
-          <div className="product-detail-wrap-right__name">BESOUND LEVEL</div>
+          <div className="product-detail-wrap-right__name">{product.name}</div>
           <div className="product-detail-wrap-right__desc">
-            <h2>포터블 WiFi 스피커</h2>
+            <h2>{product.description}</h2>
           </div>
           <div className="product-detail-wrap-right__price">
-            <h4>₩2,399,000</h4>
+            <h4>{product.price}</h4>
           </div>
-          <button>구매 하기</button>
+          <button onClick={openModal}>구매 하기</button>
         </div>
       </div>
 
@@ -32,6 +66,9 @@ function ProductDetail() {
         <a href="">
           <li>특장점</li>
         </a>
+        <li>기술 사양</li>
+        <li>비교</li>
+        <li>리뷰</li>
       </ul>
 
       <div className="product-detail-container">
