@@ -9,13 +9,13 @@ const Footer = () => {
         <div className="footer-inner__logo">WE & OLUFSEN</div>
         <div className="footer-inner__row">
           <div className="footer-inner__row-left">
-            {ROW_CATEGORY.map((x, i) => (
-              <div className="footer-inner__row-title" key={i}>
-                {x.title}
+            {ROW_CATEGORY.map((item, index) => (
+              <div className="footer-inner__row-title" key={index}>
+                {item.title}
                 <ul>
-                  {x.content.map((x, i) => (
-                    <li className="footer-inner__row-content" key={i}>
-                      {x}
+                  {item.content.map((link, index) => (
+                    <li className="footer-inner__row-content" key={index}>
+                      {link}
                     </li>
                   ))}
                 </ul>
