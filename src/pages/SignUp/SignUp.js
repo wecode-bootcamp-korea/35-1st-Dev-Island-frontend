@@ -52,12 +52,16 @@ function SignUp() {
             password,
           }),
         });
+
         const result = await response.json();
         if (result.message === 'THIS_EMAIL_ALREADY_EXISTS') {
           setHasEmail(true);
         }
-        // navigate('/signin');
-        navigate('/welcome');
+
+        if (result.message === 'SIGNUP_SUCCESS') {
+          navigate('/signin');
+          // navigate('/welcome');
+        }
       } catch (err) {
         alert(err);
       }
