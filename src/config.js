@@ -6,7 +6,6 @@ const API = {
   product: `${BASE_URL}/product`,
   productDetail: `${BASE_URL}/product/detail/`,
   cart: `${BASE_URL}/cart`,
-  order: `${BASE_URL}/order`,
 };
 
 export default API;
