@@ -20,7 +20,7 @@ function SignUp() {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
 
-    if (values.email.length) {
+    if (values.email) {
       setHasEmail(false);
     }
   };
