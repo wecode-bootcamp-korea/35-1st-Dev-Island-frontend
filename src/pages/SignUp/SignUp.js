@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import './SignUp.scss';
@@ -20,10 +20,13 @@ function SignUp() {
   const handleInput = e => {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
+  };
+
+  useEffect(() => {
     if (email) {
       setHasEmail(false);
     }
-  };
+  }, [email]);
 
   const emailRegExp =
     /^[0-9a-zA-Z]([-_\\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
