@@ -89,7 +89,6 @@ function ProductList() {
       </div>
       <div className="productlist-card-layout">
         <CompareCard />
-
         <CardList productlist={sortedProductlist} />
       </div>
     </div>
