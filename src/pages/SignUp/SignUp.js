@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import './SignUp.scss';
 
@@ -13,35 +12,32 @@ function SignUp() {
     last_name: '',
     email: '',
     password: '',
-    cofirm_password: '',
+    confirm_password: '',
   });
+
+  const { first_name, last_name, email, password, confirm_password } = values;
 
   const handleInput = e => {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
-
-    if (values.email) {
+    if (email) {
       setHasEmail(false);
     }
   };
-
-  const { first_name, last_name, email, password } = handleInput;
 
   const emailRegExp =
     /^[0-9a-zA-Z]([-_\\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
   const passwordRegExp =
     /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
-  const cofirmEmail = values.email && !emailRegExp.test(values.email);
-  const cofirmPassword =
-    values.cofirm_password && values.password !== values.cofirm_password;
-  const cofirmRegPassword =
-    values.password && !passwordRegExp.test(values.password);
+
+  const isEmailValid = email && !emailRegExp.test(email);
+  const isPasswordValid = password && !passwordRegExp.test(password);
+  const isRePasswordValid = confirm_password && password !== confirm_password;
 
   const onSubmit = async e => {
     e.preventDefault();
-
-    if (cofirmEmail && cofirmPassword && cofirmRegPassword) {
-      const url = 'http://10.58.6.177:8000/users/signup';
+    if (emailRegExp.test(email) && passwordRegExp.test(password)) {
+      const url = 'http://10.58.2.22:8000/users/signup';
       try {
         const response = await fetch(url, {
           method: 'POST',
@@ -72,9 +68,9 @@ function SignUp() {
     <main className="sign-in-container">
       <div className="sign-in-inner">
         <div className="inner-left">
-          {hasEmail ? (
+          {hasEmail && (
             <label className="input-label">이미 사용중인 이메일 입니다.</label>
-          ) : null}
+          )}
           <h1>내 계정</h1>
           <form onSubmit={onSubmit}>
             <input
@@ -82,7 +78,6 @@ function SignUp() {
               name="first_name"
               type="text"
               placeholder="Frist Name *"
-              value={values.first_name}
             />
             <input
               onChange={handleInput}
@@ -90,32 +85,32 @@ function SignUp() {
               type="text"
               placeholder="Last Name *"
             />
-            {cofirmEmail ? (
+            {isEmailValid && (
               <label className="input-label">이메일 형식을 확인하세요.</label>
-            ) : null}
+            )}
             <input
               onChange={handleInput}
               name="email"
               type="email"
               placeholder="Email *"
             />
-            {cofirmRegPassword ? (
+            {isPasswordValid && (
               <label className="input-label">
                 대 ・ 소문자 특수문자 숫자를 포함 해주세요.
               </label>
-            ) : null}
+            )}
             <input
               onChange={handleInput}
               name="password"
               type="password"
               placeholder="Password *"
             />
-            {cofirmPassword ? (
+            {isRePasswordValid && (
               <label className="input-label">비밀번호를 확인하세요.</label>
-            ) : null}
+            )}
             <input
               onChange={handleInput}
-              name="cofirm_password"
+              name="confirm_password"
               type="password"
               placeholder="Confirm Password *"
             />
