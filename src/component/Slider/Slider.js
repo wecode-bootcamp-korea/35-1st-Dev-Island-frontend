@@ -27,13 +27,11 @@ function Slider() {
     <div className="container-beige-title__slidebox">
       <div ref={slideRef} className="container-beige-title__slide">
         {SLIDER_NAV_DATA.map(navdata => {
+          const { id, alt, src, name } = navdata;
           return (
-            <div
-              key={navdata.id}
-              className="container-beige-title__slide-imgbox"
-            >
-              <img alt={navdata.alt} src={navdata.src} />
-              <label>{navdata.name}</label>
+            <div key={id} className="container-beige-title__slide-imgbox">
+              <img alt={alt} src={src} />
+              <label>{name}</label>
             </div>
           );
         })}

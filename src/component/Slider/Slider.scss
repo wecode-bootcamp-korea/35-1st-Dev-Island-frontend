@@ -8,6 +8,7 @@
 
   .container-beige-title__slide {
     position: relative;
+    display: flex;
     width: 2400px;
     height: 600px;
     padding-top: 70px;
@@ -16,7 +17,6 @@
     .container-beige-title__slide-imgbox {
       display: flex;
       flex-direction: column;
-      float: left;
       margin-right: 20px;
       width: 320px;
 
