@@ -46,7 +46,7 @@ function SignIn() {
 
         if (result.message === 'SUCCESS') {
           sessionStorage.setItem('ACCESS_TOKEN', result.ACCESS_TOKEN);
-          navigate(-1);
+          navigate('/');
         }
       } catch (err) {
         alert(err);
