@@ -1,10 +1,8 @@
-<<<<<<< HEAD
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-=======
 import React from 'react';
->>>>>>> caa0e2c7c1a0ed9c998693384b1ea9cf71cdcfdd
+import SignupModal from '../../components/SignUpModal/SignUpModal';
 import './SignUp.scss';
 
 function SignUp() {
