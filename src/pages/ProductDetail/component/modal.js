@@ -1,14 +1,12 @@
 import React from 'react';
-import './modal.scss';
+import './Modal.scss';
 
 const Modal = props => {
-  // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
-  const { open, close, header, product } = props;
+  const { open, close, header, children } = props;
 
   return (
-    // 모달이 열릴때 openModal 클래스가 생성된다.
     <div className={open ? 'openModal modal' : 'modal'}>
-      {open ? (
+      {open && (
         <section>
           <header>
             {header}
@@ -16,14 +14,14 @@ const Modal = props => {
               &times;
             </button>
           </header>
-          <main>{props.children}</main>
+          <main>{children}</main>
           <footer>
             <button className="gotocart" onClick={close}>
               장바구니로 이동
             </button>
           </footer>
         </section>
-      ) : null}
+      )}
     </div>
   );
 };
