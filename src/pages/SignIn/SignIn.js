@@ -24,7 +24,7 @@ function SignIn() {
   const onSubmit = async e => {
     e.preventDefault();
     if (emailRegExp.test(email) && passwordRegExp.test(password)) {
-      const url = 'http://10.58.2.22:8000/users/login';
+      const url = 'http://10.58.5.148:8000/users/login';
       try {
         const response = await fetch(url, {
           method: 'POST',
@@ -35,7 +35,7 @@ function SignIn() {
         });
 
         const result = await response.json();
-
+        console.log(response);
         console.log(result);
         if (result.message === 'DoesNotExist') {
           setIsExist(true);
@@ -46,7 +46,7 @@ function SignIn() {
         }
 
         if (result.message === 'SUCCESS') {
-          localStorage.setItem('ACCESS_TOKEN', result.access_token);
+          sessionStorage.setItem('ACCESS_TOKEN', result.ACCESS_TOKEN);
           navigate(-1);
         }
       } catch (err) {
@@ -59,6 +59,9 @@ function SignIn() {
     <main className="sign-in-container">
       <div className="sign-in-inner">
         <div className="inner-left">
+          {isExist && (
+            <label className="input-label">존재하지 않는 계정 입니다.</label>
+          )}
           {isMember && (
             <label className="input-label">
               이메일 혹은 패스워드를 확인해주세요.
