@@ -9,10 +9,9 @@
   .container-beige-title__slide {
     position: relative;
     display: flex;
-    width: 2400px;
+    width: 3000px;
     height: 600px;
-    padding-top: 70px;
-    // transform: translatex(0px);
+    padding-top: 80px;
 
     .container-beige-title__slide-imgbox {
       display: flex;
@@ -32,20 +31,6 @@
         font-size: 30px;
         color: $darkGray;
       }
-    }
-  }
-
-  .slideButton {
-    position: absolute;
-    top: 10px;
-    right: 240px;
-    width: 40px;
-    height: 40px;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
     }
   }
 }
