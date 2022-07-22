@@ -26,7 +26,7 @@ function SignUp() {
   const onSubmit = async e => {
     e.preventDefault();
     if (emailRegExp.test(email) && passwordRegExp.test(password)) {
-      const url = 'http://10.58.2.22:8000/users/signup';
+      const url = 'http://10.58.5.148:8000/users/signup';
       try {
         const response = await fetch(url, {
           method: 'POST',
@@ -44,8 +44,8 @@ function SignUp() {
         }
 
         if (result.message === 'SIGNUP_SUCCESS') {
+          alert(`환영합니다 ! ${first_name}${last_name}`);
           navigate('/signin');
-          // navigate('/welcome');
         }
       } catch (err) {
         alert(err);
