@@ -35,8 +35,7 @@ function SignIn() {
         });
 
         const result = await response.json();
-        console.log(response);
-        console.log(result);
+
         if (result.message === 'DoesNotExist') {
           setIsExist(true);
         }
