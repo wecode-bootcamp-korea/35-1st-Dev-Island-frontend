@@ -6,6 +6,8 @@ import './SignUp.scss';
 function SignUp() {
   const navigate = useNavigate();
   const [hasEmail, setHasEmail] = useState(false);
+  const [identical, setIdentical] = useState();
+  const [Modal, setModal] = useState(false);
   const [values, setValues] = useState({
     first_name: '',
     last_name: '',
@@ -18,6 +20,13 @@ function SignUp() {
   const isPasswordValid = password && !passwordRegExp.test(password);
   const isRePasswordValid = confirm_password && password !== confirm_password;
 
+  const openModal = () => {
+    setModal(true);
+    setTimeout(() => {
+      navigate('/signin');
+    }, 2000);
+  };
+
   const handleInput = e => {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
@@ -25,6 +34,11 @@ function SignUp() {
 
   const onSubmit = async e => {
     e.preventDefault();
+    if (email === identical) {
+      setHasEmail(true);
+      return;
+    }
+
     if (emailRegExp.test(email) && passwordRegExp.test(password)) {
       const url = 'http://10.58.5.148:8000/users/signup';
       try {
@@ -41,11 +55,11 @@ function SignUp() {
         const result = await response.json();
         if (result.message === 'THIS_EMAIL_ALREADY_EXISTS') {
           setHasEmail(true);
+          setIdentical(email);
         }
 
         if (result.message === 'SIGNUP_SUCCESS') {
-          alert(`환영합니다 ! ${first_name}${last_name}`);
-          navigate('/signin');
+          openModal();
         }
       } catch (err) {
         alert(err);
@@ -61,6 +75,7 @@ function SignUp() {
 
   return (
     <main className="sign-in-container">
+      {Modal && <SignupModal name={first_name + last_name} />}
       <div className="sign-in-inner">
         <div className="inner-left">
           {hasEmail && (
