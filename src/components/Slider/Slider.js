@@ -23,7 +23,6 @@ function Slider() {
   };
   const prevSlide = () => {
     if (currentSlide && currentSlide <= slides) {
-      //핵답답한거 풀었다 와우
       setCurrentSlide(currentSlide - 1);
     }
   };
