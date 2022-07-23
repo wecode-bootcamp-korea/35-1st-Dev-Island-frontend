@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React from 'react';
 // import Slider from '../../component/Slider/Slider';
-import BlogContainer from '../../components/BlogContainer/BlogContainer';
+import BlogContainer from '../../components/BlogContainer/BlogContainer';
 import './Home.scss';
 
 function Home() {
