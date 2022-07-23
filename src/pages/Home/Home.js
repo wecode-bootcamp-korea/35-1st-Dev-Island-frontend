@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React from 'react';
-import Slider from '../../component/Slider/Slider';
+// import Slider from '../../component/Slider/Slider';
+import BlogContainer from '../../components/BlogContainer/BlogContainer';
 import './Home.scss';
 
 function Home() {
@@ -29,7 +30,7 @@ function Home() {
         <div className="container-beige-title">
           <h2>사운드. 영상. 당신의 선택입니다.</h2>
         </div>
-        <Slider />
+        {/* <Slider /> */}
         <div className="container-beige-mv">
           <div className="container-beige-mv__title">
             <p>1925년 부터.</p>
@@ -44,53 +45,11 @@ function Home() {
               loop
               playsInline
               preload="metadata"
-              // poster="image/main/main_mv_thumb.jpg"
             />
           </div>
         </div>
       </section>
-      <section className="container-gray">
-        <div className="container-gray-article">
-          <div className="container-gray-article__box">
-            <div className="container-gray-article__imgbox">
-              <img
-                alt="sub_image"
-                src="images/main/pexels-ketut-subiyanto-4559978.jpeg"
-              />
-            </div>
-            <div className="container-gray-article__textbox">
-              <p>BEOPLAY A9</p>
-              <h2>켜져 있을 때도 멋지고, 꺼져 있을 때도 멋집니다.</h2>
-              <p>
-                풍성하고 정교한 사운드와 어느 방에서나 빛나는 존재감! Beoplay
-                A9는 한마디로 눈과 귀를 위한 연회와도 같습니다.
-              </p>
-              <button className="container-gray-article__button">
-                자세히 보기
-              </button>
-            </div>
-          </div>
-          <div className="container-gray-article__box">
-            <div className="container-gray-article__imgbox">
-              <img
-                alt="sub_image"
-                src="images/main/pexels-ketut-subiyanto-4559978.jpeg"
-              />
-            </div>
-            <div className="container-gray-article__textbox">
-              <p>BEOPLAY A9</p>
-              <h2>켜져 있을 때도 멋지고, 꺼져 있을 때도 멋집니다.</h2>
-              <p>
-                풍성하고 정교한 사운드와 어느 방에서나 빛나는 존재감! Beoplay
-                A9는 한마디로 눈과 귀를 위한 연회와도 같습니다.
-              </p>
-              <button className="container-gray-article__button">
-                자세히 보기
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <BlogContainer />
       <section className="container-white">
         <div className="container-white-title">
           <p>STORIES OF SOUND AND VISION</p>
@@ -104,7 +63,6 @@ function Home() {
             />
           </div>
           <div className="container-white-article__textbox">
-            <p>STORIES OF SOUND AND VISION</p>
             <h2>Haute Couture HI-FI</h2>
             <p>
               발렌시아가와의 새로운 콜라보레이션의 결과로 탄생한 Speaker Bag은
