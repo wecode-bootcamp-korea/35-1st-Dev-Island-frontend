@@ -1,4 +1,5 @@
 import React from 'react';
+import './ProductDetailContents.scss';
 
 const ProductBox = () => {
   return (

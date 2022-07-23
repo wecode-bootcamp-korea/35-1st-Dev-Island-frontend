@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 // import { useParams } from 'react-router-dom';
-import Modal from './component/Modal';
-import ProductBox from './component/ProductBox';
+import Modal from '../../components/Modal/Modal';
+import ProductDetailContents from '../../components/ProductDetailContents/ProductDetailContents';
 import './ProductDetail.scss';
 
 function ProductDetail() {
@@ -14,9 +14,31 @@ function ProductDetail() {
   const closeModal = () => {
     setModalOpen(false);
   };
+
+  useEffect(() => {
+    const escKeyModalClose = e => {
+      if (e.keyCode === 27) {
+        setModalOpen(false);
+      }
+    };
+    window.addEventListener('keydown', escKeyModalClose);
+    return () => window.removeEventListener('keydown', escKeyModalClose);
+  }, []);
+
   // let { id } = useParams();
 
   const [product, setProduct] = useState({});
+
+  const ref1 = useRef(null);
+  const ref2 = useRef(null);
+
+  const scrollToElement = () => {
+    ref1.current.scrollIntoView();
+  };
+
+  const handleButton = () => {
+    ref2.current.scrollIntoView();
+  };
 
   useEffect(() => {
     fetch('/data/ProductDetail/productDetailData.json')
@@ -24,12 +46,9 @@ function ProductDetail() {
       .then(data => setProduct(data));
   }, []);
 
-  console.log(product.name);
-
   return (
     <div className="product-detail">
-      <div className="product-detail-wrap">
-        <a name="top"></a>
+      <div className="product-detail-wrap" ref={ref1}>
         <div className="product-detail-wrap-left">
           <div className="product-detail-wrap-left__photo">
             <img
@@ -45,7 +64,7 @@ function ProductDetail() {
           product={product}
         >
           <div className="modal-wrap">
-            <div className="modal-wrap-top">
+            <div className="modal-wrap-top" ref={ref1}>
               <img
                 src="/images/ProductDetail/portablespeaker.jpg"
                 alt="product"
@@ -69,14 +88,10 @@ function ProductDetail() {
                     언제나 나와 함께하는 레벨. 언제 어디서나 성능, 휴대성,
                     연결성을 제공합니다. 세워서, 또는...
                   </p>
-                  <a href="">자세히 보기</a>
+                  <a href="#!">자세히 보기</a>
                 </div>
               </div>
             </div>
-
-            {/* <Link to="/Cart"> */}
-            {/* <button className="gotocart">장바구니로 이동</button> */}
-            {/* </Link> */}
           </div>
         </Modal>
         <div className="product-detail-wrap-right">
@@ -96,19 +111,14 @@ function ProductDetail() {
       </div>
 
       <ul className="product-detail-nav">
-        <a href="#top">
-          <li>개요</li>
-        </a>
-        <a href="#feature">
-          <li>특장점</li>
-        </a>
+        <li onClick={scrollToElement}>개요</li>
+        <li onClick={handleButton}>특장점</li>
         <li>기술 사양</li>
         <li>비교</li>
         <li>리뷰</li>
       </ul>
 
-      <div className="product-detail-container">
-        <a name="feature"></a>
+      <div className="product-detail-container" ref={ref2}>
         <div className="product-detail-container__main-image">
           <img src="/images/ProductDetail/mainimage.jpg" alt="mainimage" />
         </div>
@@ -117,7 +127,7 @@ function ProductDetail() {
           <p>어디든 잘 어울립니다.</p>
           <p>오래 지속되도록 제작</p>
         </div>
-        <ProductBox />
+        <ProductDetailContents />
       </div>
     </div>
   );
