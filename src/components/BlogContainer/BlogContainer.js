@@ -33,7 +33,7 @@ export default BlogContainer;
 const BLOG_DATA = [
   {
     id: 1,
-    src: 'images/main/pexels-ketut-subiyanto-4559978.jpeg',
+    src: 'images/main/pexels-charlotte-may-5824519.jpeg',
     alt: 'BEOPLAY A9_img',
     category: 'BEOPLAY A9',
     title: '켜져 있을 때도, 꺼져 있을 때도 멋집니다.',

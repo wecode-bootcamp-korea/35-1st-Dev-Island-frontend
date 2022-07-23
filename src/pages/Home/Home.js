@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React from 'react';
+import FullBannerSlider from '../../components/FullBannerSlider/FullBannerSlider';
 // import Slider from '../../component/Slider/Slider';
 import BlogContainer from '../../components/BlogContainer/BlogContainer';
 import './Home.scss';
@@ -7,25 +8,7 @@ import './Home.scss';
 function Home() {
   return (
     <div className="home">
-      <header>
-        <div className="main-banner__title">
-          <h1>최적의 사운드.</h1>
-          <p>
-            지금까지 가장 편안하고 다재다능한 Beoplay EX를 소개합니다. 큰
-            헤드폰과 성능은 동일하면서 크기는 주머니 안에 쏙 들어갈 정도로
-            작습니다.
-          </p>
-          <button className="main-banner__button" type="button">
-            자세히 살펴보기
-          </button>
-        </div>
-        <div className="main-banner__image">
-          <img
-            alt="main-image"
-            src="images/main/pexels-grzegorz-4336587.jpeg"
-          />
-        </div>
-      </header>
+      <FullBannerSlider />
       <section className="container-beige">
         <div className="container-beige-title">
           <h2>사운드. 영상. 당신의 선택입니다.</h2>

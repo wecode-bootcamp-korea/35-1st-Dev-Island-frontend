@@ -45,11 +45,13 @@
           border: 2px $darkGray solid;
           border-radius: 100px;
           text-align: center;
+          line-height: initial;
+          color: $darkGray;
 
           &:hover {
             cursor: pointer;
+            border: 2px $pointColor solid;
             background-color: $pointColor;
-            border: none;
           }
         }
       }
