@@ -6,12 +6,18 @@ import './Cart.scss';
 
 function Cart() {
   const [items, setItems] = useState([]);
+  const [total, setTotal] = useState(0);
 
   const getItems = async () => {
     const url = 'http://localhost:3000/data/CART_TEST_DATA.json';
     const respone = await fetch(url);
     const result = await respone.json();
     setItems(result.data);
+    setTotal(
+      result.data.reduce((previousValue, currentValue) => {
+        return previousValue + currentValue.price;
+      }, 0)
+    );
   };
 
   const handleDecreaseItem = e => {
@@ -19,6 +25,7 @@ function Cart() {
       const newAmount = [...items];
       items[e].amount--;
       setItems(newAmount);
+      setTotal(a => a - items[e].price);
     }
   };
 
@@ -30,6 +37,7 @@ function Cart() {
     const newAmount = [...items];
     items[e].amount++;
     setItems(newAmount);
+    setTotal(a => a + items[e].price);
   };
 
   const handleRemoveItem = e => {

@@ -9,7 +9,7 @@ const CartCard = ({
   handleIncreaseItem,
   handleRemoveItem,
 }) => {
-  const { title, option, price, img } = item;
+  const { title, option, price, img, amount } = item;
 
   return (
     <div className="cart-card-container">
@@ -26,9 +26,9 @@ const CartCard = ({
             </div>
             <div className="cart-row-price">
               <div className="cart-row-count">
-                <button onClick={handleDecreaseItem}>-</button>
+                <button onClick={() => handleDecreaseItem(index)}>-</button>
                 <span>{amount}</span>
-                <button onClick={handleIncreaseItem}>+</button>
+                <button onClick={() => handleIncreaseItem(index)}>+</button>
               </div>
               <div className="item-price">{`₩${(
                 price * amount
