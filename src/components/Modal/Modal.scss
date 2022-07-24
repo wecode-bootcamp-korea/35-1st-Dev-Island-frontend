@@ -31,12 +31,12 @@ html {
       font-size: 12px;
 
       .close {
-        outline: none;
-        cursor: pointer;
-        border: 0;
         position: absolute;
         top: 15px;
         right: 15px;
+        outline: none;
+        cursor: pointer;
+        border: 0;
         width: 30px;
         font-size: 21px;
         font-weight: 700;

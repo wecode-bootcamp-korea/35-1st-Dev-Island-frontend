@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 // import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Modal from '../../components/Modal/Modal';
 import ProductDetailContents from '../../components/ProductDetailContents/ProductDetailContents';
 import './ProductDetail.scss';
@@ -14,23 +15,33 @@ function ProductDetail() {
   const closeModal = () => {
     setModalOpen(false);
   };
-
   useEffect(() => {
     const escKeyModalClose = e => {
+      console.log(e);
       if (e.keyCode === 27) {
         setModalOpen(false);
       }
     };
     window.addEventListener('keydown', escKeyModalClose);
-    return () => window.removeEventListener('keydown', escKeyModalClose);
+    window.addEventListener('click', ClickOutsideHandler);
+    return () => {
+      window.removeEventListener('keydown', escKeyModalClose);
+      window.removeEventListener('click', ClickOutsideHandler);
+    };
   }, []);
 
-  // let { id } = useParams();
+  function ClickOutsideHandler(event) {
+    if (modal.current === event.target) {
+      console.log('modal close');
+      setModalOpen(false);
+    }
+  }
 
   const [product, setProduct] = useState({});
 
   const ref1 = useRef(null);
   const ref2 = useRef(null);
+  const modal = useRef(null);
 
   const scrollToElement = () => {
     ref1.current.scrollIntoView();
@@ -39,41 +50,52 @@ function ProductDetail() {
   const handleButton = () => {
     ref2.current.scrollIntoView();
   };
-
+  // const params = useParams();
   useEffect(() => {
-    fetch('/data/ProductDetail/productDetailData.json')
+    // const productId = 24;
+    fetch('http://10.58.0.116:8000/products/10')
       .then(res => res.json())
-      .then(data => setProduct(data));
+      .then(data => setProduct(data.result));
   }, []);
+
+  const navigate = useNavigate();
+  const goToProductList = () => {
+    navigate('/productlist');
+  };
+  const goToCart = () => {
+    navigate('/cart');
+  };
 
   return (
     <div className="product-detail">
       <div className="product-detail-wrap" ref={ref1}>
         <div className="product-detail-wrap-left">
           <div className="product-detail-wrap-left__photo">
-            <img
-              src="/images/ProductDetail/portablespeaker.jpg"
-              alt="product"
-            />
+            <img src={product.product_image} alt="product" />
+
+            <button type="button" onClick={goToProductList}>
+              <img src="/images/ProductDetail/left-arrow.png" alt="arrow" />
+              <span>스피커</span>
+            </button>
           </div>
         </div>
+
         <Modal
+          modal={modal}
           open={modalOpen}
           close={closeModal}
           header="상품이 장바구니에 추가됨"
           product={product}
+          goToCart={goToCart}
         >
           <div className="modal-wrap">
-            <div className="modal-wrap-top" ref={ref1}>
-              <img
-                src="/images/ProductDetail/portablespeaker.jpg"
-                alt="product"
-              />
+            <div className="modal-wrap-top">
+              <img src={product.product_image} alt="product" />
               <div className="modal-wrap-top-name">
                 <p>{product.name}</p>
                 <p>Natural Oak</p>
               </div>
-              <div className="modal-wrap-top-price">₩3,398,000</div>
+              <div className="modal-wrap-top-price">{product.price}</div>
             </div>
             <div className="modal-wrap-bottom">
               <p>관련 제품</p>
@@ -94,6 +116,7 @@ function ProductDetail() {
             </div>
           </div>
         </Modal>
+
         <div className="product-detail-wrap-right">
           <div className="product-detail-wrap-right__name">{product.name}</div>
           <div className="product-detail-wrap-right__short-desc">
@@ -106,7 +129,10 @@ function ProductDetail() {
           <div className="product-detail-wrap-right__price">
             <h4>{product.price}</h4>
           </div>
-          <button onClick={openModal}>구매 하기</button>
+          <button onClick={openModal} className="buttontop">
+            구매 하기
+          </button>
+          <button className="buttonbottom">매장에서 체험하기</button>
         </div>
       </div>
 
@@ -120,7 +146,7 @@ function ProductDetail() {
 
       <div className="product-detail-container" ref={ref2}>
         <div className="product-detail-container__main-image">
-          <img src="/images/ProductDetail/mainimage.jpg" alt="mainimage" />
+          <img src={product.content_url} alt="mainimage" />
         </div>
         <div className="product-detail-container__keyword">
           <p>최고의 휴대성</p>
