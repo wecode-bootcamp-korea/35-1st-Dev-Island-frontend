@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 
 import CartCard from '../../components/CartCard/CartCard';
 
 import './Cart.scss';
 
 function Cart() {
+  const navigate = useNavigate();
   const [items, setItems] = useState([]);
   const [total, setTotal] = useState(0);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const token = sessionStorage.getItem('ACCESS_TOKEN');
 
   const getItems = async () => {
     const url = 'http://localhost:3000/data/CART_TEST_DATA.json';
@@ -54,15 +58,19 @@ function Cart() {
   };
 
   useEffect(() => {
+    if (!token) {
+      alert('로그인 해주세요.');
+      navigate('/signin');
+    }
     getItems();
   }, []);
 
   return (
     <div className="cart-container">
-      <div>
-        {items ? (
-          <>
-            <h3>장바구니에 담긴 품목</h3>
+      {items.length > 0 ? (
+        <div className="cart-inner">
+          <h3>장바구니에 담긴 품목</h3>
+          <div className="cart-wap">
             <div className="cart-items">
               {items.map((item, index) => (
                 <CartCard
@@ -75,47 +83,59 @@ function Cart() {
                 />
               ))}
             </div>
-          </>
-        ) : null}
-      </div>
-      <div className="cart-line" />
-      <div className="cart-order">
-        <h3>주문 요약</h3>
-        <div className="cart-order-inner">
-          <div className="cart-order-price">
-            <div className="price-tex">
-              <p>세금</p>
-              <p>₩{Math.ceil((total * 10) / 110).toLocaleString()}</p>
-            </div>
-            <div className="price-total">
-              <p>주문 금액 세금 포함</p>
-              <p>₩{total.toLocaleString()}</p>
-            </div>
-            <div className="order-btn">
-              <button className="order">주문 하기</button>
-              <button className="back">쇼핑 계속 하기</button>
-            </div>
-            <div className="order-text">
-              <p>이 주문은 무료 배송이 적용됩니다.</p>
-              <div className="order-cupon">
-                <p>쿠폰 코드</p>
-                <p>Add</p>
-              </div>
-            </div>
-            <div className="order-card">
-              <div>
-                <img alt="icon" src="/images/Cart/visa.png" />
-              </div>
-              <div>
-                <img alt="icon" src="/images/Cart/mastercard.png" />
-              </div>
-              <div>
-                <img alt="icon" src="/images/Cart/paypal.png" />
+            <div className="cart-line" />
+            <div className="cart-order">
+              <h3>주문 요약</h3>
+              <div className="cart-order-inner">
+                <div className="cart-order-price">
+                  <div className="price-tex">
+                    <p>세금</p>
+                    <p>₩{Math.ceil((total * 10) / 110).toLocaleString()}</p>
+                  </div>
+                  <div className="price-total">
+                    <p>주문 금액 세금 포함</p>
+                    <p>₩{total.toLocaleString()}</p>
+                  </div>
+                  <div className="order-btn">
+                    <button className="order">주문 하기</button>
+                    <button className="back">쇼핑 계속 하기</button>
+                  </div>
+                  <div className="order-text">
+                    <p>이 주문은 무료 배송이 적용됩니다.</p>
+                    <div className="order-cupon">
+                      <p>쿠폰 코드</p>
+                      <p>Add</p>
+                    </div>
+                  </div>
+                  <div className="order-card">
+                    <div>
+                      <img alt="icon" src="/images/Cart/visa.png" />
+                    </div>
+                    <div>
+                      <img alt="icon" src="/images/Cart/mastercard.png" />
+                    </div>
+                    <div>
+                      <img alt="icon" src="/images/Cart/paypal.png" />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      ) : (
+        <div className="not-items">
+          <div className="background">
+            <div className="box">
+              <Link to="/productlist">
+                <img alt="icon" src="/images/Cart/W_O_Black.svg" />
+              </Link>
+            </div>
+          </div>
+          <h1>장바구니가 비었습니다.</h1>
+          <h3>다양한 제품을 살펴보시고 원하는 모델을 찾아보세요.</h3>
+        </div>
+      )}
     </div>
   );
 }
