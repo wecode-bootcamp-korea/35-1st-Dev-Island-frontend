@@ -1,42 +1,49 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './FullBannerSlider.scss';
 
 const FullBannerSlider = () => {
-  const slideRef = useRef(null);
-  const [imgValue, setImgValue] = useState(0);
+  const [moving, setMoving] = useState([]);
+  const moveRange = moving + 'vw';
+
   useEffect(() => {
     const cycleImg = () => {
-      imgValue === (MAIN_BANNER.length - 1) * -100
-        ? setImgValue(0)
-        : setImgValue(imgValue - 100);
+      moving === (MAIN_BANNER.length - 1) * -100
+        ? setMoving(moving + 200)
+        : setMoving(moving - 100);
     };
 
     const autoSlide = setInterval(cycleImg, 3000);
     return () => {
       clearInterval(autoSlide);
     };
-  }, [imgValue]);
+  }, [moving]);
 
   return (
-    <div ref={slideRef} imgValue={imgValue} className="main-banner-box">
-      {MAIN_BANNER.map(mainimg => {
-        const { id, title, content, alt, src } = mainimg;
-        return (
-          <header key={id} className="main-banner">
-            <div className="main-banner__title">
-              <h1>{title}</h1>
-              <p>{content}</p>
-              <button className="main-banner__button" type="button">
-                자세히 살펴보기
-              </button>
+    <div className="main-banner">
+      <header moving={moving} moveRange={moveRange} className="main-banner-box">
+        {MAIN_BANNER.map(mainimg => {
+          const { id, title, content, alt, src } = mainimg;
+          return (
+            <div
+              key={id}
+              className="main-banner-box-set"
+              style={{ left: moveRange }}
+            >
+              <div className="main-banner__title">
+                <h1>{title}</h1>
+                <p>{content}</p>
+                <button className="main-banner__button" type="button">
+                  자세히 살펴보기
+                </button>
+              </div>
+              <div className="main-banner__image">
+                <img alt={alt} src={src} />
+              </div>
             </div>
-            <div className="main-banner__image">
-              <img alt={alt} src={src} />
-            </div>
-          </header>
-        );
-      })}
+          );
+        })}
+      </header>
     </div>
   );
 };

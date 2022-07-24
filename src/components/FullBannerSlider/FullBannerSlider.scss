@@ -1,65 +1,74 @@
 @import '../../styles/variables.scss';
 
-.main-banner-box {
+.main-banner {
   display: flex;
-  // width: 100vw;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
 
-  .main-banner {
-    // width: 300vw;
-    // height: 100vh;
-
+  .main-banner-box {
     display: flex;
-    justify-content: center;
-    position: relative;
-    height: 100%;
+    position: absolute;
+    left: 0vw;
+    top: 0;
+    width: 300%;
+    height: 100vh;
 
-    .main-banner__title {
-      position: absolute;
-      top: 580px;
-      width: 1512px;
-      margin: 0 220px;
+    .main-banner-box-set {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      transition: all 0.5s ease-in-out;
 
-      h1 {
-        font-size: 60px;
-        font-weight: 400;
-        color: $white;
-      }
+      .main-banner__title {
+        position: absolute;
+        top: 580px;
+        width: 1512px;
+        margin: 0 220px;
 
-      p {
-        margin-top: 20px;
-        font-size: 16px;
-        font-weight: 200;
-        color: $white;
-      }
-
-      .main-banner__button {
-        margin-top: 20px;
-        width: 169px;
-        height: 42px;
-        border-radius: 100px;
-        border: 2px $pointColor solid;
-        background-color: $pointColor;
-        text-align: center;
-        line-height: initial;
-
-        &:hover {
-          cursor: pointer;
-          background-color: inherit;
+        h1 {
+          font-size: 60px;
+          font-weight: 400;
           color: $white;
-          border: 2px $white solid;
+        }
+
+        p {
+          margin-top: 20px;
+          font-size: 16px;
+          font-weight: 200;
+          color: $white;
+        }
+
+        .main-banner__button {
+          margin-top: 20px;
+          width: 169px;
+          height: 42px;
+          border-radius: 100px;
+          border: 2px $pointColor solid;
+          background-color: $pointColor;
+          text-align: center;
+          line-height: initial;
+
+          &:hover {
+            cursor: pointer;
+            background-color: inherit;
+            color: $white;
+            border: 2px $white solid;
+          }
         }
       }
-    }
-    .main-banner__image {
-      width: 100vw;
-      height: 980px;
-      overflow: hidden;
+      .main-banner__image {
+        width: 100vw;
+        height: 980px;
+        overflow: hidden;
 
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center center;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center center;
+        }
       }
     }
   }
