@@ -84,10 +84,34 @@ function Cart() {
           <div className="cart-order-price">
             <div className="price-tex">
               <p>세금</p>
-              <p />
+              <p>₩{Math.ceil((total * 10) / 110).toLocaleString()}</p>
             </div>
-            <p>주문 금액 세금 포함</p>
-            <p>{total}</p>
+            <div className="price-total">
+              <p>주문 금액 세금 포함</p>
+              <p>₩{total.toLocaleString()}</p>
+            </div>
+            <div className="order-btn">
+              <button className="order">주문 하기</button>
+              <button className="back">쇼핑 계속 하기</button>
+            </div>
+            <div className="order-text">
+              <p>이 주문은 무료 배송이 적용됩니다.</p>
+              <div className="order-cupon">
+                <p>쿠폰 코드</p>
+                <p>Add</p>
+              </div>
+            </div>
+            <div className="order-card">
+              <div>
+                <img alt="icon" src="/images/Cart/visa.png" />
+              </div>
+              <div>
+                <img alt="icon" src="/images/Cart/mastercard.png" />
+              </div>
+              <div>
+                <img alt="icon" src="/images/Cart/paypal.png" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
