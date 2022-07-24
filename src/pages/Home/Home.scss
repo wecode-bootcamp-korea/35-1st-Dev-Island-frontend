@@ -1,8 +1,6 @@
 @import '../../styles/variables.scss';
 
 .home {
-  z-index: -100;
-
   .container-beige {
     display: flex;
     flex-direction: column;
@@ -60,18 +58,21 @@
   .container-white {
     display: flex;
     flex-direction: column;
+    margin-bottom: 120px;
     background-color: $white;
 
     .container-white-title {
-      margin: 120px 0 60px 220px;
+      width: 1480px;
+      margin: 0 auto;
 
       p {
+        margin-top: 120px;
         font-size: 20px;
         color: $darkGray;
       }
 
       h2 {
-        margin-top: 20px;
+        margin: 20px 0;
         font-size: 40px;
         color: $darkGray;
       }
@@ -79,10 +80,11 @@
 
     .container-white-article {
       display: flex;
-      margin: 0 0 120px 220px;
+      justify-content: space-between;
+      width: 1480px;
+      margin: 0 auto;
 
       .container-white-article__img {
-        margin-right: 100px;
         width: 720px;
         height: 900px;
         background-color: aquamarine;
@@ -99,16 +101,17 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 600px;
+        width: 720px;
         height: 900px;
 
         h2 {
-          margin-top: 20px;
+          margin: 20px 0;
           font-size: 40px;
           color: $darkGray;
         }
 
         p {
+          width: 600px;
           text-align: center;
           font-size: 20px;
           color: $darkGray;

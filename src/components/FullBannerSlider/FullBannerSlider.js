@@ -14,6 +14,7 @@ const FullBannerSlider = () => {
     };
 
     const autoSlide = setInterval(cycleImg, 3000);
+
     return () => {
       clearInterval(autoSlide);
     };
