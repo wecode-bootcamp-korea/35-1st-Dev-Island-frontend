@@ -7,6 +7,7 @@ import ProductDetail from './pages/ProductDetail/ProductDetail';
 import Cart from './pages/Cart/Cart';
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
+import MyOrder from './pages/MyOrder/MyOrder';
 import NotFound from './pages/NotFound/NotFound';
 
 import Footer from './components/Footer/Footer';
@@ -24,6 +25,7 @@ function Router() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/myorder" element={<MyOrder />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
       <Footer />
