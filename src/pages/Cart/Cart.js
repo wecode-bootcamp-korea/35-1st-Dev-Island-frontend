@@ -50,6 +50,7 @@ function Cart() {
       })
       .filter(n => n);
     setItems(filtered);
+    setTotal(a => a - items[e].price * items[e].amount);
   };
 
   useEffect(() => {
