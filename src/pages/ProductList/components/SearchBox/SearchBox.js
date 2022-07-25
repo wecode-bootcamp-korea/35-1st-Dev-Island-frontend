@@ -1,5 +1,5 @@
 import React from 'react';
-import '../ProductList.scss';
+import '../SearchBox/SearchBox.scss';
 
 function SearchBox(props) {
   return (

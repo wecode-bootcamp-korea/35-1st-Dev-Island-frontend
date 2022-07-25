@@ -1,24 +1,20 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../ProductList.scss';
-function Card(props) {
+function Card({ id, name, description, price, image_url }) {
   const navigate = useNavigate();
   const goToDetail = () => {
-    navigate(`../../../ProductDetail/ProductDetail/${props.id}`);
+    navigate(`../../../ProductDetail/ProductDetail/${id}`);
   };
   return (
     <div className="productlist-card-container" onClick={''}>
       <div className="productlist-card-img">
-        <img
-          className="img"
-          src={`https://robohash.org/${props.id}?set=set2&size=180x180`}
-          alt="Product"
-        />
+        <img className="img" src={image_url} alt="Product" />
       </div>
       <div className="card-info">
-        <h2>{props.name}</h2>
-        <p>{props.description}</p>
-        <p>{props.price}</p>
+        <h2>{name}</h2>
+        <p>{description}</p>
+        <p>{`₩${price.toLocaleString()}`}</p>
       </div>
     </div>
   );

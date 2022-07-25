@@ -1,0 +1,20 @@
+.pageBtn {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin: 30px 0px 30px 0px;
+  font-size: 20px;
+  font: bold;
+  text-align: center;
+  button {
+    all: unset;
+    width: 25px;
+    height: 25px;
+    margin: 10px;
+    border: 0px solid black;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+  }
+}

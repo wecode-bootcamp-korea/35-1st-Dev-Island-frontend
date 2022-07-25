@@ -1,6 +1,5 @@
 import React from 'react';
-import '../ProductList.scss';
-
+import '../Buttons/Buttons.scss';
 export default function Buttons({ switchPage }) {
   return (
     <div className="pageBtn">

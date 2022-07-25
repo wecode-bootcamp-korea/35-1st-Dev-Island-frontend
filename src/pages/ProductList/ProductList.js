@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import SearchBox from './components/SearchBox';
+import SearchBox from './components/SearchBox/SearchBox';
 import CardList from './components/Card/CardList';
 import CompareCard from './components/Card/CompareCard';
 import { useNavigate, useLocation } from 'react-router-dom';
-import Buttons from './components/Buttons';
+import Buttons from './components/Buttons/Buttons';
 
 function ProductList() {
   const [productlist, setProductlist] = useState([]);
@@ -14,23 +14,31 @@ function ProductList() {
   const [sort, setSort] = useState();
 
   useEffect(() => {
-    // fetch(`http://10.58.3.103:8000/products${location.search}`)
-    fetch('https://jsonplaceholder.typicode.com/users')
+    const queryString = location.search;
+
+    fetch(`http://10.58.0.122:8000/products${queryString}`)
       .then(res => res.json())
-      .then(result => setProductlist(result));
+      .then(result => setProductlist(result.RESULT));
   }, [location.search]);
   const updateUserInput = e => {
     setUserInput(e.target.value);
   };
 
+  console.log(productlist);
+
   const sortedProductlist = productlist.filter(product => {
     return product.name.toLowerCase().includes(userInput.toLowerCase());
   });
+
   const LIMIT = 9;
+
   const switchPage = index => {
     const offset = index * LIMIT;
-    const queryString = `?offset=${offset}&limit=${LIMIT}`;
-    navigate(`/productlist${queryString}`);
+    const queryString = `offset=${offset}&limit=${LIMIT}`;
+    const categories = 'speakers';
+    const category = `category=${categories}`;
+
+    navigate(`/products?${category}&${queryString}`);
   };
 
   return (
@@ -43,6 +51,30 @@ function ProductList() {
                 alt="img"
                 src="https://images.ctfassets.net/8cd2csgvqd3m/IfG0QW5D4ndMEVUrCXIrI/1d030333fc36b06f44bbe7aa5196242a/Beolab_28__Beoplay_A9_4th_Gen.__Beolit_20__Beosound_Level__Beosound_2_0002.png?q=65&w=640&fit=fill"
               />
+            </div>
+            <div className="container-text">
+              <p>상품 전체보기</p>
+            </div>
+          </div>
+          <div className="category-container">
+            <div className="container-img">
+              <img alt="img1" src="images/productlist/categoryimg1.jpeg" />
+            </div>
+            <div className="container-text">
+              <p>상품 전체보기</p>
+            </div>
+          </div>
+          <div className="category-container">
+            <div className="container-img">
+              <img alt="img2" src="images/productlist/categoryimg2.jpeg" />
+            </div>
+            <div className="container-text">
+              <p>상품 전체보기</p>
+            </div>
+          </div>
+          <div className="category-container">
+            <div className="container-img">
+              <img alt="img3" src="images/productlist/categoryimg3.jpeg" />
             </div>
             <div className="container-text">
               <p>상품 전체보기</p>

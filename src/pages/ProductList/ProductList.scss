@@ -68,104 +68,69 @@
         }
       }
     }
-
-    .searchbox {
-      width: 260px;
-      height: 37px;
-      padding: 0px 16px;
-      border: none;
-      border-radius: 10px;
-      background-color: #efefef;
-      font-size: 15px;
-
-      &::placeholder {
-        padding-left: 25px;
-        font-size: 15px;
-        font-weight: 100;
-      }
-    }
-    .sidebar-sorted-price {
-      width: 260px;
-    }
   }
-  .cardlist-layout {
-    display: flex;
-    width: calc(100% - 480px);
-    padding: 0px 20px 0px 20px;
+  .sidebar-sorted-price {
+    width: 260px;
+  }
+}
+.cardlist-layout {
+  display: flex;
+  width: calc(100% - 480px);
+  padding: 0px 20px 0px 20px;
+  flex-wrap: wrap;
+
+  // .productlist-comparecard-container {
+  //   background-color: $lightGray;
+  //   width: 300px;
+  //   height: 300px;
+  //   margin: 40px 20px;
+  //   padding: 80px;
+  //   display: flex;
+  //   flex-direction: column;
+  //   justify-content: center;
+  //   align-items: center;
+  //   text-align: center;
+
+  //   .productlist-comparecard-img {
+  //     width: 90px;
+  //     height: 90px;
+  //     img {
+  //       width: 100%;
+  //       height: 100%;
+  //       object-fit: cover;
+  //     }
+  //   }
+  //   .productlist-comparecard-text {
+  //     margin-top: 20px;
+  //   }
+  //   }
+
+  .productlist-card-container {
+    background-color: $lightGray;
+    width: 300px;
+    height: 300px;
+    background-color: #222;
+    margin: 60px 20px;
     flex-wrap: wrap;
+    display: flex;
 
-    // .productlist-comparecard-container {
-    //   background-color: $lightGray;
-    //   width: 300px;
-    //   height: 300px;
-    //   margin: 40px 20px;
-    //   padding: 80px;
-    //   display: flex;
-    //   flex-direction: column;
-    //   justify-content: center;
-    //   align-items: center;
-    //   text-align: center;
-
-    //   .productlist-comparecard-img {
-    //     width: 90px;
-    //     height: 90px;
-    //     img {
-    //       width: 100%;
-    //       height: 100%;
-    //       object-fit: cover;
-    //     }
-    //   }
-    //   .productlist-comparecard-text {
-    //     margin-top: 20px;
-    //   }
-    //   }
-
-    .productlist-card-container {
-      background-color: $lightGray;
+    .productlist-card-img {
       width: 300px;
       height: 300px;
-      background-color: #222;
-      margin: 60px 20px;
-      flex-wrap: wrap;
-      display: flex;
-
-      .productlist-card-img {
-        width: 300px;
-        height: 300px;
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
-      .card-info {
-        width: 300px;
-        height: 100px;
-        margin: 10px 0px;
-      }
+    }
+    .card-info {
+      width: 300px;
+      height: 100px;
+      margin: 10px 0px;
     }
   }
 }
-.pageBtn {
-  display: flex;
-  justify-content: center;
-  margin: auto;
-  margin-bottom: 30px;
-  font-size: 20px;
-  font: bold;
-  text-align: center;
-  button {
-    all: unset;
-    width: 25px;
-    height: 25px;
-    margin: 10px;
-    border: 0px solid black;
-    border-radius: 5px;
-    background-color: white;
-    color: black;
-    cursor: pointer;
-  }
-}
+
 .productlist-cardlist {
   flex-wrap: wrap;
   display: flex;

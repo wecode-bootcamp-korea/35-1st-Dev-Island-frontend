@@ -12,6 +12,7 @@ function CardList({ productlist }) {
           <Card
             key={product.id}
             id={product.id}
+            image_url={product.image_url}
             name={product.name}
             description={product.description}
             price={product.price}
