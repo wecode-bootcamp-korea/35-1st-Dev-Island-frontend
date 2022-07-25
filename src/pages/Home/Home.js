@@ -10,25 +10,27 @@ function Home() {
     <div className="home">
       <FullBannerSlider />
       <section className="container-beige">
-        <div className="container-beige-title">
-          <h2>사운드. 영상. 당신의 선택입니다.</h2>
-        </div>
-        <Slider />
-        <div className="container-beige-mv">
-          <div className="container-beige-mv__title">
-            <p>1925년 부터.</p>
-            <h2>느껴보세요. 자유롭게.</h2>
+        <div className="container-beige-article">
+          <div className="container-beige-title">
+            <h2>사운드. 영상. 당신의 선택입니다.</h2>
           </div>
-          <div className="container-beige-mv__video">
-            <video
-              src="images/main/pexels-cottonbro-6688144.mp4"
-              type="video/mp4"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-            />
+          <Slider />
+          <div className="container-beige-mv">
+            <div className="container-beige-mv__title">
+              <p>1925년 부터.</p>
+              <h2>느껴보세요. 자유롭게.</h2>
+            </div>
+            <div className="container-beige-mv__video">
+              <video
+                src="images/main/pexels-cottonbro-6688144.mp4"
+                type="video/mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              />
+            </div>
           </div>
         </div>
       </section>

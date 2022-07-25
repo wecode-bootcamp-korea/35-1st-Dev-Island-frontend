@@ -1,0 +1,22 @@
+.slideButton {
+  position: absolute;
+  top: 120px;
+  width: 50px;
+  height: 50px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0.8;
+  }
+
+  &.prev {
+    right: 300px;
+    transform: scaleX(-1);
+  }
+
+  &.next {
+    right: 230px;
+  }
+}

@@ -22,7 +22,7 @@ const FullBannerSlider = () => {
 
   return (
     <div className="main-banner">
-      <header moving={moving} moveRange={moveRange} className="main-banner-box">
+      <header className="main-banner-box">
         {MAIN_BANNER.map(mainimg => {
           const { id, title, content, alt, src } = mainimg;
           return (

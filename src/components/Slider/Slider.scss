@@ -1,0 +1,50 @@
+@import '../../styles/variables.scss';
+
+.container-beige-title__slidebox {
+  max-width: 1600px;
+  // margin-left: 220px;
+  width: 100%;
+  overflow: hidden;
+
+  .container-beige-title__gradient {
+    position: absolute;
+    right: 90px;
+    width: 100px;
+    height: 600px;
+    background: linear-gradient(
+      270deg,
+      rgba(251, 249, 237, 1) 0%,
+      rgba(251, 249, 237, 0.5) 55%,
+      rgba(251, 249, 237, 0) 100%
+    );
+
+    z-index: 1;
+  }
+
+  .container-beige-title__slide {
+    position: relative;
+    display: flex;
+    width: 3000px;
+    height: 600px;
+
+    .container-beige-title__slide-imgbox {
+      display: flex;
+      flex-direction: column;
+      margin-right: 30px;
+      width: 345px;
+
+      img {
+        width: 100%;
+        height: 450px;
+        border-radius: 5px;
+        object-fit: cover;
+      }
+
+      label {
+        margin-top: 20px;
+        font-size: 25px;
+        color: $darkGray;
+      }
+    }
+  }
+}
