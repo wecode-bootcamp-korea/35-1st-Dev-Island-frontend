@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React from 'react';
 import FullBannerSlider from '../../components/FullBannerSlider/FullBannerSlider';
-// import Slider from '../../component/Slider/Slider';
+import Slider from '../../components/Slider/Slider';
 import BlogContainer from '../../components/BlogContainer/BlogContainer';
 import './Home.scss';
 
@@ -13,7 +13,7 @@ function Home() {
         <div className="container-beige-title">
           <h2>사운드. 영상. 당신의 선택입니다.</h2>
         </div>
-        {/* <Slider /> */}
+        <Slider />
         <div className="container-beige-mv">
           <div className="container-beige-mv__title">
             <p>1925년 부터.</p>
