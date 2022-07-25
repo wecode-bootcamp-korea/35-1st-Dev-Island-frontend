@@ -79,6 +79,7 @@
         font-size: 17px;
         margin-bottom: 40px;
         color: #434343;
+        white-space: pre-line;
       }
 
       .product-detail-wrap-right__price {
@@ -176,7 +177,7 @@
 
 .modal-wrap-top {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   padding: 20px;
   background-color: $lightGray;
@@ -187,6 +188,7 @@
 
   .modal-wrap-top-name {
     p {
+      letter-spacing: 1px;
       &:nth-child(1) {
         font-size: 13px;
       }
@@ -205,13 +207,14 @@
 .modal-wrap-bottom {
   margin-top: 30px;
   p {
+    letter-spacing: 1px;
     font-size: 13px;
     margin-bottom: 10px;
   }
 
   .modal-wrap-bottom-detail {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     background-color: $lightGray;
     height: 300px;

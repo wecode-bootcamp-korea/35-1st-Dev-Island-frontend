@@ -7,9 +7,10 @@ import './ProductDetail.scss';
 
 function ProductDetail() {
   const [modalOpen, setModalOpen] = useState(false);
+  const token = localStorage.getItem('login-token');
 
   const openModal = () => {
-    setModalOpen(true);
+    token ? setModalOpen(true) : navigate('/signin');
   };
 
   const closeModal = () => {
@@ -17,7 +18,6 @@ function ProductDetail() {
   };
   useEffect(() => {
     const escKeyModalClose = e => {
-      console.log(e);
       if (e.keyCode === 27) {
         setModalOpen(false);
       }
@@ -32,7 +32,6 @@ function ProductDetail() {
 
   function ClickOutsideHandler(event) {
     if (modal.current === event.target) {
-      console.log('modal close');
       setModalOpen(false);
     }
   }
@@ -52,15 +51,14 @@ function ProductDetail() {
   };
   // const params = useParams();
   useEffect(() => {
-    // const productId = 24;
-    fetch('http://10.58.1.160:8000/products/10')
+    fetch('http://10.58.1.160:8000/products/16')
       .then(res => res.json())
       .then(data => setProduct(data.result));
   }, []);
 
   const navigate = useNavigate();
   const goToProductList = () => {
-    navigate('/productlist');
+    navigate('/products');
   };
   const goToCart = () => {
     navigate('/cart');
@@ -95,7 +93,12 @@ function ProductDetail() {
                 <p>{product.name}</p>
                 <p>Natural Oak</p>
               </div>
-              <div className="modal-wrap-top-price">{product.price}</div>
+              <div className="modal-wrap-top-price">
+                ₩
+                {parseInt(product.price)
+                  .toString()
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+              </div>
             </div>
             <div className="modal-wrap-bottom">
               <p>관련 제품</p>
@@ -123,11 +126,16 @@ function ProductDetail() {
             <h2>{product.description}</h2>
           </div>
           <div className="product-detail-wrap-right__long-desc">
-            언제나 나와 함께하는 레벨. 언제 어디서나 성능, 휴대성, 연결성을
-            제공합니다. 세워서, 또는 눕혀서, 내가 좋아하는 노래를 항상 내 곁에.
+            {`언제나 나와 함께하는 레벨. 언제 어디서나 성능, 휴대성, 연결성을 제공합니다. 
+            세워서, 또는 눕혀서, 내가 좋아하는 노래를 항상 내곁에.`}
           </div>
           <div className="product-detail-wrap-right__price">
-            <h4>{product.price}</h4>
+            <h4>
+              ₩
+              {parseInt(product.price)
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+            </h4>
           </div>
           <button onClick={openModal} className="buttontop">
             구매 하기
