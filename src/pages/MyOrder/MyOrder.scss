@@ -3,12 +3,13 @@
 .myorder {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  width: 1480px;
+  margin: 0 auto;
 
   .myorder-title {
     display: flex;
     flex-direction: column;
-    align-items: center;
+
     h1 {
       margin-top: 120px;
       font-size: 40px;

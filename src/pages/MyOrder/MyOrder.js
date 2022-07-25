@@ -6,7 +6,7 @@ const MyOrder = () => {
   return (
     <div className="myorder">
       <div className="myorder-title">
-        <h1>My Order</h1>
+        <h1>로그인한 ID</h1>
         <h2>주문 내역 확인</h2>
       </div>
       <ul className="orderlistup">
