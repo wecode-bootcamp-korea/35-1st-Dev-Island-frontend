@@ -53,7 +53,7 @@ function ProductDetail() {
   // const params = useParams();
   useEffect(() => {
     // const productId = 24;
-    fetch('http://10.58.0.116:8000/products/10')
+    fetch('http://10.58.1.160:8000/products/10')
       .then(res => res.json())
       .then(data => setProduct(data.result));
   }, []);

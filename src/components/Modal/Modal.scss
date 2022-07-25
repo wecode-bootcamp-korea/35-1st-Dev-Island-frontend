@@ -15,9 +15,9 @@ html {
   background-color: rgba(0, 0, 0, 0.6);
 
   section {
-    width: 400px;
-    max-width: 400px;
-    height: 600px;
+    width: 25%;
+    // max-width: 400px;
+    // height: 600px;
     margin: 0 auto;
     border-radius: 0.3rem;
     background-color: #fff;
@@ -49,7 +49,7 @@ html {
     main {
       padding: 16px;
       border-bottom: 1px solid $lightGray;
-      height: 450px;
+      // height: 450px;
     }
 
     footer {
