@@ -1,12 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import './SignIn.scss';
 
 function SignIn() {
   const navigate = useNavigate();
-  const [isMember, setIsMember] = useState(false);
-  const [isExist, setIsExist] = useState(false);
+  const [isMember, setIsMember] = useState(true);
+  const [isExist, setIsExist] = useState(true);
   const [values, setValues] = useState({
     email: '',
     password: '',
@@ -24,7 +24,7 @@ function SignIn() {
   const onSubmit = async e => {
     e.preventDefault();
     if (emailRegExp.test(email) && passwordRegExp.test(password)) {
-      const url = 'http://10.58.5.148:8000/users/login';
+      const url = 'http://10.58.1.160:8000/users/login';
       try {
         const response = await fetch(url, {
           method: 'POST',
@@ -37,11 +37,11 @@ function SignIn() {
         const result = await response.json();
 
         if (result.message === 'DoesNotExist') {
-          setIsExist(true);
+          setIsExist(false);
         }
 
         if (result.message === 'INVALID_USER') {
-          setIsMember(true);
+          setIsMember(false);
         }
 
         if (result.message === 'SUCCESS') {
@@ -58,10 +58,10 @@ function SignIn() {
     <main className="sign-in-container">
       <div className="sign-in-inner">
         <div className="inner-left">
-          {isExist && (
+          {!isExist && (
             <label className="input-label">존재하지 않는 계정 입니다.</label>
           )}
-          {isMember && (
+          {!isMember && (
             <label className="input-label">
               이메일 혹은 패스워드를 확인해주세요.
             </label>
