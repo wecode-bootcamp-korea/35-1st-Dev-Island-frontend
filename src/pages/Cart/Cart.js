@@ -58,10 +58,10 @@ function Cart() {
   };
 
   useEffect(() => {
-    if (!token) {
-      alert('로그인 해주세요.');
-      navigate('/signin');
-    }
+    // if (!token) {
+    //   alert('로그인 해주세요.');
+    //   navigate('/signin');
+    // }
     getItems();
   }, []);
 
