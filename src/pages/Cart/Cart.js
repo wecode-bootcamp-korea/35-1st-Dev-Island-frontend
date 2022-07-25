@@ -6,59 +6,108 @@ import CartCard from '../../components/CartCard/CartCard';
 import './Cart.scss';
 
 function Cart() {
+  const ACCESS_TOKEN = sessionStorage.getItem('ACCESS_TOKEN');
   const navigate = useNavigate();
   const [items, setItems] = useState([]);
   const [total, setTotal] = useState(0);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const token = sessionStorage.getItem('ACCESS_TOKEN');
 
   const getItems = async () => {
-    const url = 'http://localhost:3000/data/CART_TEST_DATA.json';
-    const respone = await fetch(url);
+    const url = 'http://10.58.1.160:8000/carts';
+    const respone = await fetch(url, {
+      headers: {
+        Authorization:
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NH0.bd9JCUK-PC6dAZc4WyRjjEw6zwaqw2YtsaANRY6YKjo',
+      },
+    });
     const result = await respone.json();
-    setItems(result.data);
+    setItems(result.cart);
     setTotal(
-      result.data.reduce((previousValue, currentValue) => {
-        return previousValue + currentValue.price;
+      result.cart.reduce((previousValue, currentValue) => {
+        return (
+          parseInt(previousValue) +
+          parseInt(currentValue.price * currentValue.quantity)
+        );
       }, 0)
     );
   };
 
-  const handleDecreaseItem = e => {
-    if (items[e].amount > 1) {
-      const newAmount = [...items];
-      items[e].amount--;
-      setItems(newAmount);
-      setTotal(a => a - items[e].price);
+  const handleDecreaseItem = async e => {
+    if (items[e].quantity > 1) {
+      const url = 'http://10.58.1.160:8000/carts';
+      const respone = await fetch(url, {
+        method: 'PATCH',
+        headers: {
+          Authorization:
+            'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NH0.bd9JCUK-PC6dAZc4WyRjjEw6zwaqw2YtsaANRY6YKjo',
+        },
+        body: JSON.stringify({
+          cart_id: items[e].id,
+          quantity: -1,
+        }),
+      });
+      const result = await respone.json();
+      if (result.message === 'UPDATE_SUCCESS') {
+        const newQuantity = [...items];
+        items[e].quantity--;
+        setItems(newQuantity);
+        setTotal(a => a - parseInt(items[e].price));
+      }
     }
   };
 
-  const handleIncreaseItem = e => {
-    if (items[e].stock <= items[e].amount) {
-      alert(`현재 구매 가능한 수량은 ${items[e].stock}개 입니다.`);
+  const handleIncreaseItem = async e => {
+    const url = 'http://10.58.1.160:8000/carts';
+    const respone = await fetch(url, {
+      method: 'PATCH',
+      headers: {
+        Authorization:
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NH0.bd9JCUK-PC6dAZc4WyRjjEw6zwaqw2YtsaANRY6YKjo',
+      },
+      body: JSON.stringify({
+        cart_id: items[e].id,
+        quantity: +1,
+      }),
+    });
+    const result = await respone.json();
+    if (result.message === 'OUT_OF_STOCK') {
+      alert(`현재 구매 가능 수량 최대 입니다.`);
       return;
     }
-    const newAmount = [...items];
-    items[e].amount++;
-    setItems(newAmount);
-    setTotal(a => a + items[e].price);
+    const newQuantity = [...items];
+    items[e].quantity++;
+    setItems(newQuantity);
+    setTotal(a => a + parseInt(items[e].price));
   };
 
-  const handleRemoveItem = e => {
-    const filtered = items
-      .map((item, index) => {
-        if (e !== index) {
-          return item;
-        }
-        return null;
-      })
-      .filter(n => n);
-    setItems(filtered);
-    setTotal(a => a - items[e].price * items[e].amount);
+  const handleRemoveItem = async e => {
+    const url = 'http://10.58.1.160:8000/carts';
+    const respone = await fetch(url, {
+      method: 'DELETE',
+      headers: {
+        Authorization:
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NH0.bd9JCUK-PC6dAZc4WyRjjEw6zwaqw2YtsaANRY6YKjo',
+      },
+      body: JSON.stringify({
+        cart_ids: [items[e].id],
+      }),
+    });
+    const result = await respone.json();
+    if (result.message === 'DELETE_SUCCESS') {
+      const filtered = items
+        .map((item, index) => {
+          if (e !== index) {
+            return item;
+          }
+          return null;
+        })
+        .filter(n => n);
+      setItems(filtered);
+      setTotal(a => a - items[e].price * items[e].quantity);
+    }
   };
 
   useEffect(() => {
-    // if (!token) {
+    // if (!ACCESS_TOKEN) {
     //   alert('로그인 해주세요.');
     //   navigate('/signin');
     // }
