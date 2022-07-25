@@ -7,11 +7,10 @@ import ProductDetail from './pages/ProductDetail/ProductDetail';
 import Cart from './pages/Cart/Cart';
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
-import MyOrder from './pages/MyOrder/MyOrder';
 import NotFound from './pages/NotFound/NotFound';
+import MyOrder from './pages/MyOrder/MyOrder';
 
 import Footer from './components/Footer/Footer';
-
 import Nav from './components/Nav/Nav';
 
 function Router() {
