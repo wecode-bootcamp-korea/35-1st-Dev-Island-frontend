@@ -17,6 +17,7 @@ function SignUp() {
     password: '',
     confirm_password: '',
   });
+
   const { first_name, last_name, email, password, confirm_password } = values;
   const isEmailValid = email && !emailRegExp.test(email);
   const isPasswordValid = password && !passwordRegExp.test(password);

@@ -6,13 +6,13 @@ import CartCard from '../../components/CartCard/CartCard';
 import './Cart.scss';
 
 function Cart() {
-  const ACCESS_TOKEN = sessionStorage.getItem('ACCESS_TOKEN');
   const navigate = useNavigate();
+  const [pending, setPending] = useState(true);
   const [items, setItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
   const getItems = async () => {
-    const url = 'http://10.58.1.160:8000/carts';
+    const url = 'http://10.58.4.137:8000/carts';
     const respone = await fetch(url, {
       headers: {
         Authorization:
@@ -32,8 +32,9 @@ function Cart() {
   };
 
   const handleDecreaseItem = async e => {
-    if (items[e].quantity > 1) {
-      const url = 'http://10.58.1.160:8000/carts';
+    if (items[e].quantity > 1 && pending) {
+      setPending(false);
+      const url = 'http://10.58.4.137:8000/carts';
       const respone = await fetch(url, {
         method: 'PATCH',
         headers: {
@@ -46,6 +47,7 @@ function Cart() {
         }),
       });
       const result = await respone.json();
+      setPending(true);
       if (result.message === 'UPDATE_SUCCESS') {
         const newQuantity = [...items];
         items[e].quantity--;
@@ -56,57 +58,66 @@ function Cart() {
   };
 
   const handleIncreaseItem = async e => {
-    const url = 'http://10.58.1.160:8000/carts';
-    const respone = await fetch(url, {
-      method: 'PATCH',
-      headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NH0.bd9JCUK-PC6dAZc4WyRjjEw6zwaqw2YtsaANRY6YKjo',
-      },
-      body: JSON.stringify({
-        cart_id: items[e].id,
-        quantity: +1,
-      }),
-    });
-    const result = await respone.json();
-    if (result.message === 'OUT_OF_STOCK') {
-      alert(`최대 구매 가능 수량 입니다.`);
-      return;
+    if (pending) {
+      setPending(false);
+      const url = 'http://10.58.4.137:8000/carts';
+      const respone = await fetch(url, {
+        method: 'PATCH',
+        headers: {
+          Authorization:
+            'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NH0.bd9JCUK-PC6dAZc4WyRjjEw6zwaqw2YtsaANRY6YKjo',
+        },
+        body: JSON.stringify({
+          cart_id: items[e].id,
+          quantity: +1,
+        }),
+      });
+      const result = await respone.json();
+      setPending(true);
+      if (result.message === 'OUT_OF_STOCK') {
+        alert(`최대 구매 가능 수량 입니다.`);
+        return;
+      }
+      const newQuantity = [...items];
+      items[e].quantity++;
+      setItems(newQuantity);
+      setTotalPrice(a => a + parseInt(items[e].price));
     }
-    const newQuantity = [...items];
-    items[e].quantity++;
-    setItems(newQuantity);
-    setTotalPrice(a => a + parseInt(items[e].price));
   };
 
   const handleRemoveItem = async e => {
-    const url = 'http://10.58.1.160:8000/carts';
-    const respone = await fetch(url, {
-      method: 'DELETE',
-      headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NH0.bd9JCUK-PC6dAZc4WyRjjEw6zwaqw2YtsaANRY6YKjo',
-      },
-      body: JSON.stringify({
-        cart_ids: [items[e].id],
-      }),
-    });
-    const result = await respone.json();
-    if (result.message === 'DELETE_SUCCESS') {
-      const filtered = items
-        .map((item, index) => {
-          if (e !== index) {
-            return item;
-          }
-          return null;
-        })
-        .filter(n => n);
-      setItems(filtered);
-      setTotalPrice(a => a - items[e].price * items[e].quantity);
+    if (pending) {
+      setPending(false);
+      const url = 'http://10.58.4.137:8000/carts';
+      const respone = await fetch(url, {
+        method: 'DELETE',
+        headers: {
+          Authorization:
+            'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NH0.bd9JCUK-PC6dAZc4WyRjjEw6zwaqw2YtsaANRY6YKjo',
+        },
+        body: JSON.stringify({
+          cart_ids: [items[e].id],
+        }),
+      });
+      const result = await respone.json();
+      setPending(true);
+      if (result.message === 'DELETE_SUCCESS') {
+        const filtered = items
+          .map((item, index) => {
+            if (e !== index) {
+              return item;
+            }
+            return null;
+          })
+          .filter(n => n);
+        setItems(filtered);
+        setTotalPrice(a => a - items[e].price * items[e].quantity);
+      }
     }
   };
 
   useEffect(() => {
+    // const ACCESS_TOKEN = sessionStorage.getItem('ACCESS_TOKEN');
     // if (!ACCESS_TOKEN) {
     //   alert('로그인 해주세요.');
     //   navigate('/signin');
