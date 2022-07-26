@@ -6,6 +6,7 @@ import CompareCard from './components/Card/CompareCard';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Buttons from './components/Buttons/Buttons';
 import { IoGridSharp, IoAppsSharp } from 'react-icons/io5';
+import './ProductList.scss';
 
 function ProductList() {
   const [totalItems, setTotalItems] = useState(0);
