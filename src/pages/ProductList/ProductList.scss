@@ -68,9 +68,29 @@
         }
       }
     }
-  }
-  .sidebar-sorted-price {
-    width: 260px;
+    .item-sort-category {
+      background-color: $lightGray;
+      display: flex;
+      flex-direction: column;
+      margin: 20px 0px 0px 0px;
+      border-radius: 10px;
+      .item-sort {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        .button {
+          text-align: right;
+          padding: 0;
+
+          &:hover {
+            color: #ccc;
+          }
+        }
+      }
+      .item-change {
+        text-align: center;
+      }
+    }
   }
 }
 .cardlist-layout {

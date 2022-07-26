@@ -5,40 +5,92 @@ import CardList from './components/Card/CardList';
 import CompareCard from './components/Card/CompareCard';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Buttons from './components/Buttons/Buttons';
+import { IoGridSharp, IoAppsSharp } from 'react-icons/io5';
 
 function ProductList() {
+  const [totalItems, setTotalItems] = useState(0);
   const [productlist, setProductlist] = useState([]);
   const [userInput, setUserInput] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
   const [sort, setSort] = useState();
+  // const [limit, setLimit] = useState(9);
+  const [listType, setListType] = useState('small');
+
+  const params = new URLSearchParams(location.search);
+  const urlCategory = params.get('category');
+  const urlMaterial = params.get('material');
+  const urlOffset = params.get('offset');
+  const categoryString = `category=${urlCategory}`;
+  const materialString = `material=${urlMaterial}`;
 
   useEffect(() => {
     const queryString = location.search;
 
-    fetch(`http://10.58.0.122:8000/products${queryString}`)
+    fetch(`http://10.58.5.145:8000/products${queryString}`)
       .then(res => res.json())
-      .then(result => setProductlist(result.RESULT));
+      .then(result => {
+        setTotalItems(result);
+        setProductlist(result.RESULT);
+      });
   }, [location.search]);
+
+  const handleURL = name => {
+    if (urlMaterial) {
+      navigate(`?${categoryString}&${materialString}&${name}`);
+    }
+    if (!urlMaterial && urlCategory) {
+      navigate(`?${categoryString}&${name}`);
+    }
+    if (!urlMaterial && !urlCategory) {
+      navigate(`?${name}`);
+    }
+  };
+
+  const sortNewest = () => {
+    const newestString = 'sort_method=-id';
+    handleURL(newestString);
+  };
+
+  const sortName = () => {
+    const nameString = 'sort_method=name';
+    handleURL(nameString);
+  };
+
+  const sortHighPrice = () => {
+    const highPriceString = 'sort_method=price';
+    handleURL(highPriceString);
+  };
+
+  const sortLowPrice = () => {
+    const lowPriceString = 'sort_method=-price';
+    handleURL(lowPriceString);
+  };
+
+  const changeBigList = () => {
+    setListType('big');
+  };
+
+  const changeSmallList = () => {
+    setListType('small');
+  };
+
   const updateUserInput = e => {
     setUserInput(e.target.value);
   };
 
-  console.log(productlist);
-
-  const sortedProductlist = productlist.filter(product => {
+  const searchedProductlist = productlist.filter(product => {
     return product.name.toLowerCase().includes(userInput.toLowerCase());
   });
 
-  const LIMIT = 9;
-
   const switchPage = index => {
-    const offset = index * LIMIT;
-    const queryString = `offset=${offset}&limit=${LIMIT}`;
+    const limit = 9;
+    const offset = index * limit;
+    const queryString = `offset=${offset}&limit=${limit}&sort=${sort}`;
     const categories = 'speakers';
-    const category = `category=${categories}`;
+    const main_category = `main_category=${categories}`;
 
-    navigate(`/products?${category}&${queryString}`);
+    navigate(`/products?${main_category}&${queryString}`);
   };
 
   return (
@@ -61,7 +113,7 @@ function ProductList() {
               <img alt="img1" src="images/productlist/categoryimg1.jpeg" />
             </div>
             <div className="container-text">
-              <p>상품 전체보기</p>
+              <p>스피커</p>
             </div>
           </div>
           <div className="category-container">
@@ -69,7 +121,7 @@ function ProductList() {
               <img alt="img2" src="images/productlist/categoryimg2.jpeg" />
             </div>
             <div className="container-text">
-              <p>상품 전체보기</p>
+              <p>이어폰</p>
             </div>
           </div>
           <div className="category-container">
@@ -77,7 +129,7 @@ function ProductList() {
               <img alt="img3" src="images/productlist/categoryimg3.jpeg" />
             </div>
             <div className="container-text">
-              <p>상품 전체보기</p>
+              <p>그 외 장비</p>
             </div>
           </div>
         </div>
@@ -104,14 +156,33 @@ function ProductList() {
               </p>
             </div>
           </div>
-          <SearchBox handleChange={updateUserInput} />
-          <div className="sidebar-sorted-price"></div>
+          <SearchBox
+            handleChange={updateUserInput}
+            onSubmit={searchedProductlist}
+          />
+          <div className="item-sort-category">
+            <div className="item-sort">
+              <button onClick={sortNewest}>신상품</button>
+              <button onClick={sortName}>상품명</button>
+              <button onClick={sortHighPrice}>낮은가격</button>
+              <button onClick={sortLowPrice}>높은가격</button>
+            </div>
+
+            <div className="item-change">
+              <button onClick={changeSmallList} className="icon">
+                <IoGridSharp />
+              </button>
+              <button onClick={changeBigList} className="icon">
+                <IoAppsSharp />
+              </button>
+            </div>
+          </div>
         </div>
         <div className="cardlist-layout">
-          <CardList productlist={sortedProductlist} />
+          <CardList productlist={searchedProductlist} />
         </div>
       </div>
-      <Buttons switchPage={switchPage} />
+      <Buttons switchPage={switchPage} totalItems={totalItems} />
     </div>
   );
 }
