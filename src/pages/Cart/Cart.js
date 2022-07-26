@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
 import CartCard from '../../components/CartCard/CartCard';
@@ -7,29 +7,28 @@ import './Cart.scss';
 
 function Cart() {
   const ACCESS_TOKEN = sessionStorage.getItem('ACCESS_TOKEN');
+  const token =
+    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NH0.bd9JCUK-PC6dAZc4WyRjjEw6zwaqw2YtsaANRY6YKjo';
   const navigate = useNavigate();
   const [pending, setPending] = useState(true);
   const [items, setItems] = useState([]);
-  const [totalPrice, setTotalPrice] = useState(0);
+  const totalPrice = items.reduce((previousValue, currentValue) => {
+    return (
+      parseInt(previousValue) +
+      parseInt(currentValue.price * currentValue.quantity)
+    );
+  }, 0);
 
-  const getItems = useCallback(async () => {
+  const getItems = async () => {
     const url = 'http://10.58.4.137:8000/carts';
     const response = await fetch(url, {
       headers: {
-        Authorization: ACCESS_TOKEN,
+        Authorization: token,
       },
     });
     const result = await response.json();
     setItems(result.cart);
-    setTotalPrice(
-      result.cart.reduce((previousValue, currentValue) => {
-        return (
-          parseInt(previousValue) +
-          parseInt(currentValue.price * currentValue.quantity)
-        );
-      }, 0)
-    );
-  }, [ACCESS_TOKEN]);
+  };
 
   const handleDecreaseItem = async e => {
     if (items[e].quantity > 1 && pending) {
@@ -38,7 +37,7 @@ function Cart() {
       const response = await fetch(url, {
         method: 'PATCH',
         headers: {
-          Authorization: ACCESS_TOKEN,
+          Authorization: token,
         },
         body: JSON.stringify({
           cart_id: items[e].id,
@@ -48,10 +47,7 @@ function Cart() {
       const result = await response.json();
       setPending(true);
       if (result.message === 'UPDATE_SUCCESS') {
-        const newQuantity = [...items];
         items[e].quantity--;
-        setItems(newQuantity);
-        setTotalPrice(a => a - parseInt(items[e].price));
       }
     }
   };
@@ -63,11 +59,11 @@ function Cart() {
       const response = await fetch(url, {
         method: 'PATCH',
         headers: {
-          Authorization: ACCESS_TOKEN,
+          Authorization: token,
         },
         body: JSON.stringify({
           cart_id: items[e].id,
-          quantity: +1,
+          quantity: 1,
         }),
       });
       const result = await response.json();
@@ -76,10 +72,7 @@ function Cart() {
         alert(`최대 구매 가능 수량 입니다.`);
         return;
       }
-      const newQuantity = [...items];
       items[e].quantity++;
-      setItems(newQuantity);
-      setTotalPrice(a => a + parseInt(items[e].price));
     }
   };
 
@@ -90,7 +83,7 @@ function Cart() {
       const response = await fetch(url, {
         method: 'DELETE',
         headers: {
-          Authorization: ACCESS_TOKEN,
+          Authorization: token,
         },
         body: JSON.stringify({
           cart_ids: [items[e].id],
@@ -108,7 +101,6 @@ function Cart() {
           })
           .filter(n => n);
         setItems(filtered);
-        setTotalPrice(a => a - items[e].price * items[e].quantity);
       }
     }
   };
@@ -117,10 +109,10 @@ function Cart() {
     if (!ACCESS_TOKEN) {
       alert('로그인 해주세요.');
       navigate('/signin');
+      return;
     }
     getItems();
-  }, [getItems]);
-  console.log(items);
+  }, []);
 
   return (
     <div className="cart-container">
