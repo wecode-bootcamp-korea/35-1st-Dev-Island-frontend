@@ -6,6 +6,7 @@ import CartCard from '../../components/CartCard/CartCard';
 import './Cart.scss';
 
 function Cart() {
+  const ACCESS_TOKEN = sessionStorage.getItem('ACCESS_TOKEN');
   const navigate = useNavigate();
   const [pending, setPending] = useState(true);
   const [items, setItems] = useState([]);
@@ -15,8 +16,7 @@ function Cart() {
     const url = 'http://10.58.4.137:8000/carts';
     const response = await fetch(url, {
       headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NH0.bd9JCUK-PC6dAZc4WyRjjEw6zwaqw2YtsaANRY6YKjo',
+        Authorization: ACCESS_TOKEN,
       },
     });
     const result = await response.json();
@@ -38,8 +38,7 @@ function Cart() {
       const response = await fetch(url, {
         method: 'PATCH',
         headers: {
-          Authorization:
-            'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NH0.bd9JCUK-PC6dAZc4WyRjjEw6zwaqw2YtsaANRY6YKjo',
+          Authorization: ACCESS_TOKEN,
         },
         body: JSON.stringify({
           cart_id: items[e].id,
@@ -64,8 +63,7 @@ function Cart() {
       const response = await fetch(url, {
         method: 'PATCH',
         headers: {
-          Authorization:
-            'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NH0.bd9JCUK-PC6dAZc4WyRjjEw6zwaqw2YtsaANRY6YKjo',
+          Authorization: ACCESS_TOKEN,
         },
         body: JSON.stringify({
           cart_id: items[e].id,
@@ -92,8 +90,7 @@ function Cart() {
       const response = await fetch(url, {
         method: 'DELETE',
         headers: {
-          Authorization:
-            'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NH0.bd9JCUK-PC6dAZc4WyRjjEw6zwaqw2YtsaANRY6YKjo',
+          Authorization: ACCESS_TOKEN,
         },
         body: JSON.stringify({
           cart_ids: [items[e].id],
@@ -117,11 +114,10 @@ function Cart() {
   };
 
   useEffect(() => {
-    // const ACCESS_TOKEN = sessionStorage.getItem('ACCESS_TOKEN');
-    // if (!ACCESS_TOKEN) {
-    //   alert('로그인 해주세요.');
-    //   navigate('/signin');
-    // }
+    if (!ACCESS_TOKEN) {
+      alert('로그인 해주세요.');
+      navigate('/signin');
+    }
     getItems();
   }, []);
 
