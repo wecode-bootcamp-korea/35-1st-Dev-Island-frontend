@@ -1,7 +1,9 @@
 @import '../../styles/variables.scss';
 
-html {
-  scroll-behavior: smooth;
+.modal.openModal {
+  display: flex;
+  align-items: center;
+  animation: modal-bg-show 0.3s;
 }
 
 .modal {
@@ -75,12 +77,6 @@ html {
       }
     }
   }
-}
-
-.modal.openModal {
-  display: flex;
-  align-items: center;
-  animation: modal-bg-show 0.3s;
 }
 
 @keyframes modal-show {

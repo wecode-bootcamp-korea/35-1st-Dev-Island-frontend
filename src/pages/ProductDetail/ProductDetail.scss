@@ -1,9 +1,7 @@
 @import '../../styles/variables.scss';
 
-* {
-  letter-spacing: 2px;
-}
 .product-detail {
+  letter-spacing: 2px;
   .product-detail-wrap {
     display: flex;
     width: 100%;
@@ -35,10 +33,10 @@
           opacity: 0.7;
           padding: 6px 10px;
           border-radius: 5px;
+          cursor: pointer;
 
           &:hover {
             background-color: #f1f1f1;
-            cursor: pointer;
           }
 
           span {
@@ -90,7 +88,7 @@
         }
       }
 
-      .buttontop {
+      .purchase-button {
         background-color: #ffc356;
         width: 220px;
         height: 20px;
@@ -107,7 +105,8 @@
           border: 2px solid #eae8e4;
         }
       }
-      .buttonbottom {
+
+      .experience-button {
         width: 220px;
         height: 20px;
         border-radius: 24px;

@@ -38,18 +38,18 @@
       }
     }
   }
-}
 
-.product-detail-container__middle-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50%;
-  overflow: hidden;
+  .product-detail-container__middle-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    overflow: hidden;
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 }
