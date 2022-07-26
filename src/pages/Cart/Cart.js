@@ -9,7 +9,7 @@ function Cart() {
   const ACCESS_TOKEN = sessionStorage.getItem('ACCESS_TOKEN');
   const navigate = useNavigate();
   const [items, setItems] = useState([]);
-  const [total, setTotal] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   const getItems = async () => {
     const url = 'http://10.58.1.160:8000/carts';
@@ -21,7 +21,7 @@ function Cart() {
     });
     const result = await respone.json();
     setItems(result.cart);
-    setTotal(
+    setTotalPrice(
       result.cart.reduce((previousValue, currentValue) => {
         return (
           parseInt(previousValue) +
@@ -50,7 +50,7 @@ function Cart() {
         const newQuantity = [...items];
         items[e].quantity--;
         setItems(newQuantity);
-        setTotal(a => a - parseInt(items[e].price));
+        setTotalPrice(a => a - parseInt(items[e].price));
       }
     }
   };
@@ -70,13 +70,13 @@ function Cart() {
     });
     const result = await respone.json();
     if (result.message === 'OUT_OF_STOCK') {
-      alert(`현재 구매 가능 수량 최대 입니다.`);
+      alert(`최대 구매 가능 수량 입니다.`);
       return;
     }
     const newQuantity = [...items];
     items[e].quantity++;
     setItems(newQuantity);
-    setTotal(a => a + parseInt(items[e].price));
+    setTotalPrice(a => a + parseInt(items[e].price));
   };
 
   const handleRemoveItem = async e => {
@@ -102,7 +102,7 @@ function Cart() {
         })
         .filter(n => n);
       setItems(filtered);
-      setTotal(a => a - items[e].price * items[e].quantity);
+      setTotalPrice(a => a - items[e].price * items[e].quantity);
     }
   };
 
@@ -139,11 +139,13 @@ function Cart() {
                 <div className="cart-order-price">
                   <div className="price-tex">
                     <p>세금</p>
-                    <p>₩{Math.ceil((total * 10) / 110).toLocaleString()}</p>
+                    <p>
+                      ₩{Math.ceil((totalPrice * 10) / 110).toLocaleString()}
+                    </p>
                   </div>
                   <div className="price-total">
                     <p>주문 금액 세금 포함</p>
-                    <p>₩{total.toLocaleString()}</p>
+                    <p>₩{totalPrice.toLocaleString()}</p>
                   </div>
                   <div className="order-btn">
                     <button className="order">주문 하기</button>
