@@ -16,7 +16,7 @@ const Modal = props => {
           </header>
           <main>{children}</main>
           <footer>
-            <button className="gotocart" onClick={moveItem}>
+            <button className="goToCart" onClick={moveItem}>
               장바구니로 이동
             </button>
           </footer>

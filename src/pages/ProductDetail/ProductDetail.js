@@ -43,7 +43,9 @@ function ProductDetail() {
       alert('에러입니다.');
     }
   };
+
   const navigate = useNavigate();
+
   const goToProductList = () => {
     navigate('/products');
   };
@@ -127,6 +129,7 @@ function ProductDetail() {
                   src="/images/ProductDetail/portablespeaker.jpg"
                   alt="product"
                 />
+
                 <div className="modal-wrap-bottom-detail-text">
                   <p>Beosound Level</p>
                   <p>
@@ -152,10 +155,10 @@ function ProductDetail() {
           <div className="product-detail-wrap-right__price">
             <h4>₩{parseInt(price).toLocaleString()}</h4>
           </div>
-          <button onClick={openPurchaseModal} className="purchase-button">
+          <button onClick={openPurchaseModal} className="yellow-button">
             구매 하기
           </button>
-          <button className="experience-button">매장에서 체험하기</button>
+          <button className="gray-button">매장에서 체험하기</button>
         </div>
       </div>
 
