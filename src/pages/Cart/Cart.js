@@ -13,13 +13,13 @@ function Cart() {
 
   const getItems = async () => {
     const url = 'http://10.58.4.137:8000/carts';
-    const respone = await fetch(url, {
+    const response = await fetch(url, {
       headers: {
         Authorization:
           'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NH0.bd9JCUK-PC6dAZc4WyRjjEw6zwaqw2YtsaANRY6YKjo',
       },
     });
-    const result = await respone.json();
+    const result = await response.json();
     setItems(result.cart);
     setTotalPrice(
       result.cart.reduce((previousValue, currentValue) => {
@@ -35,7 +35,7 @@ function Cart() {
     if (items[e].quantity > 1 && pending) {
       setPending(false);
       const url = 'http://10.58.4.137:8000/carts';
-      const respone = await fetch(url, {
+      const response = await fetch(url, {
         method: 'PATCH',
         headers: {
           Authorization:
@@ -46,7 +46,7 @@ function Cart() {
           quantity: -1,
         }),
       });
-      const result = await respone.json();
+      const result = await response.json();
       setPending(true);
       if (result.message === 'UPDATE_SUCCESS') {
         const newQuantity = [...items];
@@ -61,7 +61,7 @@ function Cart() {
     if (pending) {
       setPending(false);
       const url = 'http://10.58.4.137:8000/carts';
-      const respone = await fetch(url, {
+      const response = await fetch(url, {
         method: 'PATCH',
         headers: {
           Authorization:
@@ -72,7 +72,7 @@ function Cart() {
           quantity: +1,
         }),
       });
-      const result = await respone.json();
+      const result = await response.json();
       setPending(true);
       if (result.message === 'OUT_OF_STOCK') {
         alert(`최대 구매 가능 수량 입니다.`);
@@ -89,7 +89,7 @@ function Cart() {
     if (pending) {
       setPending(false);
       const url = 'http://10.58.4.137:8000/carts';
-      const respone = await fetch(url, {
+      const response = await fetch(url, {
         method: 'DELETE',
         headers: {
           Authorization:
@@ -99,7 +99,7 @@ function Cart() {
           cart_ids: [items[e].id],
         }),
       });
-      const result = await respone.json();
+      const result = await response.json();
       setPending(true);
       if (result.message === 'DELETE_SUCCESS') {
         const filtered = items
