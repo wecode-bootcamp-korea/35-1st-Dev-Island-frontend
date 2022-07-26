@@ -7,10 +7,16 @@ import ProductDetail from './pages/ProductDetail/ProductDetail';
 import Cart from './pages/Cart/Cart';
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
+import NotFound from './pages/NotFound/NotFound';
+
+import Footer from './components/Footer/Footer';
+
+import Nav from './components/Nav/Nav';
 
 function Router() {
   return (
     <BrowserRouter>
+      <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/productlist" element={<ProductList />} />
@@ -18,7 +24,9 @@ function Router() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/*" element={<NotFound />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
