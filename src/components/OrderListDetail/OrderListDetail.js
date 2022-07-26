@@ -1,18 +1,15 @@
-/* eslint-disable react/jsx-key */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
 import './OrderListDetail.scss';
 
-const OrderListDetail = props => {
+const OrderListDetail = ({ products, price }) => {
   return (
     <div>
-      {props.products.map(product => {
+      {products.map(product => {
         return (
-          <div className="orderlist-box-after">
+          <div className="orderlist-box-after" key={product.product_name}>
             <div className="orderlist-box_orderinfo-detail">
               <div className="orderlist-box_orderinfo-detail_img">
-                <img src={product.product_img} />
+                <img src={product.product_img} alt="product_img" />
               </div>
               <div className="orderlist-box_orderinfo-detail_info">
                 <p className="orderlist-box_orderinfo-detail_name">
@@ -22,7 +19,7 @@ const OrderListDetail = props => {
                   수량 : {product.quantity}
                 </p>
                 <p className="orderlist-box_orderinfo-detail_price">
-                  ₩ {product.price.toLocalString()}
+                  ₩ {parseInt(product.price).toLocaleString()}
                 </p>
               </div>
             </div>
@@ -31,7 +28,7 @@ const OrderListDetail = props => {
       })}
       <div className="orderlist-box_orderinfo_total">
         <p>
-          <span>total</span> ₩ 2,398,000
+          <span>total</span> ₩ {parseInt(price).toLocaleString()}
         </p>
       </div>
     </div>

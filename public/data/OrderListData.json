@@ -6,6 +6,7 @@
       {
         "id": 1,
         "order_number": "123454544",
+        "total_price": "12300000000.00",
         "products": [
           {
             "product_img": "images/myorder/pexels-anton-4132534.jpeg",
@@ -30,6 +31,7 @@
       {
         "id": 2,
         "order_number": "123454544",
+        "total_price": "1398000.00*3",
         "products": [
           {
             "product_img": "images/myorder/pexels-anton-4132534.jpeg",
@@ -48,6 +50,7 @@
       {
         "id": 3,
         "order_number": "123454544",
+        "total_price": "1398000.00*3",
         "products": [
           {
             "product_img": "images/myorder/pexels-anton-4132534.jpeg",
