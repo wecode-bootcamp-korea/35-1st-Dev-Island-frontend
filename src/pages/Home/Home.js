@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/img-redundant-alt */
 import React from 'react';
 import FullBannerSlider from '../../components/FullBannerSlider/FullBannerSlider';
 import Slider from '../../components/Slider/Slider';
