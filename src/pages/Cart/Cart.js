@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
 import CartCard from '../../components/CartCard/CartCard';
@@ -12,24 +12,27 @@ function Cart() {
   const [items, setItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
-  const getItems = async () => {
-    const url = 'http://10.58.4.137:8000/carts';
-    const response = await fetch(url, {
-      headers: {
-        Authorization: ACCESS_TOKEN,
-      },
-    });
-    const result = await response.json();
-    setItems(result.cart);
-    setTotalPrice(
-      result.cart.reduce((previousValue, currentValue) => {
-        return (
-          parseInt(previousValue) +
-          parseInt(currentValue.price * currentValue.quantity)
-        );
-      }, 0)
-    );
-  };
+  const getItems = useCallback(
+    () => async () => {
+      const url = 'http://10.58.4.137:8000/carts';
+      const response = await fetch(url, {
+        headers: {
+          Authorization: ACCESS_TOKEN,
+        },
+      });
+      const result = await response.json();
+      setItems(result.cart);
+      setTotalPrice(
+        result.cart.reduce((previousValue, currentValue) => {
+          return (
+            parseInt(previousValue) +
+            parseInt(currentValue.price * currentValue.quantity)
+          );
+        }, 0)
+      );
+    },
+    [ACCESS_TOKEN]
+  );
 
   const handleDecreaseItem = async e => {
     if (items[e].quantity > 1 && pending) {
