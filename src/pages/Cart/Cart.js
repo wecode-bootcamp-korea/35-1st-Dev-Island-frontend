@@ -119,7 +119,7 @@ function Cart() {
       navigate('/signin');
     }
     getItems();
-  }, []);
+  }, [ACCESS_TOKEN, getItems, navigate]);
 
   return (
     <div className="cart-container">
