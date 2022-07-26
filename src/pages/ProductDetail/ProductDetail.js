@@ -86,7 +86,7 @@ function ProductDetail() {
     fetch(`http://10.58.4.137:8000/products/${id}`)
       .then(res => res.json())
       .then(data => setProduct(data.result));
-  }, []);
+  }, [id]);
 
   return (
     <div className="product-detail">
