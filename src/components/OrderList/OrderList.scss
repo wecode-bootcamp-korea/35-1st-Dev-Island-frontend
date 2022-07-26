@@ -50,16 +50,20 @@
   }
 
   .orderlist-box_detailbtn {
+    background-color: $pointColor;
+    border: 2px solid $pointColor;
+    border-radius: 60px;
+    width: 160px;
+    height: 42px;
+    font-size: 15px;
+    text-align: center;
+  }
+  .orderlist-box_detailbtn_close {
     border: 2px solid $darkGray;
     border-radius: 60px;
     width: 160px;
     height: 42px;
     font-size: 15px;
     text-align: center;
-
-    &:hover {
-      background-color: $pointColor;
-      border: 2px solid $pointColor;
-    }
   }
 }
