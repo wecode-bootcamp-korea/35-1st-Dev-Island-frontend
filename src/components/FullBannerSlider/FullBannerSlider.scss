@@ -16,16 +16,19 @@
     height: 100%;
 
     .main-banner-box-set {
+      display: flex;
+      justify-content: center;
       position: relative;
       width: 100vw;
       height: 100vh;
       transition: all 0.5s ease-in-out;
 
       .main-banner__title {
+        display: flex;
+        flex-direction: column;
+        width: 1480px;
         position: absolute;
         top: 580px;
-        width: 1512px;
-        margin: 0 220px;
 
         h1 {
           font-size: 60px;

@@ -1,29 +1,39 @@
 @import '../../styles/variables.scss';
 
 .container-beige-title__slidebox {
-  max-width: 1600px;
-  // margin-left: 220px;
+  max-width: 1650px;
+  margin-left: 170px;
   width: 100%;
   overflow: hidden;
 
+  .container-beige-title__slidebox_button {
+    display: flex;
+    justify-content: flex-end;
+    // margin-left: 85px;
+    width: 1480px;
+    height: auto;
+  }
+
   .container-beige-title__gradient {
     position: absolute;
-    right: 90px;
-    width: 100px;
+    right: 0px;
+    width: 150px;
     height: 600px;
     background: linear-gradient(
       270deg,
       rgba(251, 249, 237, 1) 0%,
-      rgba(251, 249, 237, 0.5) 55%,
+      rgb(251, 249, 237) 10%,
+      rgb(251, 249, 237) 35%,
+      rgba(251, 249, 237, 0.5) 60%,
       rgba(251, 249, 237, 0) 100%
     );
-
     z-index: 1;
   }
 
   .container-beige-title__slide {
     position: relative;
     display: flex;
+    // padding-left: 85px;
     width: 3000px;
     height: 600px;
 
@@ -31,7 +41,7 @@
       display: flex;
       flex-direction: column;
       margin-right: 30px;
-      width: 345px;
+      width: 348px;
 
       img {
         width: 100%;

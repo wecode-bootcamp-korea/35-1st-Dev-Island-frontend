@@ -1,8 +1,7 @@
 .slideButton {
-  position: absolute;
-  top: 120px;
   width: 50px;
   height: 50px;
+  margin: 10px;
 
   img {
     width: 100%;
@@ -12,11 +11,6 @@
   }
 
   &.prev {
-    right: 300px;
     transform: scaleX(-1);
-  }
-
-  &.next {
-    right: 230px;
   }
 }

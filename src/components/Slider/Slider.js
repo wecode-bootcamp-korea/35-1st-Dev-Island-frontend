@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import SliderButton from '../SliderButton/SliderButton';
 import './Slider.scss';
 
-const IMG_WIDTH = 345;
+const IMG_WIDTH = 348;
 const IMG_MARGIN = 30;
 
 function Slider() {
@@ -34,8 +34,10 @@ function Slider() {
 
   return (
     <div className="container-beige-title__slidebox">
-      <SliderButton direction="prev" onClick={prevSlide} />
-      <SliderButton direction="next" onClick={nextSlide} />
+      <div className="container-beige-title__slidebox_button">
+        <SliderButton direction="prev" onClick={prevSlide} />
+        <SliderButton direction="next" onClick={nextSlide} />
+      </div>
       <div className="container-beige-title__gradient" />
       <div ref={slideRef} className="container-beige-title__slide">
         {SLIDER_NAV_DATA.map(navdata => {

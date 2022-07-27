@@ -6,19 +6,16 @@
 
     .container-beige-article {
       display: flex;
+      align-items: center;
       flex-direction: column;
       position: relative;
-      margin-left: 220px;
-      // width: 1600px;
-      // margin: 0 auto;
+      margin: 0 auto;
 
       .container-beige-title {
-        // margin: 0 auto;
         width: 1480px;
 
         h2 {
-          margin: 120px 0 60px;
-
+          margin-top: 120px;
           font-size: 40px;
         }
       }
@@ -28,7 +25,6 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      // align-items: center;
 
       .container-beige-mv__title {
         display: flex;
@@ -136,7 +132,6 @@
           color: $darkGray;
 
           &:hover {
-            cursor: pointer;
             border: 2px $pointColor solid;
             background-color: $pointColor;
           }
