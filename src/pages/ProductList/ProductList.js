@@ -4,8 +4,8 @@ import SearchBox from './components/SearchBox/SearchBox';
 import CardList from './components/Card/CardList';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Buttons from './components/Buttons/Buttons';
-import { IoGridSharp, IoAppsSharp } from 'react-icons/io5';
 import './ProductList.scss';
+const limit = 9;
 
 function ProductList() {
   const [totalItems, setTotalItems] = useState(0);
@@ -68,10 +68,12 @@ function ProductList() {
   };
   const changeBigList = () => {
     setListType('big');
+    navigate('?main_category=speakers&offset=0&limit=9');
   };
 
   const changeSmallList = () => {
     setListType('small');
+    navigate('?main_category=speakers&offset=0&limit=4');
   };
 
   const updateUserInput = e => {
@@ -83,7 +85,6 @@ function ProductList() {
   });
 
   const switchPage = page => {
-    const limit = 9;
     const offset = (page - 1) * limit;
     const queryString = `offset=${offset}&limit=${limit}`;
     const categories = 'speakers';
@@ -168,16 +169,6 @@ function ProductList() {
           </div>
         </div>
         <div className="cardlist-layout">
-          <div className="item-change-box">
-            <div className="item-change">
-              <button onClick={changeSmallList} className="icon">
-                <IoGridSharp />
-              </button>
-              <button onClick={changeBigList} className="icon">
-                <IoAppsSharp />
-              </button>
-            </div>
-          </div>
           <CardList productlist={searchedProductlist} />
         </div>
       </div>
