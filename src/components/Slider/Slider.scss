@@ -1,0 +1,36 @@
+@import '../../styles/variables.scss';
+
+.container-beige-title__slidebox {
+  max-width: 1480px;
+  width: 100%;
+  margin-left: 220px;
+  overflow: hidden;
+
+  .container-beige-title__slide {
+    position: relative;
+    display: flex;
+    width: 3000px;
+    height: 600px;
+    padding-top: 80px;
+
+    .container-beige-title__slide-imgbox {
+      display: flex;
+      flex-direction: column;
+      margin-right: 20px;
+      width: 320px;
+
+      img {
+        width: 100%;
+        height: 450px;
+        border-radius: 5px;
+        object-fit: cover;
+      }
+
+      label {
+        margin-top: 20px;
+        font-size: 30px;
+        color: $darkGray;
+      }
+    }
+  }
+}

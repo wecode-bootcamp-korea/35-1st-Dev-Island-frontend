@@ -1,1 +1,245 @@
 @import '../../styles/variables.scss';
+
+.product-detail {
+  letter-spacing: 2px;
+  .product-detail-wrap {
+    display: flex;
+    width: 100%;
+    height: 700px;
+    background-color: $lightGray;
+
+    .product-detail-wrap-left {
+      width: 50%;
+      overflow: hidden;
+
+      .product-detail-wrap-left__photo {
+        position: relative;
+        width: 50vw;
+        height: 100%;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        button {
+          display: flex;
+          align-items: center;
+          position: absolute;
+          top: 80px;
+          left: 30px;
+          background-color: white;
+          opacity: 0.7;
+          padding: 6px 10px;
+          border-radius: 5px;
+          cursor: pointer;
+
+          &:hover {
+            background-color: #f1f1f1;
+          }
+
+          span {
+            font-size: 11px;
+            font-weight: 800;
+            padding-left: 10px;
+            padding-top: 2px;
+          }
+
+          img {
+            width: 10px;
+          }
+        }
+      }
+    }
+
+    .product-detail-wrap-right {
+      width: 50%;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      padding: 60px;
+
+      .product-detail-wrap-right__name {
+        color: #434343;
+        margin-bottom: 20px;
+      }
+
+      .product-detail-wrap-right__short-desc {
+        h2 {
+          font-size: 35px;
+          font-weight: 500;
+          margin-bottom: 40px;
+        }
+      }
+
+      .product-detail-wrap-right__long-desc {
+        font-size: 17px;
+        margin-bottom: 40px;
+        color: #434343;
+        white-space: pre-line;
+      }
+
+      .product-detail-wrap-right__price {
+        h4 {
+          font-size: 27px;
+          font-weight: 400;
+          margin-bottom: 20px;
+        }
+      }
+
+      .yellow-button {
+        background-color: #ffc356;
+        width: 220px;
+        height: 20px;
+        border-radius: 24px;
+        text-align: center;
+        padding: 10px 32px;
+        margin-bottom: 10px;
+        font-size: 16px;
+        border: 2px solid transparent;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #fcfaee;
+          border: 2px solid #eae8e4;
+        }
+      }
+
+      .gray-button {
+        width: 220px;
+        height: 20px;
+        border-radius: 24px;
+        text-align: center;
+        padding: 10px 32px;
+        font-size: 16px;
+        border: 2px solid black;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #ffc356;
+          border: 2px solid transparent;
+        }
+      }
+    }
+  }
+
+  .product-detail-nav {
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    border-bottom: 2px solid $lightGray;
+    background-color: white;
+
+    a {
+      cursor: pointer;
+    }
+
+    li {
+      margin: 40px 100px;
+      font-size: 13px;
+      color: #555555;
+      cursor: pointer;
+
+      &:hover {
+        color: black;
+      }
+    }
+  }
+
+  .product-detail-container {
+    width: 1200px;
+    margin: 0 auto;
+
+    .product-detail-container__main-image {
+      img {
+        width: 100%;
+        object-fit: cover;
+        margin-top: 50px;
+      }
+    }
+
+    .product-detail-container__keyword {
+      display: flex;
+      justify-content: space-around;
+      margin: 50px 30px;
+      p {
+        width: 280px;
+        margin: 90px;
+        font-size: 25px;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.modal-wrap-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: $lightGray;
+
+  img {
+    width: 50px;
+  }
+
+  .modal-wrap-top-name {
+    p {
+      letter-spacing: 1px;
+      &:nth-child(1) {
+        font-size: 13px;
+      }
+
+      &:nth-child(2) {
+        font-size: 12px;
+      }
+    }
+  }
+
+  .modal-wrap-top-price {
+    font-size: 13px;
+  }
+}
+
+.modal-wrap-bottom {
+  margin-top: 30px;
+  p {
+    letter-spacing: 1px;
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+
+  .modal-wrap-bottom-detail {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: $lightGray;
+    height: 300px;
+
+    img {
+      width: 50%;
+    }
+
+    .modal-wrap-bottom-detail-text {
+      margin: 15px;
+      p {
+        &:nth-child(1) {
+          font-size: 17px;
+          margin-bottom: 15px;
+        }
+
+        &:nth-child(2) {
+          font-size: 13px;
+          margin-bottom: 10px;
+        }
+      }
+
+      a {
+        font-size: 15px;
+        color: #434343;
+      }
+    }
+  }
+}
