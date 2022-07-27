@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SearchBox from './components/SearchBox/SearchBox';
 import CardList from './components/Card/CardList';
-import CompareCard from './components/Card/CompareCard';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Buttons from './components/Buttons/Buttons';
 import { IoGridSharp, IoAppsSharp } from 'react-icons/io5';
@@ -14,10 +13,7 @@ function ProductList() {
   const [userInput, setUserInput] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
-  const [sort, setSort] = useState();
-  // const [limit, setLimit] = useState(9);
   const [listType, setListType] = useState('small');
-
   const params = new URLSearchParams(location.search);
   const urlCategory = params.get('category');
   const urlMaterial = params.get('material');
@@ -25,10 +21,13 @@ function ProductList() {
   const categoryString = `category=${urlCategory}`;
   const materialString = `material=${urlMaterial}`;
 
+  console.log(location);
+
   useEffect(() => {
     const queryString = location.search;
+    console.log(queryString);
 
-    fetch(`http://10.58.5.145:8000/products${queryString}`)
+    fetch(`http://10.58.0.48:8000/products${queryString}`)
       .then(res => res.json())
       .then(result => {
         setTotalItems(result);
@@ -67,7 +66,6 @@ function ProductList() {
     const lowPriceString = 'sort_method=-price';
     handleURL(lowPriceString);
   };
-
   const changeBigList = () => {
     setListType('big');
   };
@@ -84,14 +82,14 @@ function ProductList() {
     return product.name.toLowerCase().includes(userInput.toLowerCase());
   });
 
-  const switchPage = index => {
+  const switchPage = page => {
     const limit = 9;
-    const offset = index * limit;
-    const queryString = `offset=${offset}&limit=${limit}&sort=${sort}`;
+    const offset = (page - 1) * limit;
+    const queryString = `offset=${offset}&limit=${limit}`;
     const categories = 'speakers';
     const main_category = `main_category=${categories}`;
 
-    navigate(`/products?${main_category}&${queryString}`);
+    navigate(`?${main_category}&${queryString}`);
   };
 
   return (
@@ -138,20 +136,19 @@ function ProductList() {
       <div className="productlist-middle">
         <div className="sidebar">
           <div className="sidebar-img">
-            <img
-              src="https://s3.ap-northeast-2.amazonaws.com/lomad/lomad2/images/brand/1068/129wmR2AMULUuYNWQuU11yWr9NO3Z9UXZ7bktmFs.png"
-              alt="img"
-            ></img>
+            <Link to="/">
+              <img alt="logo" src="/images/Nav/W_O_Black.svg" />
+            </Link>
           </div>
           <div className="text-box">
             <div className="title">
-              <p>뱅앤올룹슨</p>
+              <p>위앤올룹슨</p>
             </div>
             <div className="description">
               <p>
-                B&O는 1925년 덴마크에서 설립되었습니다. Peter Bang과 Svend
+                W&O는 1925년 덴마크에서 설립되었습니다. Peter Bang과 Svend
                 Olufsen이 세운 이후 97년이 지나도록 럭셔리 오디오 시장에서
-                압도적인 위치를 점하고 있습니다. B&O는 뛰어난 디자인 감각과
+                압도적인 위치를 점하고 있습니다. W&O는 뛰어난 디자인 감각과
                 끊임없는 신기술 개발로 오랜 시간 전세계에서 큰 사랑을 받고
                 있습니다.
               </p>
@@ -168,7 +165,10 @@ function ProductList() {
               <button onClick={sortHighPrice}>낮은가격</button>
               <button onClick={sortLowPrice}>높은가격</button>
             </div>
-
+          </div>
+        </div>
+        <div className="cardlist-layout">
+          <div className="item-change-box">
             <div className="item-change">
               <button onClick={changeSmallList} className="icon">
                 <IoGridSharp />
@@ -178,8 +178,6 @@ function ProductList() {
               </button>
             </div>
           </div>
-        </div>
-        <div className="cardlist-layout">
           <CardList productlist={searchedProductlist} />
         </div>
       </div>

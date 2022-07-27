@@ -3,7 +3,6 @@
 .productlist-top {
   .category {
     background-color: $lightGray;
-    width: 1950px;
     display: flex;
     padding-left: 220px;
     .category-container {
@@ -45,9 +44,13 @@
     width: 520px;
     padding: 0px 0px 0px 220px;
     .sidebar-img {
-      width: 75px;
-      height: 75px;
+      width: 100px;
+      height: 100px;
       margin: 25px 0px 0px 10px;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+
       img {
         width: 100%;
         height: 100%;
@@ -97,33 +100,9 @@
   width: calc(100% - 480px);
   padding: 0px 20px 0px 20px;
   flex-wrap: wrap;
-
-  // .productlist-comparecard-container {
-  //   background-color: $lightGray;
-  //   width: 300px;
-  //   height: 300px;
-  //   margin: 40px 20px;
-  //   padding: 80px;
-  //   display: flex;
-  //   flex-direction: column;
-  //   justify-content: center;
-  //   align-items: center;
-  //   text-align: center;
-
-  //   .productlist-comparecard-img {
-  //     width: 90px;
-  //     height: 90px;
-  //     img {
-  //       width: 100%;
-  //       height: 100%;
-  //       object-fit: cover;
-  //     }
-  //   }
-  //   .productlist-comparecard-text {
-  //     margin-top: 20px;
-  //   }
-  //   }
-
+  .item-change-box {
+    margin: 20px 0px 0px 1000px;
+  }
   .productlist-card-container {
     background-color: $lightGray;
     width: 300px;
@@ -153,4 +132,5 @@
 .productlist-cardlist {
   flex-wrap: wrap;
   display: flex;
+  margin: 0px 200px 10px 50px;
 }

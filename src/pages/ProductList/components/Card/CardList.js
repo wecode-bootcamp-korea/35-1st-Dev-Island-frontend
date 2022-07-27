@@ -1,8 +1,6 @@
 import React from 'react';
-// import ProductList from "../../ProductList";
 import Card from './Card';
 import '../../ProductList.scss';
-import CompareCard from './CompareCard';
 
 function CardList({ productlist }) {
   return (
