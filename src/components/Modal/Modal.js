@@ -6,7 +6,7 @@ const Modal = props => {
     props;
 
   return (
-    <div className={isModalOpen ? 'openModal modal' : 'modal'} ref={modalRef}>
+    <div className={`modal ${isModalOpen && `openModal`}`} ref={modalRef}>
       {isModalOpen && (
         <section>
           <header>
