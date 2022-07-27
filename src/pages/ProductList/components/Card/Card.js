@@ -5,7 +5,7 @@ import '../../ProductList.scss';
 function Card({ id, name, description, price, image_url }) {
   const navigate = useNavigate();
   const goToDetail = () => {
-    navigate(`./pages/ProductDetail/ProductDetail${id}`);
+    navigate(`/productdetail${id}`);
   };
 
   return (

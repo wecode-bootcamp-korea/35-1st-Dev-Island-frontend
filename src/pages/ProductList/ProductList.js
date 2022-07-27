@@ -21,11 +21,8 @@ function ProductList() {
   const categoryString = `category=${urlCategory}`;
   const materialString = `material=${urlMaterial}`;
 
-  console.log(location);
-
   useEffect(() => {
     const queryString = location.search;
-    console.log(queryString);
 
     fetch(`http://10.58.0.48:8000/products${queryString}`)
       .then(res => res.json())
