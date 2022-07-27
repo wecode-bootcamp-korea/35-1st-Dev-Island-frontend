@@ -2,15 +2,16 @@ import React from 'react';
 import './Modal.scss';
 
 const Modal = props => {
-  const { modalRef, modalOpen, modalClose, header, children, moveItem } = props;
+  const { modalRef, isModalOpen, closeModal, header, children, moveItem } =
+    props;
 
   return (
-    <div className={modalOpen ? 'openModal modal' : 'modal'} ref={modalRef}>
-      {modalOpen && (
+    <div className={isModalOpen ? 'openModal modal' : 'modal'} ref={modalRef}>
+      {isModalOpen && (
         <section>
           <header>
             {header}
-            <button className="close" onClick={modalClose}>
+            <button className="close" onClick={closeModal}>
               &times;
             </button>
           </header>

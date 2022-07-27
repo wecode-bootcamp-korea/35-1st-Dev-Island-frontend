@@ -12,7 +12,7 @@
       width: 50%;
       overflow: hidden;
 
-      .product-detail-wrap-left__photo {
+      .product-detail-wrap-left_photo {
         position: relative;
         width: 50vw;
         height: 100%;
@@ -176,7 +176,7 @@
 
 .modal-wrap-top {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   padding: 20px;
   background-color: $lightGray;
@@ -188,11 +188,11 @@
   .modal-wrap-top-name {
     p {
       letter-spacing: 1px;
-      &:nth-child(1) {
+      :first-child {
         font-size: 13px;
       }
 
-      &:nth-child(2) {
+      :last-child {
         font-size: 12px;
       }
     }
@@ -217,6 +217,7 @@
     align-items: center;
     background-color: $lightGray;
     height: 300px;
+    padding: 10px;
 
     img {
       width: 50%;

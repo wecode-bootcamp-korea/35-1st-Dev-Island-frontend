@@ -1,11 +1,5 @@
 @import '../../styles/variables.scss';
 
-.modal.openModal {
-  display: flex;
-  align-items: center;
-  animation: modal-bg-show 0.3s;
-}
-
 .modal {
   display: none;
   position: fixed;
@@ -18,8 +12,6 @@
 
   section {
     width: 27%;
-    // max-width: 400px;
-    // height: 600px;
     margin: 0 auto;
     border-radius: 0.3rem;
     background-color: #fff;
@@ -51,7 +43,6 @@
     main {
       padding: 16px;
       border-bottom: 1px solid $lightGray;
-      // height: 450px;
     }
 
     footer {
@@ -76,6 +67,12 @@
         }
       }
     }
+  }
+
+  &.openModal {
+    display: flex;
+    align-items: center;
+    animation: modal-bg-show 0.3s;
   }
 }
 
