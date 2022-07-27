@@ -1,7 +1,12 @@
 import React from 'react';
 import './OrderListDetail.scss';
 
-const OrderListDetail = ({ products, price }) => {
+const OrderListDetail = ({ products }) => {
+  const totalPrice = products.reduce(
+    (acc, cur) => acc + Number(cur.product_total_price),
+    0
+  );
+
   return (
     <div>
       {products.map(product => {
@@ -19,7 +24,7 @@ const OrderListDetail = ({ products, price }) => {
                   수량 : {product.quantity}
                 </p>
                 <p className="orderlist-box_orderinfo-detail_price">
-                  ₩ {parseInt(product.price).toLocaleString()}
+                  ₩ {parseInt(product.product_total_price).toLocaleString()}
                 </p>
               </div>
             </div>
@@ -28,7 +33,7 @@ const OrderListDetail = ({ products, price }) => {
       })}
       <div className="orderlist-box_orderinfo_total">
         <p>
-          <span>total</span> ₩ {parseInt(price).toLocaleString()}
+          <span>total</span> ₩ {totalPrice.toLocaleString()}
         </p>
       </div>
     </div>

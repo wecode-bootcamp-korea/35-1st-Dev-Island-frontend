@@ -70,7 +70,7 @@
     border: 2px solid $darkGray;
   }
 
-  .orderlist-box_detailbtn_cancle {
+  .orderlist-box_detailbtn_cancel {
     border-radius: 60px;
     width: 160px;
     height: 42px;
@@ -83,86 +83,7 @@
   }
 }
 
-.orderlist_cancle {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #c3c3c3;
+.orderlist_cancel {
+  @extend .orderlist;
   background-color: $lightGray;
-  border-radius: 7px;
-  padding: 50px;
-  margin-bottom: 50px;
-
-  .orderlist-box-before {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .orderlist-box {
-      display: flex;
-      align-items: center;
-
-      .orderlist-box_orderinfo-date {
-        display: flex;
-        justify-content: center;
-        width: 100px;
-        margin-right: 60px;
-
-        p {
-          font-weight: 200;
-          font-size: 20px;
-          color: $darkGray;
-        }
-      }
-
-      .orderlist-box_orderinfo {
-        display: flex;
-        flex-direction: column;
-
-        .orderlist-box_ordernumber {
-          font-size: 15px;
-          color: $darkGray;
-          opacity: 80%;
-          margin-bottom: 10px;
-        }
-
-        .orderlist-box_product {
-          font-size: 30px;
-          color: $darkGray;
-        }
-      }
-    }
-  }
-
-  .orderlist-box_detailbtn {
-    border-radius: 60px;
-    width: 160px;
-    height: 42px;
-    margin-left: 20px;
-    font-size: 15px;
-    text-align: center;
-    background-color: $pointColor;
-    border: 2px solid $pointColor;
-  }
-
-  .orderlist-box_detailbtn_close {
-    border-radius: 60px;
-    width: 160px;
-    height: 42px;
-    margin-left: 20px;
-    font-size: 15px;
-    text-align: center;
-    border: 2px solid $darkGray;
-  }
-
-  .orderlist-box_detailbtn_cancle {
-    border-radius: 60px;
-    width: 160px;
-    height: 42px;
-    margin-left: 20px;
-    font-size: 15px;
-    text-align: center;
-    color: $white;
-    background-color: $darkGray;
-    border: 2px solid $darkGray;
-  }
 }
