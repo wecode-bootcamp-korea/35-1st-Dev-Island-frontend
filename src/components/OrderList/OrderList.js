@@ -29,7 +29,7 @@ const OrderList = ({ item }) => {
       .then(res => res.json())
       .then(data => {
         if (data.message === 'CANCEL_ORDER') {
-          alert('상품 삭제가 완료되었습니다.');
+          alert('상품 주문이 취소되었습니다.');
           setCancelOrder(!cancelOrder);
         } else {
           alert('다시 시도해주세요!');

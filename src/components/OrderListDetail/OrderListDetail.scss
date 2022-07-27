@@ -3,7 +3,7 @@
 .orderlist-box-after {
   display: flex;
   flex-direction: column;
-  margin-top: 60px;
+  margin-top: 30px;
 
   .orderlist-box_orderinfo-detail {
     display: flex;
@@ -22,24 +22,30 @@
 
     .orderlist-box_orderinfo-detail_info {
       display: flex;
-      justify-content: space-between;
       align-items: center;
       width: 1220px;
 
       .orderlist-box_orderinfo-detail_name {
         font-size: 25px;
-        padding-right: 500px;
+        width: 800px;
 
         span {
           font-size: 20px;
           font-weight: 200;
         }
       }
-      .orderlist-box_orderinfo-detail_quantity {
-        font-size: 15px;
-      }
-      .orderlist-box_orderinfo-detail_price {
-        font-size: 25px;
+      .orderlist-box_orderinfo-detail_info_numset {
+        display: flex;
+        justify-content: space-between;
+        width: 450px;
+        align-items: center;
+
+        .orderlist-box_orderinfo-detail_quantity {
+          font-size: 15px;
+        }
+        .orderlist-box_orderinfo-detail_price {
+          font-size: 25px;
+        }
       }
     }
   }

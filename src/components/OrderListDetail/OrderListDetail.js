@@ -20,12 +20,14 @@ const OrderListDetail = ({ products }) => {
                 <p className="orderlist-box_orderinfo-detail_name">
                   {product.product_name}
                 </p>
-                <p className="orderlist-box_orderinfo-detail_quantity">
-                  수량 : {product.quantity}
-                </p>
-                <p className="orderlist-box_orderinfo-detail_price">
-                  ₩ {parseInt(product.product_total_price).toLocaleString()}
-                </p>
+                <div className="orderlist-box_orderinfo-detail_info_numset">
+                  <p className="orderlist-box_orderinfo-detail_quantity">
+                    수량 : {product.quantity}
+                  </p>
+                  <p className="orderlist-box_orderinfo-detail_price">
+                    ₩ {parseInt(product.product_total_price).toLocaleString()}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
