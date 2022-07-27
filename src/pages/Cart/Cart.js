@@ -20,7 +20,7 @@ function Cart() {
   }, 0);
 
   const getItems = async () => {
-    const url = 'http://10.58.4.137:8000/carts';
+    const url = 'http://10.58.7.207:8000/carts';
     const response = await fetch(url, {
       headers: {
         Authorization: token,
@@ -33,7 +33,7 @@ function Cart() {
   const handleDecreaseItem = async e => {
     if (items[e].quantity > 1 && pending) {
       setPending(false);
-      const url = 'http://10.58.4.137:8000/carts';
+      const url = 'http://10.58.7.207:8000/carts';
       const response = await fetch(url, {
         method: 'PATCH',
         headers: {
@@ -55,7 +55,7 @@ function Cart() {
   const handleIncreaseItem = async e => {
     if (pending) {
       setPending(false);
-      const url = 'http://10.58.4.137:8000/carts';
+      const url = 'http://10.58.7.207:8000/carts';
       const response = await fetch(url, {
         method: 'PATCH',
         headers: {
@@ -79,7 +79,7 @@ function Cart() {
   const handleRemoveItem = async e => {
     if (pending) {
       setPending(false);
-      const url = 'http://10.58.4.137:8000/carts';
+      const url = 'http://10.58.7.207:8000/carts';
       const response = await fetch(url, {
         method: 'DELETE',
         headers: {
@@ -102,6 +102,29 @@ function Cart() {
           .filter(n => n);
         setItems(filtered);
       }
+    }
+  };
+
+  const handleMoveOrder = async () => {
+    if (pending) {
+      setPending(false);
+      const url = 'http://10.58.7.207:8000/orders/neworder';
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          Authorization: token,
+        },
+        body: JSON.stringify({
+          cart_ids: items.map(item => item.id),
+        }),
+      });
+      const result = await response.json();
+      setPending(true);
+      if (result.message === 'NEW_ORDER_CREATED') {
+        navigate('/myorder');
+        return;
+      }
+      alert('잠시후 다시 시도 해주세요.');
     }
   };
 
@@ -148,7 +171,9 @@ function Cart() {
                     <p>₩{totalPrice.toLocaleString()}</p>
                   </div>
                   <div className="order-btn">
-                    <button className="order">주문 하기</button>
+                    <button onClick={handleMoveOrder} className="order">
+                      주문 하기
+                    </button>
                     <button className="back">쇼핑 계속 하기</button>
                   </div>
                   <div className="order-text">
