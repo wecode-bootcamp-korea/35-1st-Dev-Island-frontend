@@ -13,11 +13,9 @@ function ProductList() {
   const [userInput, setUserInput] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
-  const [listType, setListType] = useState('small');
   const params = new URLSearchParams(location.search);
   const urlCategory = params.get('category');
   const urlMaterial = params.get('material');
-  const urlOffset = params.get('offset');
   const categoryString = `category=${urlCategory}`;
   const materialString = `material=${urlMaterial}`;
 
@@ -62,15 +60,6 @@ function ProductList() {
   const sortLowPrice = () => {
     const lowPriceString = 'sort_method=-price';
     handleURL(lowPriceString);
-  };
-  const changeBigList = () => {
-    setListType('big');
-    navigate('?main_category=speakers&offset=0&limit=9');
-  };
-
-  const changeSmallList = () => {
-    setListType('small');
-    navigate('?main_category=speakers&offset=0&limit=4');
   };
 
   const updateUserInput = e => {
