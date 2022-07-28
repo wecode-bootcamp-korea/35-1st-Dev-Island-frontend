@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import OrderList from '../../components/OrderList/OrderList';
 import './MyOrder.scss';
+import API from '../../config';
 
 const MyOrder = () => {
+  const ACCESS_TOKEN = sessionStorage.getItem('ACCESS_TOKEN');
   const [userdata, setUserdata] = useState({});
 
   useEffect(() => {
-    fetch('http://10.58.0.48:8000/myorder', {
+    fetch(`${API.order}/myorder`, {
       headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.iei1OnJ0YzOCAAJAwgOWsjBMeid87K09NcXIS-z4lkM',
+        Authorization: ACCESS_TOKEN,
       },
     })
       .then(res => res.json())

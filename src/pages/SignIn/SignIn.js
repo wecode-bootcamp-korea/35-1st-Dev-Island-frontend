@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import './SignIn.scss';
+import API from '../../config';
 
 function SignIn() {
   const navigate = useNavigate();
@@ -24,9 +25,8 @@ function SignIn() {
   const onSubmit = async e => {
     e.preventDefault();
     if (emailRegExp.test(email) && passwordRegExp.test(password)) {
-      const url = 'http://10.58.1.160:8000/users/login';
       try {
-        const response = await fetch(url, {
+        const response = await fetch(API.signin, {
           method: 'POST',
           body: JSON.stringify({
             email,

@@ -4,11 +4,10 @@ import { useNavigate, Link } from 'react-router-dom';
 import CartCard from '../../components/CartCard/CartCard';
 
 import './Cart.scss';
+import API from '../../config';
 
 function Cart() {
   const ACCESS_TOKEN = sessionStorage.getItem('ACCESS_TOKEN');
-  const token =
-    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NH0.bd9JCUK-PC6dAZc4WyRjjEw6zwaqw2YtsaANRY6YKjo';
   const navigate = useNavigate();
   const [pending, setPending] = useState(true);
   const [items, setItems] = useState([]);
@@ -20,10 +19,9 @@ function Cart() {
   }, 0);
 
   const getItems = async () => {
-    const url = 'http://10.58.7.207:8000/carts';
-    const response = await fetch(url, {
+    const response = await fetch(API.cart, {
       headers: {
-        Authorization: token,
+        Authorization: ACCESS_TOKEN,
       },
     });
     const result = await response.json();
@@ -33,11 +31,10 @@ function Cart() {
   const handleDecreaseItem = async e => {
     if (items[e].quantity > 1 && pending) {
       setPending(false);
-      const url = 'http://10.58.7.207:8000/carts';
-      const response = await fetch(url, {
+      const response = await fetch(API.cart, {
         method: 'PATCH',
         headers: {
-          Authorization: token,
+          Authorization: ACCESS_TOKEN,
         },
         body: JSON.stringify({
           cart_id: items[e].id,
@@ -55,11 +52,10 @@ function Cart() {
   const handleIncreaseItem = async e => {
     if (pending) {
       setPending(false);
-      const url = 'http://10.58.7.207:8000/carts';
-      const response = await fetch(url, {
+      const response = await fetch(API.cart, {
         method: 'PATCH',
         headers: {
-          Authorization: token,
+          Authorization: ACCESS_TOKEN,
         },
         body: JSON.stringify({
           cart_id: items[e].id,
@@ -79,11 +75,10 @@ function Cart() {
   const handleRemoveItem = async e => {
     if (pending) {
       setPending(false);
-      const url = 'http://10.58.7.207:8000/carts';
-      const response = await fetch(url, {
+      const response = await fetch(API.cart, {
         method: 'DELETE',
         headers: {
-          Authorization: token,
+          Authorization: ACCESS_TOKEN,
         },
         body: JSON.stringify({
           cart_ids: [items[e].id],
@@ -108,11 +103,10 @@ function Cart() {
   const handleMoveOrder = async () => {
     if (pending) {
       setPending(false);
-      const url = 'http://10.58.7.207:8000/orders/neworder';
-      const response = await fetch(url, {
+      const response = await fetch(API.moveOrder, {
         method: 'POST',
         headers: {
-          Authorization: token,
+          Authorization: ACCESS_TOKEN,
         },
         body: JSON.stringify({
           cart_ids: items.map(item => item.id),

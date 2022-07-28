@@ -6,6 +6,7 @@ import CardList from './components/Card/CardList';
 import Buttons from './components/Buttons/Buttons';
 
 import './ProductList.scss';
+import API from '../../config';
 
 const limit = 9;
 
@@ -24,7 +25,7 @@ function ProductList() {
   useEffect(() => {
     const queryString = location.search;
 
-    fetch(`http://10.58.0.48:8000/products${queryString}`)
+    fetch(`${API.productDetail}${queryString}`)
       .then(res => res.json())
       .then(result => {
         setTotalItems(result);
