@@ -1,0 +1,40 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "title": "Beoplay A9",
+      "option": "Gold Tone",
+      "price": 4998000,
+      "img": "/images/CartCard/A9_TEST.webp",
+      "amount": 1,
+      "stock": 10
+    },
+    {
+      "id": 2,
+      "title": "Beosound Level",
+      "option": "Gold Tone",
+      "price": 2398000,
+      "img": "/images/CartCard/LEVEL_TEST.webp",
+      "amount": 1,
+      "stock": 5
+    },
+    {
+      "id": 3,
+      "title": "Beolit 20",
+      "option": "Grey Mist",
+      "price": 798000,
+      "img": "/images/CartCard/BEOLIT_TEST.webp",
+      "amount": 1,
+      "stock": 3
+    },
+    {
+      "id": 4,
+      "title": "Beosound 2",
+      "option": "Natural",
+      "price": 3698000,
+      "img": "/images/CartCard/BEOSOUND_TEST.webp",
+      "amount": 1,
+      "stock": 2
+    }
+  ]
+}
