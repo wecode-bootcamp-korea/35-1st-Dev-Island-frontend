@@ -12,12 +12,12 @@ const Nav = () => {
         </Link>
         <div>
           <Link to="/productlist">
-            <span>스피커</span>
+            <span>ALL</span>
           </Link>
-          <span>헤드폰</span>
+          <span>SPEAKERS</span>
+          <span>HEADPHONES</span>
           <span>TV</span>
-          <span>자세히 알아보기</span>
-          <span>지원</span>
+          <span>SUPPORT</span>
         </div>
       </div>
       <div className="nav-container__right">

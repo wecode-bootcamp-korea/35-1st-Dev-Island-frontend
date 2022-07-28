@@ -17,7 +17,7 @@ const BlogContainer = () => {
                 <h2>{title}</h2>
                 <p>{sentence}</p>
                 <button className="container-gray-article__button">
-                  자세히 보기
+                  Discover more
                 </button>
               </div>
             </div>
@@ -36,17 +36,17 @@ const BLOG_DATA = [
     src: 'images/main/pexels-charlotte-may-5824519.jpeg',
     alt: 'BEOPLAY A9_img',
     category: 'BEOPLAY A9',
-    title: '켜져 있을 때도, 꺼져 있을 때도 멋집니다.',
+    title: 'Love it when it’s on & off.',
     sentence:
-      '풍성하고 정교한 사운드와 어느 방에서나 빛나는 존재감! Beoplay A9는 한마디로 눈과 귀를 위한 연회와도 같습니다.',
+      'Rich, detailed sound and presence for any room. Beoplay A9 is a feast for eyes and ears alike.',
   },
   {
     id: 2,
     src: 'images/main/pexels-ketut-subiyanto-4559978.jpeg',
     alt: 'BEOLIT 20_img',
     category: 'BEOLIT 20',
-    title: '손에 들고 강렬한 사운드를 느껴보세요.',
+    title: 'Grab it. And brace for impact.',
     sentence:
-      '군중을 열광시키는 빅 사운드. 믿을 수 없을 정도로 다재다능합니다. Beolit 20은 한 순간도 놓치지 않고 열기를 분출합니다.',
+      'Big, crowd-pleasing sound. Deceptively versatile. Beolit 20 brings the heat without missing a beat.',
   },
 ];

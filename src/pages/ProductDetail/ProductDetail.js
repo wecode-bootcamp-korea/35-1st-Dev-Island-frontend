@@ -97,7 +97,7 @@ function ProductDetail() {
 
             <button type="button" onClick={goToProductList}>
               <img src="/images/ProductDetail/left-arrow.png" alt="arrow" />
-              <span>스피커</span>
+              <span>ALL</span>
             </button>
           </div>
         </div>
@@ -149,25 +149,26 @@ function ProductDetail() {
             <h2>{description}</h2>
           </div>
           <div className="product-detail-wrap-right__long-desc">
-            {`언제나 나와 함께하는 레벨. 언제 어디서나 성능, 휴대성, 연결성을 제공합니다. 
-            세워서, 또는 눕혀서, 내가 좋아하는 노래를 항상 내곁에.`}
+            Opulent, tactile materials crafted to last. Room-filling,
+            omnidirectional sound. Beosound Balance is a sculptural statement
+            with the smarts to match.
           </div>
           <div className="product-detail-wrap-right__price">
             <h4>₩{parseInt(price).toLocaleString()}</h4>
           </div>
           <button onClick={openPurchaseModal} className="yellow-button">
-            구매 하기
+            Purchase
           </button>
-          <button className="gray-button">매장에서 체험하기</button>
+          <button className="gray-button">Experience in store</button>
         </div>
       </div>
 
       <ul className="product-detail-nav">
-        <li onClick={scrollToElement}>개요</li>
-        <li onClick={handleButton}>특장점</li>
-        <li>기술 사양</li>
-        <li>비교</li>
-        <li>리뷰</li>
+        <li onClick={scrollToElement}>OVERVIEW</li>
+        <li onClick={handleButton}>FEATURES</li>
+        <li>TECH SPECS</li>
+        <li>COMPARE</li>
+        <li>REVIEW</li>
       </ul>
 
       <div className="product-detail-container" ref={featuresRef}>
@@ -175,9 +176,9 @@ function ProductDetail() {
           <img src={content_url} alt="mainimage" />
         </div>
         <div className="product-detail-container__keyword">
-          <p>최고의 휴대성</p>
-          <p>어디든 잘 어울립니다.</p>
-          <p>오래 지속되도록 제작</p>
+          <p>Artistically designed</p>
+          <p>Sound, all directions</p>
+          <p>Pair up and play</p>
         </div>
         <ProductDetailContents />
       </div>

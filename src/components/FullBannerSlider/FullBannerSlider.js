@@ -34,7 +34,7 @@ const FullBannerSlider = () => {
                 <h1>{title}</h1>
                 <p>{content}</p>
                 <button className="main-banner__button" type="button">
-                  자세히 살펴보기
+                  Discover more
                 </button>
               </div>
               <div className="main-banner__image">
@@ -55,24 +55,24 @@ const MAIN_BANNER = [
     id: 1,
     src: 'images/main/pexels-grzegorz-4336587.jpeg',
     alt: 'main-image',
-    title: '최적의 사운드',
+    title: 'Ultimate over-ear headphones',
     content:
-      '지금까지 가장 편안하고 다재다능한 Beoplay EX를 소개합니다. 큰 헤드폰과 성능은 동일하면서 크기는 주머니 안에 쏙 들어갈 정도로 작습니다.',
+      'Beoplay EX fits. With your lifestyle and your ears. An all-new ergonomic design gives you complete comfort right out of the case, while soft tips let you listen for hours without fatigue. Whether you are walking, running or jumping, the stick silhouette ensures stability, while staying snug and flush to your ears.',
   },
   {
     id: 2,
     src: 'images/main/pexels-josh-sorenson-1714433.jpeg',
     alt: 'main-image',
-    title: 'Beosound Balance',
+    title: 'Sound. Sculpted.',
     content:
-      '간결하면서도 묵직한 저음, 깨끗한 중음, 순수한 어쿠스틱의 환희를 선물합니다.',
+      'Turn a loud train ride into a moment of focus. Or make your run a meditative experience. EX monitors ambient outside sound and adapts to cut it out, so you can enjoy distraction-free listening and the highest quality calls - wherever you are. Want to let the world in? Transparency Mode takes care of that in just a tap.',
   },
   {
     id: 3,
     src: 'images/main/pexels-andrea-piacquadio-3776557.jpeg',
     alt: 'main-image',
-    title: '소리와 디자인의 경계',
+    title: 'Beosound Balance.',
     content:
-      '뱅앤올룹슨은 1925년부터 사운드의 미래와 비전을 설계해 왔습니다. 이 여정은 아직 끝나지 않았습니다. 지나간 이야기의 자취를 따라가 보고, 다가올 미래는 어떨지도 알아보세요.',
+      'Form meets function. Fashion meets fidelity. A glass touch surface brings precision and jewel-like beauty, while an aluminium outer ring offers protection and a final aesthetic flourish. Crafted to last, made to be worn.',
   },
 ];
