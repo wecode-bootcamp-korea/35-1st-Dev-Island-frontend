@@ -1,1 +1,142 @@
 @import '../../styles/variables.scss';
+
+.home {
+  .container-beige {
+    background-color: $beige;
+
+    .container-beige-article {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      position: relative;
+      margin: 0 auto;
+
+      .container-beige-title {
+        width: 1480px;
+
+        h2 {
+          margin-top: 120px;
+          font-size: 40px;
+        }
+      }
+    }
+
+    .container-beige-mv {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .container-beige-mv__title {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 60px;
+
+        p {
+          font-size: 20px;
+          color: $darkGray;
+        }
+        h2 {
+          margin: 20px 0 60px;
+          font-size: 40px;
+          color: $darkGray;
+        }
+      }
+
+      .container-beige-mv__video {
+        display: flex;
+        justify-content: center;
+        width: 1480px;
+        height: 680px;
+        margin-bottom: 120px;
+
+        video {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+
+  .container-white {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 120px;
+    background-color: $white;
+
+    .container-white-title {
+      width: 1480px;
+      margin: 0 auto;
+
+      p {
+        margin-top: 120px;
+        font-size: 20px;
+        color: $darkGray;
+      }
+
+      h2 {
+        margin: 20px 0;
+        font-size: 40px;
+        color: $darkGray;
+      }
+    }
+
+    .container-white-article {
+      display: flex;
+      justify-content: space-between;
+      width: 1480px;
+      margin: 0 auto;
+
+      .container-white-article__img {
+        width: 720px;
+        height: 900px;
+        background-color: aquamarine;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .container-white-article__textbox {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 720px;
+        height: 900px;
+
+        h2 {
+          margin: 20px 0;
+          font-size: 40px;
+          color: $darkGray;
+        }
+
+        p {
+          width: 600px;
+          text-align: center;
+          font-size: 20px;
+          color: $darkGray;
+        }
+
+        .container-white-article__button {
+          margin-top: 20px;
+          width: 169px;
+          height: 42px;
+          border: 2px $darkGray solid;
+          border-radius: 100px;
+          text-align: center;
+          line-height: initial;
+          color: $darkGray;
+
+          &:hover {
+            border: 2px $pointColor solid;
+            background-color: $pointColor;
+          }
+        }
+      }
+    }
+  }
+}

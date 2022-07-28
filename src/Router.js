@@ -8,9 +8,9 @@ import Cart from './pages/Cart/Cart';
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
 import NotFound from './pages/NotFound/NotFound';
+import MyOrder from './pages/MyOrder/MyOrder';
 
 import Footer from './components/Footer/Footer';
-
 import Nav from './components/Nav/Nav';
 
 function Router() {
@@ -24,6 +24,7 @@ function Router() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/myorder" element={<MyOrder />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
       <Footer />

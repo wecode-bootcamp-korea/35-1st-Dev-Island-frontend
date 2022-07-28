@@ -1,0 +1,100 @@
+@import '../../styles/variables.scss';
+
+.modal.openModal {
+  display: flex;
+  align-items: center;
+  animation: modal-bg-show 0.3s;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.6);
+
+  section {
+    width: 27%;
+    // max-width: 400px;
+    // height: 600px;
+    margin: 0 auto;
+    border-radius: 0.3rem;
+    background-color: #fff;
+    animation: modal-show 0.3s;
+    overflow: hidden;
+
+    header {
+      position: relative;
+      padding: 40px 16px 0 16px;
+      font-weight: 500;
+      font-size: 12px;
+
+      .close {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        outline: none;
+        cursor: pointer;
+        border: 0;
+        width: 30px;
+        font-size: 21px;
+        font-weight: 700;
+        text-align: center;
+        color: #999;
+        background-color: transparent;
+      }
+    }
+
+    main {
+      padding: 16px;
+      border-bottom: 1px solid $lightGray;
+      // height: 450px;
+    }
+
+    footer {
+      padding: 12px 16px;
+      margin: 10px;
+      text-align: center;
+
+      .goToCart {
+        background-color: #ffc356;
+        width: 250px;
+        height: 25px;
+        border-radius: 24px;
+        text-align: center;
+        padding: 10px 32px;
+        font-size: 16px;
+        cursor: pointer;
+        border: 2px solid transparent;
+
+        &:hover {
+          background-color: #fcfaee;
+          border: 2px solid #eae8e4;
+        }
+      }
+    }
+  }
+}
+
+@keyframes modal-show {
+  from {
+    opacity: 0;
+    margin-top: -50px;
+  }
+  to {
+    opacity: 1;
+    margin-top: 0;
+  }
+}
+
+@keyframes modal-bg-show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

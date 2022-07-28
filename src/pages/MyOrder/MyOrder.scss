@@ -1,0 +1,29 @@
+@import '../../styles/variables.scss';
+
+.myorder {
+  display: flex;
+  flex-direction: column;
+  width: 1480px;
+  margin: 0 auto;
+
+  .myorder-title {
+    display: flex;
+    flex-direction: column;
+
+    h1 {
+      margin-top: 120px;
+      font-size: 30px;
+      color: $darkGray;
+    }
+
+    h3 {
+      margin-top: 20px;
+      font-size: 15px;
+      color: $darkGray;
+    }
+  }
+}
+
+.orderlistup {
+  margin: 30px 0 90px;
+}

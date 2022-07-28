@@ -1,1 +1,89 @@
 @import '../../styles/variables.scss';
+
+.sign-in-container {
+  margin: 0px auto;
+
+  .sign-in-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 110px 0px;
+
+    .inner-left {
+      .input-label {
+        color: #e42525;
+        opacity: 0.9;
+      }
+      h1 {
+        margin-bottom: 50px;
+        font-size: 30px;
+        font-weight: 400;
+      }
+
+      form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        input {
+          width: 460px;
+          margin-bottom: 60px;
+          border-bottom: 1px solid $lightGray;
+          color: $darkGray;
+        }
+
+        button {
+          cursor: pointer;
+          margin-top: 20px;
+        }
+        p {
+          color: $darkGray;
+          font-size: 12px;
+        }
+      }
+
+      &-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        p {
+          margin-top: 15px;
+          font-size: 12px;
+          color: $darkGray;
+        }
+
+        div {
+          margin-top: 20px;
+        }
+        img {
+          height: 40px;
+          margin: 0px 16px;
+        }
+      }
+    }
+
+    .inner-right {
+      width: 550px;
+      min-height: 700px;
+      margin-left: 50px;
+
+      background-color: #0f1421;
+      background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.1)),
+        url(https://source.unsplash.com/category/nature/1600x900);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      box-shadow: 0px 0px 4px $darkGray;
+    }
+
+    a {
+      cursor: pointer;
+      opacity: 0.7;
+    }
+  }
+}
