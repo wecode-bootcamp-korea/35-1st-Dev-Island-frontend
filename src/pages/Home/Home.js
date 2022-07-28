@@ -11,13 +11,13 @@ function Home() {
       <section className="container-beige">
         <div className="container-beige-article">
           <div className="container-beige-title">
-            <h2>사운드. 영상. 당신의 선택입니다.</h2>
+            <h2>Sound. Vision. It’s your pick.</h2>
           </div>
           <Slider />
           <div className="container-beige-mv">
             <div className="container-beige-mv__title">
-              <p>1925년 부터.</p>
-              <h2>느껴보세요. 자유롭게.</h2>
+              <p>SINCE 1925.</p>
+              <h2>Your senses. Set free.</h2>
             </div>
             <div className="container-beige-mv__video">
               <video
@@ -49,12 +49,12 @@ function Home() {
           <div className="container-white-article__textbox">
             <h2>Haute Couture HI-FI</h2>
             <p>
-              발렌시아가와의 새로운 콜라보레이션의 결과로 탄생한 Speaker Bag은
-              우리가 이 전설적인 패션 하우스와 공유하는 이상과 가치를
-              보여줍니다.
+              Our new collaboration with Balenciaga, the Speaker Bag, is an
+              example of the ideals and values we share with the legendary
+              fashion house
             </p>
             <button className="container-white-article__button" type="button">
-              자세히 살펴보기
+              Discover more
             </button>
           </div>
         </div>

@@ -3,8 +3,8 @@ import OrderListDetail from '../OrderListDetail/OrderListDetail';
 import './OrderList.scss';
 
 const OrderList = ({ item }) => {
-  const [showInfo, setShowInfo] = useState(false);
-  const [cancelOrder, setCancelOrder] = useState(false);
+  const [isShowInfo, setIsShowInfo] = useState(false);
+  const [isCancelOrder, setIsCancelOrder] = useState(false);
 
   //구매날짜 연동
   const today = () => {
@@ -30,7 +30,7 @@ const OrderList = ({ item }) => {
       .then(data => {
         if (data.message === 'CANCEL_ORDER') {
           alert('상품 주문이 취소되었습니다.');
-          setCancelOrder(!cancelOrder);
+          setIsCancelOrder(!isCancelOrder);
         } else {
           alert('다시 시도해주세요!');
         }
@@ -38,7 +38,7 @@ const OrderList = ({ item }) => {
   };
 
   return (
-    <li className={cancelOrder ? 'orderlist_cancel' : 'orderlist'}>
+    <li className={isCancelOrder ? 'orderlist_cancel' : 'orderlist'}>
       <div className="orderlist-box-before">
         <div className="orderlist-box">
           <div className="orderlist-box_orderinfo-date">
@@ -56,26 +56,26 @@ const OrderList = ({ item }) => {
         </div>
         <div>
           <button
-            onClick={() => setShowInfo(!showInfo)}
+            onClick={() => setIsShowInfo(!isShowInfo)}
             className={
-              showInfo
+              isShowInfo
                 ? 'orderlist-box_detailbtn_close'
                 : 'orderlist-box_detailbtn'
             }
             type="button"
           >
-            {showInfo ? 'CLOSE' : 'DETAIL VIEW'}
+            {isShowInfo ? 'CLOSE' : 'DETAIL VIEW'}
           </button>
           <button
             onClick={deleteOrder}
             className="orderlist-box_detailbtn_cancel"
             type="button"
           >
-            {cancelOrder ? 'CANCEL ORDER' : 'ORDER DELETE'}
+            {isCancelOrder ? 'CANCEL ORDER' : 'ORDER DELETE'}
           </button>
         </div>
       </div>
-      {showInfo && (
+      {isShowInfo && (
         <OrderListDetail products={item.products} price={item.total_price} />
       )}
     </li>
