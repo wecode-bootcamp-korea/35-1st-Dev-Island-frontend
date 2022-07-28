@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+
 import SearchBox from './components/SearchBox/SearchBox';
 import CardList from './components/Card/CardList';
-import { useNavigate, useLocation } from 'react-router-dom';
 import Buttons from './components/Buttons/Buttons';
+
 import './ProductList.scss';
+
 const limit = 9;
 
 function ProductList() {
