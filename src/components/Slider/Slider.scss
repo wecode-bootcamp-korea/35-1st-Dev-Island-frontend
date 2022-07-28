@@ -1,23 +1,47 @@
 @import '../../styles/variables.scss';
 
 .container-beige-title__slidebox {
-  max-width: 1480px;
+  max-width: 1650px;
+  margin-left: 170px;
   width: 100%;
-  margin-left: 220px;
   overflow: hidden;
+
+  .container-beige-title__slidebox_button {
+    display: flex;
+    justify-content: flex-end;
+    // margin-left: 85px;
+    width: 1480px;
+    height: auto;
+  }
+
+  .container-beige-title__gradient {
+    position: absolute;
+    right: 0px;
+    width: 150px;
+    height: 600px;
+    background: linear-gradient(
+      270deg,
+      rgba(251, 249, 237, 1) 0%,
+      rgb(251, 249, 237) 10%,
+      rgb(251, 249, 237) 35%,
+      rgba(251, 249, 237, 0.5) 60%,
+      rgba(251, 249, 237, 0) 100%
+    );
+    z-index: 1;
+  }
 
   .container-beige-title__slide {
     position: relative;
     display: flex;
+    // padding-left: 85px;
     width: 3000px;
     height: 600px;
-    padding-top: 80px;
 
     .container-beige-title__slide-imgbox {
       display: flex;
       flex-direction: column;
-      margin-right: 20px;
-      width: 320px;
+      margin-right: 30px;
+      width: 348px;
 
       img {
         width: 100%;
@@ -28,7 +52,7 @@
 
       label {
         margin-top: 20px;
-        font-size: 30px;
+        font-size: 25px;
         color: $darkGray;
       }
     }
