@@ -10,7 +10,7 @@ import API from '../../config';
 function Cart() {
   const ACCESS_TOKEN = sessionStorage.getItem('ACCESS_TOKEN');
   const navigate = useNavigate();
-  const [pending, setPending] = useState(true);
+  const [pending, setPending] = useState(false);
   const [Modal, setModal] = useState(false);
   const [items, setItems] = useState([]);
   const totalPrice = items.reduce((previousValue, currentValue) => {
@@ -39,8 +39,8 @@ function Cart() {
 
   const handleDecreaseItem = async id => {
     const selectedId = items.findIndex(item => item.id === id);
-    if (items[selectedId].quantity > 1 && pending) {
-      setPending(false);
+    if (items[selectedId].quantity > 1 && !pending) {
+      setPending(true);
       const response = await fetch(API.cart, {
         method: 'PATCH',
         headers: {
@@ -52,7 +52,7 @@ function Cart() {
         }),
       });
       const result = await response.json();
-      setPending(true);
+      setPending(false);
       if (result.message === 'UPDATE_SUCCESS') {
         const newQuantity = [...items];
         newQuantity[selectedId].quantity--;
@@ -63,8 +63,8 @@ function Cart() {
 
   const handleIncreaseItem = async id => {
     const selectedId = items.findIndex(item => item.id === id);
-    if (pending) {
-      setPending(false);
+    if (!pending) {
+      setPending(true);
       const response = await fetch(API.cart, {
         method: 'PATCH',
         headers: {
@@ -76,7 +76,7 @@ function Cart() {
         }),
       });
       const result = await response.json();
-      setPending(true);
+      setPending(false);
       if (result.message === 'OUT_OF_STOCK') {
         alert(`최대 구매 가능 수량 입니다.`);
         return;
@@ -89,8 +89,8 @@ function Cart() {
 
   const handleRemoveItem = async id => {
     const selectedId = items.findIndex(item => item.id === id);
-    if (pending) {
-      setPending(false);
+    if (!pending) {
+      setPending(true);
       const response = await fetch(API.cart, {
         method: 'DELETE',
         headers: {
@@ -101,7 +101,7 @@ function Cart() {
         }),
       });
       const result = await response.json();
-      setPending(true);
+      setPending(false);
       if (result.message === 'DELETE_SUCCESS') {
         const filtered = items.filter(itme => itme.id !== id);
         setItems(filtered);
@@ -110,8 +110,8 @@ function Cart() {
   };
 
   const handleMoveOrder = async () => {
-    if (pending) {
-      setPending(false);
+    if (!pending) {
+      setPending(true);
       const response = await fetch(API.order, {
         method: 'POST',
         headers: {
@@ -122,7 +122,7 @@ function Cart() {
         }),
       });
       const result = await response.json();
-      setPending(true);
+      setPending(false);
       if (result.message === 'NEW_ORDER_CREATED') {
         openModal();
         return;
