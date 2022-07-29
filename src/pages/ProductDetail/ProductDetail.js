@@ -17,8 +17,7 @@ function ProductDetail() {
   const { id } = useParams();
 
   const openPurchaseModal = () => {
-    const token = sessionStorage.getItem('login-token');
-    token ? setIsOpenModal(true) : navigate('/signin');
+    ACCESS_TOKEN ? setIsOpenModal(true) : navigate('/signin');
   };
 
   const isCloseModal = () => {
@@ -47,7 +46,7 @@ function ProductDetail() {
   const navigate = useNavigate();
 
   const goToProductList = () => {
-    navigate('/products');
+    navigate('/productlist');
   };
   const goToCart = () => {
     navigate('/cart');

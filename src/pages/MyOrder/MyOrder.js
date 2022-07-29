@@ -8,7 +8,7 @@ const MyOrder = () => {
   const [userdata, setUserdata] = useState({});
 
   useEffect(() => {
-    fetch(`${API.order}/myorder`, {
+    fetch(`${API.order}`, {
       headers: {
         Authorization: ACCESS_TOKEN,
       },

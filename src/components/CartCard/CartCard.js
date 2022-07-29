@@ -4,30 +4,31 @@ import './CartCard.scss';
 
 const CartCard = ({
   item,
-  index,
   handleDecreaseItem,
   handleIncreaseItem,
   handleRemoveItem,
 }) => {
-  const { product_name, price, images, quantity } = item;
+  const { id, product_name, price, images, quantity } = item;
 
   return (
     <div className="cart-card-container">
       <div className="cart-item">
         <div className="cart-remove-btn">
-          <button onClick={() => handleRemoveItem(index)}>✕</button>
+          <button onClick={() => handleRemoveItem(id)}>✕</button>
         </div>
         <div className="cart-row-box">
-          <img className="cart-row-img" alt="item" src={images[2]} />
+          <div className="cart-row-img-box">
+            <img className="cart-row-img" alt="item" src={images[0]} />
+          </div>
           <div className="cart-row-expln">
             <div>
               <h3 className="expln-title">{product_name}</h3>
             </div>
             <div className="cart-row-price">
               <div className="cart-row-count">
-                <button onClick={() => handleDecreaseItem(index)}>-</button>
+                <button onClick={() => handleDecreaseItem(id)}>-</button>
                 <span>{quantity}</span>
-                <button onClick={() => handleIncreaseItem(index)}>+</button>
+                <button onClick={() => handleIncreaseItem(id)}>+</button>
               </div>
               <div className="item-price">{`₩${(
                 price * quantity

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import OrderListDetail from '../OrderListDetail/OrderListDetail';
 import './OrderList.scss';
+import API from '../../config';
 
 const OrderList = ({ item }) => {
+  const ACCESS_TOKEN = sessionStorage.getItem('ACCESS_TOKEN');
   const [isShowInfo, setIsShowInfo] = useState(false);
   const [isCancelOrder, setIsCancelOrder] = useState(false);
 
@@ -16,11 +18,10 @@ const OrderList = ({ item }) => {
   };
 
   const deleteOrder = () => {
-    fetch('http://10.58.0.48:8000/myorder', {
+    fetch(API.order, {
       method: 'PATCH',
       headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.iei1OnJ0YzOCAAJAwgOWsjBMeid87K09NcXIS-z4lkM',
+        Authorization: ACCESS_TOKEN,
       },
       body: JSON.stringify({
         order_id: item.id,

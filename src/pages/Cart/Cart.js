@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
 import CartCard from '../../components/CartCard/CartCard';
+import SignupModal from '../../components/SignUpModal/SignUpModal';
 
 import './Cart.scss';
 import API from '../../config';
@@ -10,6 +11,7 @@ function Cart() {
   const ACCESS_TOKEN = sessionStorage.getItem('ACCESS_TOKEN');
   const navigate = useNavigate();
   const [pending, setPending] = useState(true);
+  const [Modal, setModal] = useState(false);
   const [items, setItems] = useState([]);
   const totalPrice = items.reduce((previousValue, currentValue) => {
     return (
@@ -17,6 +19,13 @@ function Cart() {
       parseInt(currentValue.price * currentValue.quantity)
     );
   }, 0);
+
+  const openModal = () => {
+    setModal(true);
+    setTimeout(() => {
+      navigate('/myorder');
+    }, 2000);
+  };
 
   const getItems = async () => {
     const response = await fetch(API.cart, {
@@ -28,8 +37,9 @@ function Cart() {
     setItems(result.cart);
   };
 
-  const handleDecreaseItem = async e => {
-    if (items[e].quantity > 1 && pending) {
+  const handleDecreaseItem = async id => {
+    const selectedId = items.findIndex(item => item.id === id);
+    if (items[selectedId].quantity > 1 && pending) {
       setPending(false);
       const response = await fetch(API.cart, {
         method: 'PATCH',
@@ -37,19 +47,22 @@ function Cart() {
           Authorization: ACCESS_TOKEN,
         },
         body: JSON.stringify({
-          cart_id: items[e].id,
+          cart_id: items[selectedId].id,
           quantity: -1,
         }),
       });
       const result = await response.json();
       setPending(true);
       if (result.message === 'UPDATE_SUCCESS') {
-        items[e].quantity--;
+        const newQuantity = [...items];
+        newQuantity[selectedId].quantity--;
+        setItems(newQuantity);
       }
     }
   };
 
-  const handleIncreaseItem = async e => {
+  const handleIncreaseItem = async id => {
+    const selectedId = items.findIndex(item => item.id === id);
     if (pending) {
       setPending(false);
       const response = await fetch(API.cart, {
@@ -58,7 +71,7 @@ function Cart() {
           Authorization: ACCESS_TOKEN,
         },
         body: JSON.stringify({
-          cart_id: items[e].id,
+          cart_id: items[selectedId].id,
           quantity: 1,
         }),
       });
@@ -68,11 +81,14 @@ function Cart() {
         alert(`최대 구매 가능 수량 입니다.`);
         return;
       }
-      items[e].quantity++;
+      const newQuantity = [...items];
+      newQuantity[selectedId].quantity++;
+      setItems(newQuantity);
     }
   };
 
-  const handleRemoveItem = async e => {
+  const handleRemoveItem = async id => {
+    const selectedId = items.findIndex(item => item.id === id);
     if (pending) {
       setPending(false);
       const response = await fetch(API.cart, {
@@ -81,7 +97,7 @@ function Cart() {
           Authorization: ACCESS_TOKEN,
         },
         body: JSON.stringify({
-          cart_ids: [items[e].id],
+          cart_ids: [items[selectedId].id],
         }),
       });
       const result = await response.json();
@@ -89,7 +105,7 @@ function Cart() {
       if (result.message === 'DELETE_SUCCESS') {
         const filtered = items
           .map((item, index) => {
-            if (e !== index) {
+            if (selectedId !== index) {
               return item;
             }
             return null;
@@ -103,7 +119,7 @@ function Cart() {
   const handleMoveOrder = async () => {
     if (pending) {
       setPending(false);
-      const response = await fetch(API.moveOrder, {
+      const response = await fetch(API.order, {
         method: 'POST',
         headers: {
           Authorization: ACCESS_TOKEN,
@@ -115,7 +131,7 @@ function Cart() {
       const result = await response.json();
       setPending(true);
       if (result.message === 'NEW_ORDER_CREATED') {
-        navigate('/myorder');
+        openModal();
         return;
       }
       alert('잠시후 다시 시도 해주세요.');
@@ -135,6 +151,12 @@ function Cart() {
     <div className="cart-container">
       {items.length > 0 ? (
         <div className="cart-inner">
+          {Modal && (
+            <SignupModal
+              text="구매가 완료 되었습니다!"
+              name={`총${items.length}건`}
+            />
+          )}
           <h3>장바구니에 담긴 품목</h3>
           <div className="cart-wap">
             <div className="cart-items">
@@ -168,7 +190,12 @@ function Cart() {
                     <button onClick={handleMoveOrder} className="order">
                       주문 하기
                     </button>
-                    <button className="back">쇼핑 계속 하기</button>
+                    <button
+                      onClick={() => navigate('/productlist')}
+                      className="back"
+                    >
+                      쇼핑 계속 하기
+                    </button>
                   </div>
                   <div className="order-text">
                     <p>이 주문은 무료 배송이 적용됩니다.</p>

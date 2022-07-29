@@ -42,8 +42,11 @@ function SignUp() {
       setHasEmail(true);
       return;
     }
-
-    if (emailRegExp.test(email) && passwordRegExp.test(password)) {
+    if (
+      emailRegExp.test(email) &&
+      passwordRegExp.test(password) &&
+      confirm_password
+    ) {
       try {
         const response = await fetch(API.signup, {
           method: 'POST',
@@ -78,7 +81,9 @@ function SignUp() {
 
   return (
     <main className="sign-in-container">
-      {Modal && <SignupModal name={first_name + last_name} />}
+      {Modal && (
+        <SignupModal text="환영합니다!" name={first_name + last_name} />
+      )}
       <div className="sign-in-inner">
         <div className="inner-left">
           {hasEmail && (

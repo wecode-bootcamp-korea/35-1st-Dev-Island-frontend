@@ -25,7 +25,7 @@ function ProductList() {
   useEffect(() => {
     const queryString = location.search;
 
-    fetch(`${API.productDetail}${queryString}`)
+    fetch(`${API.product}${queryString}`)
       .then(res => res.json())
       .then(result => {
         setTotalItems(result);
@@ -94,7 +94,7 @@ function ProductList() {
               />
             </div>
             <div className="container-text">
-              <p>상품 전체보기</p>
+              <p>ALL</p>
             </div>
           </div>
           <div className="category-container">
@@ -102,7 +102,7 @@ function ProductList() {
               <img alt="img1" src="images/productlist/categoryimg1.jpeg" />
             </div>
             <div className="container-text">
-              <p>스피커</p>
+              <p>SPEAKERS</p>
             </div>
           </div>
           <div className="category-container">
@@ -110,7 +110,7 @@ function ProductList() {
               <img alt="img2" src="images/productlist/categoryimg2.jpeg" />
             </div>
             <div className="container-text">
-              <p>이어폰</p>
+              <p>PORTABLE SPEAKERS</p>
             </div>
           </div>
           <div className="category-container">
@@ -118,7 +118,7 @@ function ProductList() {
               <img alt="img3" src="images/productlist/categoryimg3.jpeg" />
             </div>
             <div className="container-text">
-              <p>그 외 장비</p>
+              <p>HEADPHONES</p>
             </div>
           </div>
         </div>
@@ -132,15 +132,20 @@ function ProductList() {
           </div>
           <div className="text-box">
             <div className="title">
-              <p>위앤올룹슨</p>
+              <p>W & O</p>
             </div>
             <div className="description">
               <p>
-                W&O는 1925년 덴마크에서 설립되었습니다. Peter Bang과 Svend
-                Olufsen이 세운 이후 97년이 지나도록 럭셔리 오디오 시장에서
-                압도적인 위치를 점하고 있습니다. W&O는 뛰어난 디자인 감각과
-                끊임없는 신기술 개발로 오랜 시간 전세계에서 큰 사랑을 받고
-                있습니다.
+                Soul-stirring sound wherever you want it. Pick up a portable
+                speaker for your next adventure, furnish your home with a full
+                entertainment setup or find the flexible Bang & Olufsen speaker
+                that matches your busy lifestyle. Designed to fit into your
+                day-to-day, our speakers are easy to control. From changing the
+                volume to setting up your own sound profile, our intuitive
+                interfaces ensure your interactions are joyful. You can also
+                make every moment your own, with our app – skip tracks, take
+                calls or change your listening mode, all from your phone or
+                tablet.
               </p>
             </div>
           </div>
@@ -150,10 +155,10 @@ function ProductList() {
           />
           <div className="item-sort-category">
             <div className="item-sort">
-              <button onClick={sortNewest}>신상품</button>
-              <button onClick={sortName}>상품명</button>
-              <button onClick={sortHighPrice}>낮은가격</button>
-              <button onClick={sortLowPrice}>높은가격</button>
+              <button onClick={sortNewest}>NEW</button>
+              <button onClick={sortName}>NAME</button>
+              <button onClick={sortHighPrice}>LOW PRICE</button>
+              <button onClick={sortLowPrice}>HIGH PRICE</button>
             </div>
           </div>
         </div>
