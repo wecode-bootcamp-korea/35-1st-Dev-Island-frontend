@@ -103,14 +103,7 @@ function Cart() {
       const result = await response.json();
       setPending(true);
       if (result.message === 'DELETE_SUCCESS') {
-        const filtered = items
-          .map((item, index) => {
-            if (selectedId !== index) {
-              return item;
-            }
-            return null;
-          })
-          .filter(n => n);
+        const filtered = items.filter(itme => itme.id !== id);
         setItems(filtered);
       }
     }
