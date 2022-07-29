@@ -4,8 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import Modal from '../../components/Modal/Modal';
 import ProductDetailContents from '../../components/ProductDetailContents/ProductDetailContents';
 import './ProductDetail.scss';
+import API from '../../config';
 
 function ProductDetail() {
+  const ACCESS_TOKEN = sessionStorage.getItem('ACCESS_TOKEN');
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [product, setProduct] = useState({});
   const outlineRef = useRef(null);
@@ -15,8 +17,7 @@ function ProductDetail() {
   const { id } = useParams();
 
   const openPurchaseModal = () => {
-    const token = sessionStorage.getItem('login-token');
-    token ? setIsOpenModal(true) : navigate('/signin');
+    ACCESS_TOKEN ? setIsOpenModal(true) : navigate('/signin');
   };
 
   const isCloseModal = () => {
@@ -24,12 +25,10 @@ function ProductDetail() {
   };
 
   const moveItem = async () => {
-    const url = 'http://10.58.4.137:8000/carts';
-    const response = await fetch(url, {
+    const response = await fetch(API.cart, {
       method: 'POST',
       headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NH0.bd9JCUK-PC6dAZc4WyRjjEw6zwaqw2YtsaANRY6YKjo',
+        Authorization: ACCESS_TOKEN,
       },
       body: JSON.stringify({
         product_id: `${id}`,
@@ -47,7 +46,7 @@ function ProductDetail() {
   const navigate = useNavigate();
 
   const goToProductList = () => {
-    navigate('/products');
+    navigate('/productlist');
   };
   const goToCart = () => {
     navigate('/cart');
@@ -83,7 +82,7 @@ function ProductDetail() {
   }, []);
 
   useEffect(() => {
-    fetch(`http://10.58.4.137:8000/products/${id}`)
+    fetch(`${API.productDetail}/${id}`)
       .then(res => res.json())
       .then(data => setProduct(data.result));
   }, [id]);
