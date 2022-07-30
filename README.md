@@ -1,5 +1,4 @@
 
-
 ## PROJECT: We&Olufsen
 ------
 
@@ -12,8 +11,8 @@ https://www.bang-olufsen.com/ko/kr
 #### • 작업기간 : 7월 18일 ~ 7월 29일 (2 week)
 
 #### • 팀원 소개
- wecode 35기 1차 프로젝트  
- Dev-Island TEAM 
+> wecode 35기 1차 프로젝트  
+ Dev-Island TEAM  
   **FE** | 신수정, 심동규, 이현주, 정훈조  
   **BE** | 박서윤, 손찬규
  
