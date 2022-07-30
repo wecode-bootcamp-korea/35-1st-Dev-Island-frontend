@@ -14,7 +14,7 @@
 ## • 사용기술 및 협업 도구
   FE: HTML, SCSS, Javascript, React, React-Router  
   BE: Phython, Django, MySQL  
-  Common : Git, GitHub, Prettier, Eslint  
+  Common : Git, GitHub, Prettier, Eslint, AWS
   Comunication : Notion, Slack, Trello  
  
 ## • 구현기능 및 사용 기술 소개 
