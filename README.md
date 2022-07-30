@@ -12,10 +12,8 @@
 ## 작업기간 : 7월 18일 ~ 7월 29일 (2 week)
 
 ## 팀원 소개
- - FRONTEND
- 정훈조, 신수정, 이현주, 심동규
- - BACKEND
- 박서윤, 손찬규
+ - FE : 정훈조, 신수정, 이현주, 심동규
+ - BE : 박서윤, 손찬규
  
 ## 사용기술
  Front-end: HTML, SCSS, Javascript, React, React-Router
