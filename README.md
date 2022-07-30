@@ -1,4 +1,5 @@
 
+
 # PROJECT : We&Olufsen
 
 ### • 프로젝트 소개
@@ -46,6 +47,7 @@ https://www.bang-olufsen.com/ko/kr
 각각의 기능을 수행할 수 있도록 className으로 스타일값을 props로 전달  
 이전이미지와 다음이미지로 이동하는 로직 구현. 
 - useRef를 이용한 돔 객체 불러오기
+...작성중
 `translateX(-${currentSlide * movingRange}px)`  
 슬라이드 내 이미지 width와 margin 값을 변수로 저장해  
 movingRange를 slideRef의 style값으로 전달해주는 로직을 만들었다.  
@@ -60,8 +62,22 @@ movingRange를 slideRef의 style값으로 전달해주는 로직을 만들었다
  - 서버 pending시 후속 통신을 보류시킴
  
 #### 7. my order 페이지 (FE 신수정)
-- 
-
+- sessionStorage에 저장시킨 토큰을 통해 구매내역 전달 받기
+fetch 함수 hea.........작성중
+- Toggle 버튼을 활용한 주문내역 상세보기 아코디언 구현
+컴포넌트 분리 시 부모 컴포넌트에서 map함수를 돌려야 자식 컴포넌트에서 전달받은 버튼도
+재각각 짝을 찾아 하나씩만 작동 된다는 오류를 발견하는 과정을 겪은 기능
+- 주문 취소 기능 구현 (정상 취소 시 조건부 랜더링)
+주문 삭제된 데이터를 백엔드에 전달.
+fetch함수 method 'PATCH'를 사용해 body에 order_id: item.id 상품 아이디 값을 전달.
+취소되면 프론트 쪽에서는 백그라운드 컬러가 변경되도록 구현.
+(새로고침 시 백그라운드 컬러가 원복 되는 버그를 발견했으나 시간 관계상 수정하지 못하고 배포)
+- 주문 총 합계 금액 도출 
+백엔드에서 전달받는 데이터 외에 주문 총 합계 금액은 백데이터 기반 프론트 쪽에서 구현 진행.
+reduce 함수를 사용한 배열 속 특정 값들의 누적 합계 도출
+``` javascript
+const totalPrice = products.reduce(  (acc, cur)  => acc +  Number(cur.product_total_price),  0  ...  <p>  <span>total</span> ₩ {totalPrice.toLocaleString()} </p>
+```
 #### 8. 404 페이지  (FE 정훈조)
  - 라우팅외 요청은 404 page로 리다이렉트
 #### 9. NAV (FE 정훈조)
@@ -74,6 +90,6 @@ movingRange를 slideRef의 style값으로 전달해주는 로직을 만들었다
           
 
 ### • 참고
->이 프로젝트는 Bang & Olufsen 사이트를 참조하여 학습 목적으로 만들었습니다.  
+이 프로젝트는 Bang & Olufsen 사이트를 참조하여 학습 목적으로 만들었습니다.  
 실무수준의 프로젝트이지만 학습용으로 만들었기 때문에 이 코드를 활용하여 이득을 취하거나 무단 배포할 경우 법적으로 문제될 수 있습니다.  
 모든 사진은 저작권이 없는 사진을 사용했습니다.  
