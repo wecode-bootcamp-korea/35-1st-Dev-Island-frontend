@@ -22,12 +22,17 @@ https://www.bang-olufsen.com/ko/kr
 > Common : Git&Github, AWS
 > Comunication : Notion, Slack, Trello
 
+![gif](https://user-images.githubusercontent.com/62737638/181909170-2f7bf398-dba9-4a8e-a60e-96a455406961.gif)
+
+
 #### • 구현기능 및 사용 기술 소개 
 
 ##### 1. 회원가입 페이지 (FE 정훈조)
+ 정규식 통해 이메일과 패스워드 조건 확인
 
 ##### 2. 로그인 페이지 (FE 정훈조)
-
+ 클라이언트단 확인가능한 사항 불필요한 통신을 사전에 차단함
+ 
 #####  3. 메인 페이지 (FE 신수정)
 ###### 메인 풀 배너 슬라이드 기능 구현
 >
@@ -39,7 +44,9 @@ https://www.bang-olufsen.com/ko/kr
 ###### 장바구니 이동 모달 기능 구현
 
 ##### 6. 장바구니 페이지 (FE 정훈조)
-
+ 아이템 수량 핸들링시 서버통신에 따라 핸들링함.
+ 서버 pending시 후속 통신을 보류시킴
+ 
 ##### 7. my order 페이지 (FE 신수정)
 
 ##### 8. 404 페이지  (FE 정훈조)
