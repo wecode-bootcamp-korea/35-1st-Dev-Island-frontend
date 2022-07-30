@@ -42,13 +42,13 @@ moving을 state값으로 선언해, useEffect hook을 사용해 컴포넌트가 
 - 중앙 카테고리 슬라이드 기능 구현  
 useRef, useState, useEffect hook을 활용한 슬라이드 구현  
 상수데이터(SLIDER_NAV_DATA)를 사용해 버튼을 클릭할 수 있는 횟수.  
-즉, 슬라이드 가능 범위에 제한을 걸었다. (데이터가 수정되었을 시 반영하기 위해...🫣)
-슬라이드에 사용되는 동일한 모양의 버튼을 컴포넌트로 분리해 
+즉, 슬라이드 가능 범위에 제한을 걸었다. (데이터가 수정되었을 시 반영하기 위해...🫣)  
+슬라이드에 사용되는 동일한 모양의 버튼을 컴포넌트로 분리해  
 각각의 기능을 수행할 수 있도록 className으로 스타일값을 props로 전달해  
-각각 이전이미지와 다음이미지로 이동하는 로직을 구현했다.
+각각 이전이미지와 다음이미지로 이동하는 로직을 구현했다.  
 가장 고민했던 부분은 얼만큼 움직이게 해야하는가에 대한 수치입력을  
-부모 div에 해야하는지 아니면 자식 div의 width값과 margin값을 전해야줘야 할지였다.
-`translateX(-${currentSlide * movingRange}px)`
+부모 div에 해야하는지 아니면 자식 div의 width값과 margin값을 전해야줘야 할지였다.  
+`translateX(-${currentSlide * movingRange}px)`  
 많은 고민 끝에 조금 간지가 나지 않지만 이미지 div의 width와 margin을 변수로 저장해  
 movingRange를 slideRef의 style값으로 전달해주는 로직을 만들었다.  
 
