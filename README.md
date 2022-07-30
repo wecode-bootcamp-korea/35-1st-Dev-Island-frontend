@@ -54,7 +54,26 @@ slideRef의 style값으로 전달해주는 로직 구현.
   
   
 #### 5. 제품 상세 페이지 (FE 이현주)
-##### - 장바구니 이동 모달 기능 구현
+##### - 장바구니 이동 모달 기능 구현  
+sessionStorage.getItem(keyName) : keyName 에 해당하는 값을 리턴하며, 키가 없을때는 null 을 리턴한다.  
+이 메서드를 사용해 키가 있으면 'purchase' 모달창이 열리고, 없으면 (null) 로그인 페이지로 이동하도록 구현하였다.  
+모달창에 담긴 상품이 장바구니 페이지로 보내져야 하므로 API에 해당 상품에 대한 정보를 보내준다.  
+fetch함수를 이용하여 정보를 보내고, result message가 ‘PUT_IN_CART_SUCCESS’ (첫상품) 또는 ‘CART_QUANTITY_CHANGED’(장바구니에 담겨있던 상품 추가 구매시) 일때 cart page로 보내지게 구현하였다.  
+  
+##### - 모달창 닫기 추가 기능  
+켜져있는 모달창을 esc 를 눌렀을때와 모달창 영역 밖 마우스 클릭시에도 닫히게 구현하였다.  
+addEventListener(type, listener) 메서드를 이용해서, 1) esc 눌렀을때와 2) 모달창 영역 밖 마우스 클릭시 모달창이 닫히게 구현하였다.  
+1) e.keycode가 27이면 모달창이 닫히도록 이벤트를 주었다.  
+2) 모달창 영역 밖에 해당하는 부분을 useRef를 통해 선택한 후, 해당 Element가 클릭 되었을 때만 모달창이 닫히도록 이벤트를 주었다.  
+  
+##### - Backend로부터 데이터 받아와서 뿌려주기  
+fetch()함수를 이용하여 Backend로부터 데이터를 받아오는 기능 구현.  
+고정된 api가 아닌  product id이므로 product list에서 클릭한는 상품에 따라 product id가 달라지므로 fetch(`${API주소}/${id}`) 로 구현.  
+  
+##### - useRef Hook을 이용한 페이지 내 위치 이동    
+product detail page 내에 있는 메뉴 탭에서 각각의 메뉴 클릭시, 원하는 위치로 이동하도록 구현하였다. 
+특정한 virtual Dom element를 선택하고자 할 때 useRef 훅을 사용한다.  
+원하는 변수명으로 useRef()선언하고 선언하고자 하는 DOM에 ref 속성 추가해서 필요한 곳에서 변수명.current로 꺼내쓰는 로직을 사용하였다.
 
 #### 6. 장바구니 페이지 (FE 정훈조)
 ##### - 아이템 수량 핸들링시 서버통신에 따라 핸들링함.
