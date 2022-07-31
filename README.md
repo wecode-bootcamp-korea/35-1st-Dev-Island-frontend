@@ -11,8 +11,8 @@ https://www.bang-olufsen.com/ko/kr
 ### • 작업기간 : 7월 18일 ~ 7월 29일 (2 week)
 
 ### • 팀원 소개
-> wecode 35기 1차 프로젝트  
- Dev-Island TEAM  
+> wecode 35기 1차 프로젝트 Dev-Island TEAM  
+ ![jpeg](https://postfiles.pstatic.net/MjAyMjA3MzFfODMg/MDAxNjU5MjUxMTMyMTgy.0qfKK0np7L6YiCRd1SOxmIae09rOTnSagEt_hK8NNnkg.y_37kOFlRdwh4BGp1fyi5zhDHyvDnrNd98AYLJaRnr4g.JPEG.nodame3806/SE-4d336d27-4028-44db-95f1-bc7f63d1e8c2.jpg?type=w966)  
   **FE** | 신수정, 심동규, 이현주, 정훈조  
   **BE** | 박서윤, 손찬규
  
